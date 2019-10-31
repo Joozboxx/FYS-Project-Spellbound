@@ -3,6 +3,7 @@ class Player{
   float x,y,big,vy,gravity,border;
   boolean [] keys = new boolean[128];
   
+  //player
   Player(){
     x = width/10;
     y = 300;
