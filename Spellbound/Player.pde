@@ -1,10 +1,11 @@
-class Player{
- 
-  float x,y,big,vy,gravity,border;
-  boolean [] keys = new boolean[128];
-  
-  //player
-  Player(){
+class Player {
+
+  // Player variables
+  float x, y, big, vy, gravity, border;
+  boolean [] keys = new boolean[256];
+
+  //Setup player variables
+  Player() {
     x = width/10;
     y = 300;
     big = 50;
@@ -12,41 +13,41 @@ class Player{
     gravity = 1.005;
     border = 450;
   }
-  
-  void draw(){
-    background(250,100,250);
+
+  void draw() {
+    // Draw the player shape
     fill(0);
-    rect(x,y,big,big);
-}
-
-  void update(){
-     move();
-     edge();
-     y = y * gravity;
+    rect(x, y, big, big);
   }
 
-  void move(){
-    if(keys['w'])
-    y -= vy;
-    if(keys['s'])
-    y += vy; 
+  void update() {
+    // Handle player
+    move();
+    edge();
+    y = y * gravity;
   }
-  
-  void edge(){
-    if(y > border){
-   y = border;
-    }
-    else if(y < 0){
-    y = 0;
+
+  void move() {
+    // Move the player with keyboard keys
+    if (keys['w'])
+      y -= vy;
+    if (keys['s'])
+      y += vy;
+  }
+
+  void edge() {
+    if (y > border) {
+      y = border;
+    } else if (y < 0) {
+      y = 0;
     }
   }
-  
-  void keyPressed(){
+
+  void keyPressed() {
     keys[key] = true;
   }
-  
-  void keyReleased(){
+
+  void keyReleased() {
     keys[key] = false;
   }
-
 }
