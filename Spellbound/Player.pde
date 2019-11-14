@@ -1,32 +1,33 @@
 class Player {
 
   // Player variables
-  float x, y, big, vy, gravity, border;
+  float x, y, big, vy, border;
   boolean [] keys = new boolean[256];
+  PImage photo;
 
   //Setup player variables
   Player() {
     x = width/10;
-    y = 300;
-    big = 50;
+    y = 200;
+    big = 150;
     vy = 5;
-    gravity = 1.005;
     border = 450;
+    photo = loadImage("spellboundplayer.png");
   }
 
   void draw() {
     // Draw the player shape
     fill(0);
-    rect(x, y, big, big);
+    image(photo,x,y,big,big);
   }
 
   void update() {
     // Handle player
     move();
     edge();
-    y = y * gravity;
   }
 
+    
   void move() {
     // Move the player with keyboard keys
     if (keys['w'])
@@ -35,14 +36,17 @@ class Player {
       y += vy;
   }
 
+    
   void edge() {
+    // Border of player movement
     if (y > border) {
       y = border;
     } else if (y < 0) {
       y = 0;
     }
   }
-
+  
+    // Get keyboard input
   void keyPressed() {
     keys[key] = true;
   }
