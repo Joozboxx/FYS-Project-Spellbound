@@ -2,7 +2,7 @@ Player myPlayer;
 
 void setup() {
   //Set window size
-  size(800, 600);
+  size(1920,1080);
   myPlayer = new Player();
 }
 

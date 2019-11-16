@@ -8,10 +8,10 @@ class Player {
   //Setup player variables
   Player() {
     x = width/10;
-    y = 200;
-    big = 150;
-    vy = 5;
-    border = 450;
+    y = height/2;
+    big = 300;
+    vy = 10;
+    border = height-(big-100);
     photo = loadImage("spellboundplayer.png");
   }
 
