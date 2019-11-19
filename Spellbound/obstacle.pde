@@ -3,10 +3,9 @@ class Obstacle{
   float xred,y,xSize,ySize,speed;
   
   Obstacle(){
-    xred = width;
-    
+    xred = width+30;
+    y = height/2;
     xSize = 40;
-    y = random(100, height/2);
     ySize = 300;
     speed = 15;
   }
@@ -23,7 +22,6 @@ class Obstacle{
   
     if(xred < 0){
       xred = width+30;
-      y = random(100,height - ySize);
     }
 
 }
