@@ -1,30 +1,34 @@
 class Player {
 
   // Player variables
-  float x, y, big, vy, border;
+  float xPlayer, y, PlayerSize, vy, border;
   boolean [] keys = new boolean[256];
   PImage photo;
-
+  boolean onHit = true;
   //Setup player variables
   Player() {
-    x = width/10;
+    
+    xPlayer = width/10;
     y = height/2;
-    big = 300;
+    PlayerSize = 300;
     vy = 10;
-    border = height-(big-100);
+    border = height-(PlayerSize-100);
     photo = loadImage("spellboundplayer.png");
   }
 
   void draw() {
+    if(onHit = true){
     // Draw the player shape
     fill(0);
-    image(photo,x,y,big,big);
+    image(photo,xPlayer,y,PlayerSize,PlayerSize);
+  }
   }
 
   void update() {
     // Handle player
     move();
     edge();
+    collide();
   }
 
     
@@ -45,6 +49,25 @@ class Player {
       y = 0;
     }
   }
+  
+  
+  void collide()
+  {
+    
+    if(checkCollision()){
+     onHit = false;
+     println("bob");
+     background(0);
+    }
+  }
+  boolean checkCollision(){
+  
+    if((xPlayer + PlayerSize > Enemy.xred )&&  (xPlayer < Enemy.xred + Enemy.xSize) && (y + PlayerSize > Enemy.y )&&( y < Enemy.y + Enemy.xSize)){
+      return true;
+    }
+    return false;
+  }
+  
   
     // Get keyboard input
   void keyPressed() {
