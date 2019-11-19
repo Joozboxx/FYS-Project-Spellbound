@@ -43,8 +43,8 @@ class Player {
     
   void edge() {
     // Border of player movement
-    if (y > border) {
-      y = border;
+    if (y > border-100) {
+      y = border-100;
     } else if (y < 0) {
       y = 0;
     }

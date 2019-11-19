@@ -4,7 +4,7 @@ Background backgroundLevel;
 
 void setup() {
   //Set window size
-  size(1920,1080);
+  size(1920,1080,P2D);
   myPlayer = new Player();
   Enemy = new Obstacle();
   backgroundLevel = new Background();
