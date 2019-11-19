@@ -3,7 +3,7 @@ class Player {
   // Player variables
   float xPlayer, y, PlayerSize, vy, border;
   boolean [] keys = new boolean[256];
-  PImage photo;
+  PImage player = loadImage("spellboundplayer.png");
   boolean onHit = true;
   //Setup player variables
   Player() {
@@ -13,14 +13,14 @@ class Player {
     PlayerSize = 300;
     vy = 10;
     border = height-(PlayerSize-100);
-    photo = loadImage("spellboundplayer.png");
   }
 
   void draw() {
     if(onHit = true){
     // Draw the player shape
     fill(0);
-    image(photo,xPlayer,y,PlayerSize,PlayerSize);
+    image(player,xPlayer,y,PlayerSize,PlayerSize);
+
   }
   }
 
