@@ -1,27 +1,29 @@
 class Obstacle{
  
-  float xred,y,xSize,ySize,speed;
-  
+  float xfire,yfire,xSize,ySize,speed;
+  PImage fire = loadImage("elementfire.png");
   Obstacle(){
-    xred = width+30;
-    y = height/2;
-    xSize = 40;
-    ySize = 300;
+    xfire = width+30;
+    yfire = height/2;
+    xSize = 80;
+    ySize = 400;
     speed = 15;
   }
   
   void draw(){
   fill(255,0,0);
-  rect(xred,y,xSize,ySize);
+  image(fire,xfire,yfire,xSize,ySize);
   }
  
   
   void update(){
-    xred -= speed; 
+    xfire -= speed; 
     
   
-    if(xred < 0){
-      xred = width+30;
+    if(xfire < 0){
+      xfire = width+30;
+      yfire = random(50,height/2);
+      speed *=1.05;
     }
 
 }

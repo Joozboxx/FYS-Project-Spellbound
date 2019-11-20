@@ -56,13 +56,12 @@ class Player {
     
     if(checkCollision()){
      onHit = false;
-     println("bob");
      background(0);
     }
   }
   boolean checkCollision(){
   
-    if((xPlayer + PlayerSize > Enemy.xred )&&  (xPlayer < Enemy.xred + Enemy.xSize) && (y + PlayerSize > Enemy.y )&&( y < Enemy.y + Enemy.xSize)){
+    if((xPlayer + PlayerSize > Enemy.xfire )&&  (xPlayer < Enemy.xfire + Enemy.xSize) && (y + PlayerSize > Enemy.yfire )&&( y < Enemy.yfire + Enemy.xSize)){
       return true;
     }
     return false;
