@@ -8,7 +8,7 @@ void setup() {
   myPlayer = new Player();
   Enemy = new Obstacle();
   backgroundLevel = new Background();
-
+ 
 }
 
 void draw() {

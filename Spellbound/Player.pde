@@ -1,28 +1,27 @@
 class Player {
 
   // Player variables
-  float xPlayer, y, PlayerSize, vy, border;
+  float xPlayer, y, PlayerSizeH,PlayerSizeW, vy, border;
   boolean [] keys = new boolean[256];
   PImage player = loadImage("spellboundplayer.png");
-  boolean onHit = true;
   //Setup player variables
   Player() {
     
     xPlayer = width/10;
     y = height/2;
-    PlayerSize = 300;
+    PlayerSizeH = 200;
+    PlayerSizeW = 250;
     vy = 10;
-    border = height-(PlayerSize-100);
+    border = height-(PlayerSizeH-100);
   }
 
   void draw() {
-    if(onHit = true){
     // Draw the player shape
     fill(0);
-    image(player,xPlayer,y,PlayerSize,PlayerSize);
+    image(player,xPlayer,y,PlayerSizeW,PlayerSizeH);
 
   }
-  }
+  
 
   void update() {
     // Handle player
@@ -45,8 +44,8 @@ class Player {
     // Border of player movement
     if (y > border-100) {
       y = border-100;
-    } else if (y < 50) {
-      y = 50;
+    } else if (y < 0) {
+      y = 0;
     }
   }
   
@@ -55,13 +54,18 @@ class Player {
   {
     
     if(checkCollision()){
-     onHit = false;
-     background(0);
+     
+     fill(255,0,0,90);
+     rect(0,0,1920,1080);
     }
   }
   boolean checkCollision(){
   
-    if((xPlayer + PlayerSize > Enemy.xfire )&&  (xPlayer < Enemy.xfire + Enemy.xSize) && (y + PlayerSize > Enemy.yfire )&&( y < Enemy.yfire + Enemy.xSize)){
+     if((xPlayer + PlayerSizeW >= Enemy.xfire)
+     &&(xPlayer  <=Enemy.xfire +Enemy.xSize)
+     &&(y+PlayerSizeH >= Enemy.yfire )
+     &&(y<=Enemy.yfire + Enemy.xSize))
+    {
       return true;
     }
     return false;
