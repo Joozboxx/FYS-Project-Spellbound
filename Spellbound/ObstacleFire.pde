@@ -1,8 +1,8 @@
-class Obstacle{
+class ObstacleFire{
  
   float xfire,yfire,xSize,ySize,speed;
   PImage fire = loadImage("elementfire.png");
-  Obstacle(){
+  ObstacleFire(){
     xfire = width/2;
     yfire = height/2;
     xSize = 65;

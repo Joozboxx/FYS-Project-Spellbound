@@ -1,12 +1,14 @@
 Player myPlayer;
-Obstacle Enemy;
+ObstacleFire EnemyFire;
+ObstacleWater EnemyWater;
 Background backgroundLevel;
 
 void setup() {
   //Set window size
   size(1920,1080,P2D);
   myPlayer = new Player();
-  Enemy = new Obstacle();
+  EnemyFire = new ObstacleFire();
+  EnemyWater = new ObstacleWater();
   backgroundLevel = new Background();
  
 }
@@ -20,8 +22,10 @@ void draw() {
   backgroundLevel.drawSun();
   myPlayer.draw();
   myPlayer.update();
-  Enemy.draw();
-  Enemy.update();
+  EnemyFire.draw();
+  EnemyFire.update();
+  EnemyWater.draw();
+  EnemyWater.draw();
   
   text(round(frameRate),10,20);
 }
