@@ -1,8 +1,10 @@
+Background backgroundLevel;
 Player myPlayer;
 ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
-Background backgroundLevel;
+ArrayObs ArrayObstacle;
+
 
 void setup() {
   //Set window size
@@ -12,6 +14,7 @@ void setup() {
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife();
   backgroundLevel = new Background();
+  ArrayObs = new ArrayObstacle();
 }
 
 void draw() {

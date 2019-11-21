@@ -26,7 +26,6 @@ class ObstacleFire {
       myPlayer.vy *= 1.01;
       yfire = random(50, height/2);
       speed *=1.05;
-      myPlayer.vy *= 1.05;
     }
     
     if (speed >= 35) {

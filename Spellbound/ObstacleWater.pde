@@ -23,7 +23,6 @@ class ObstacleWater {
       xwater = width+30;
       ywater = random(50,height-350);
       speed *=1.05;
-      myPlayer.vy *= 1.01;
     }
 
     if (speed >= 35) {
