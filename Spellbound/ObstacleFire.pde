@@ -23,7 +23,6 @@ class ObstacleFire {
       xfire = width+30;
       yfire = random(50,height-350);
       speed *=1.05;
-      myPlayer.vy *= 1.01;
       yfire = random(50, height/2);
       speed *=1.05;
     }
