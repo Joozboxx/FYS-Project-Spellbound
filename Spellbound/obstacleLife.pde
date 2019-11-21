@@ -3,7 +3,7 @@ class ObstacleLife {
   float xlife, ylife, xSize, ySize, speed;
   PImage life = loadImage("elementlife.png");
   ObstacleLife() {
-    xlife = width;                         
+    xlife = width;                
     ylife = height+height;
     xSize = 65;
     ySize = 400;
