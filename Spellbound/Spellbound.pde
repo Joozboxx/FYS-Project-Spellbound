@@ -6,13 +6,12 @@ Background backgroundLevel;
 
 void setup() {
   //Set window size
-  size(1920,1080,P2D);
+  size(1920, 1080, P2D);
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife();
   backgroundLevel = new Background();
- 
 }
 
 void draw() {
@@ -32,6 +31,9 @@ void draw() {
   EnemyLife.update();
   
   text(round(frameRate),10,20);
+  EnemyWater.draw();
+
+  text(round(frameRate), 10, 20);
 }
 
 void keyPressed() {
