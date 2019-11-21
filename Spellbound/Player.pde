@@ -50,21 +50,28 @@ class Player {
   }
   
   
-  void collide()
-  {
-    
+  void collide(){
     if(checkCollision()){
-     
      fill(255,0,0,90);
      rect(0,0,1920,1080);
     }
   }
+  
   boolean checkCollision(){
   
-     if((xPlayer + PlayerSizeW >= Enemy.xfire)
-     &&(xPlayer  <=Enemy.xfire +Enemy.xSize)
-     &&(y+PlayerSizeH >= Enemy.yfire )
-     &&(y<=Enemy.yfire + Enemy.xSize))
+    //checks if the player hits the obstacle
+     if((xPlayer + PlayerSizeW >= EnemyFire.xfire)
+     &&(xPlayer  <=EnemyFire.xfire +EnemyFire.xSize)
+     &&(y+PlayerSizeH >= EnemyFire.yfire )
+     &&(y<=EnemyFire.yfire + EnemyFire.ySize))
+    {
+      return true;
+    }
+     //checks if the player hits the obstacle
+     if((xPlayer + PlayerSizeW >= EnemyWater.xwater)
+     &&(xPlayer  <=EnemyWater.xwater +EnemyWater.xSize)
+     &&(y+PlayerSizeH >= EnemyWater.ywater)
+     &&(y<=EnemyWater.ywater + EnemyWater.ySize))
     {
       return true;
     }
