@@ -1,8 +1,9 @@
-class ArrayObs{
+class ArrayObstacle{
   
-  
-if(EnemyFire.xfire <0 || EnemyWater.xwater <0 || EnemyLife.xlife <0){
-  myPlayer.vy *= 1.01;
-}
+  void update(){
+    if(EnemyFire.xfire <0 || EnemyWater.xwater <0 || EnemyLife.xlife <0){
+      myPlayer.playerSpeed *= 1.30;
+    }
+  }
 
 }

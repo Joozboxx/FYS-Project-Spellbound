@@ -1,7 +1,7 @@
 class Player {
 
   // Player variables
-  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, vy, border;
+  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
   boolean [] keys = new boolean[256];
   PImage player = loadImage("spellboundplayer.png");
   //Setup player variables
@@ -11,7 +11,7 @@ class Player {
     yPlayer = height/2;
     PlayerSizeH = 200;
     PlayerSizeW = 250;
-    vy = 10;
+    playerSpeed = 10;
     border = height-(PlayerSizeH-100);
   }
 
@@ -33,12 +33,12 @@ class Player {
   void move() {
     // Move the player with keyboard keys
     if (keys['w'])
-      yPlayer -= vy;
+      yPlayer -= playerSpeed;
     if (keys['s'])
-      yPlayer += vy;
+      yPlayer += playerSpeed;
       
-      if(vy >= 20){
-      vy = 20;
+      if(playerSpeed >= 20){
+      playerSpeed = 20;
     }
   }
 

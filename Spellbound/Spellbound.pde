@@ -3,7 +3,7 @@ Player myPlayer;
 ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
-ArrayObs ArrayObstacle;
+ArrayObstacle ArrayObs;
 
 
 void setup() {
@@ -12,7 +12,7 @@ void setup() {
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
-  EnemyLife = new ObstacleLife();
+  EnemyLife = new ObstacleLife(); 
   backgroundLevel = new Background();
   ArrayObs = new ArrayObstacle();
 }
@@ -35,6 +35,8 @@ void draw() {
   
   EnemyLife.draw();
   EnemyLife.update();
+  
+  ArrayObs.update();
 
   text(round(frameRate), 10, 20);
 }
