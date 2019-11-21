@@ -13,9 +13,7 @@ class Bullet{
   reset();
   
   }
-  
-  
-  
+
   void reset(){
     // the bullet is not being fired
     isFired = false;
@@ -27,37 +25,11 @@ class Bullet{
     // the bullet doesnt have any velocity yet
     vx = 0;
     vy = 0;
+  
+  
+  
   }
 
-  // Call this method to signify that the bullet has been fired
-  void fire(float angle, float speed) {   
-    isFired = true;
-    // Start the bullet at the player position
-    bulletX = (myPlayer.xPlayer + 220);
-    bulletY = (myPlayer.y + 87) ;
-    
-    vx = speed * cos(angle);
-    
-    
-   }
-   
-   // Whenever you want to update a bullet, call this method
-  void update() {
-    // if the bullet is being fired
-    
-      
-       // use the velocity to calculate the new position
-      bulletX += vx;
-      bulletY += vy;
-      
-    
-  }
-  
-  // this method draws the bullet
-  void draw() {
-    fill(255,0,0);
-    ellipse(bulletX,bulletY,diameter,diameter);
-  }
 
 
 
