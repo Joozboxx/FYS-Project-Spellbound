@@ -36,8 +36,9 @@ class Player {
       yPlayer -= vy;
     if (keys['s'])
       yPlayer += vy;
-    if(vy >= 20){
-    vy = 20;
+      
+      if(vy >= 20){
+      vy = 20;
     }
   }
 
