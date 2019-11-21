@@ -15,18 +15,18 @@ class ObstacleFire {
     image(fire, xfire, yfire, xSize, ySize);
   }
 
-  void update(){
+  void update() {
     xfire -= speed; 
 
 
     if (xfire < 0) {
       xfire = width+30;
-      yfire = random(50,height-350);
+      yfire = random(50, height-350);
       speed *=1.05;
       yfire = random(50, height/2);
       speed *=1.05;
     }
-    
+
     if (speed >= 35) {
       speed = 35;
     }

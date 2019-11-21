@@ -9,19 +9,18 @@ class ObstacleWater {
     ySize = 400;
     speed = 15;
   }
-  
-  void draw(){
-    fill(255,0,0);
-    image(water,xwater,ywater,xSize,ySize);
+
+  void draw() {
+    fill(255, 0, 0);
+    image(water, xwater, ywater, xSize, ySize);
   }
 
-  void update(){
+  void update() {
     xwater -= speed; 
-
 
     if (xwater < 0) {
       xwater = width+30;
-      ywater = random(50,height-350);
+      ywater = random(50, height-350);
       speed *=1.05;
     }
 

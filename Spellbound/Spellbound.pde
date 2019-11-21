@@ -6,10 +6,6 @@ ObstacleLife EnemyLife;
 Bullet bullet;
 ArrayObstacle ArrayObs;
 
-
-
-
-
 void setup() {
   //Set window size
   size(1920, 1080, P2D);
@@ -33,22 +29,20 @@ void draw() {
   backgroundLevel.drawSun();
   myPlayer.draw();
   myPlayer.update();
-  
+
   EnemyFire.draw();
   EnemyFire.update();
-  
+
   EnemyWater.draw();
   EnemyWater.update();
-  
+
   EnemyLife.draw();
   EnemyLife.update();
-  
+
   bullet.draw();
   bullet.update();
-  
+
   ArrayObs.update();
-
-
 
   text(round(frameRate), 10, 20);
 }
