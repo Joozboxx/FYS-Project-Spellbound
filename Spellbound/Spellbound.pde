@@ -1,20 +1,18 @@
-Background backgroundLevel;
 Player myPlayer;
 ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
-ObstacleLife EnemyLife;
-ArrayObstacle ArrayObs;
-
+Background backgroundLevel;
+Bullet bullet;
 
 void setup() {
   //Set window size
-  size(1920, 1080, P2D);
+  size(1920,1080,P2D);
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
-  EnemyLife = new ObstacleLife(); 
   backgroundLevel = new Background();
-  ArrayObs = new ArrayObstacle();
+  bullet = new Bullet();
+ 
 }
 
 void draw() {
@@ -26,19 +24,14 @@ void draw() {
   backgroundLevel.drawSun();
   myPlayer.draw();
   myPlayer.update();
-  
   EnemyFire.draw();
   EnemyFire.update();
-  
   EnemyWater.draw();
-  EnemyWater.update();
+  EnemyWater.draw();
+  bullet.draw();
+  bullet.update();
   
-  EnemyLife.draw();
-  EnemyLife.update();
-  
-  ArrayObs.update();
-
-  text(round(frameRate), 10, 20);
+  text(round(frameRate),10,20);
 }
 
 void keyPressed() {
