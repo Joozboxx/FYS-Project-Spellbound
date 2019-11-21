@@ -15,8 +15,7 @@ class ObstacleFire {
     image(fire, xfire, yfire, xSize, ySize);
   }
 
-
-  void update() {
+  void update(){
     xfire -= speed; 
 
 
@@ -29,9 +28,7 @@ class ObstacleFire {
       speed *=1.05;
       myPlayer.vy *= 1.05;
     }
-    if (myPlayer.vy >= 20) {
-      myPlayer.vy = 20;
-    }
+    
     if (speed >= 35) {
       speed = 35;
     }

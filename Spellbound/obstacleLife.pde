@@ -15,7 +15,6 @@ class ObstacleLife{
   image(life,xlife,ylife,xSize,ySize);
   }
  
-  
   void update(){
     xlife -= speed; 
     
@@ -24,7 +23,7 @@ class ObstacleLife{
       xlife = width+30;
       ylife = random(50,height-350);
       speed *=1.05;
-      myPlayer.vy *= 1.02;
+      myPlayer.vy *= 1.01;
     }
     
     if(speed >= 35){

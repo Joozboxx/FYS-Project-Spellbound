@@ -1,15 +1,7 @@
-
-class ObstacleWater{
- 
-  float xwater,ywater,xSize,ySize,speed;
-  PImage water = loadImage("elementwater.png");
-  ObstacleWater(){
-    xwater = width;
-    
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed;
-  PImage fire = loadImage("elementfire.png");
+  PImage water = loadImage("elementwater.png");
   ObstacleWater() {
     xwater = width/2;
     ywater = height/2;
@@ -19,37 +11,21 @@ class ObstacleWater {
   }
   
   void draw(){
-  fill(255,0,0);
-  image(water,xwater,ywater,xSize,ySize);
-
-  void draw() {
-    fill(255, 0, 0);
-    image(fire, xwater, ywater, xSize, ySize);
-
+    fill(255,0,0);
+    image(water,xwater,ywater,xSize,ySize);
   }
 
-
-  void update() {
+  void update(){
     xwater -= speed; 
 
 
     if (xwater < 0) {
       xwater = width+30;
-
       ywater = random(50,height-350);
       speed *=1.05;
-      myPlayer.vy *= 1.02;
+      myPlayer.vy *= 1.01;
     }
-    
-    if(speed >= 35){
 
-      ywater = random(50, height/2);
-      speed *=1.05;
-      myPlayer.vy *= 1.05;
-    }
-    if (myPlayer.vy >= 20) {
-      myPlayer.vy = 20;
-    }
     if (speed >= 35) {
       speed = 35;
     }
