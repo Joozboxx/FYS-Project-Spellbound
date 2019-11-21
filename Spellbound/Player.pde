@@ -37,15 +37,19 @@ class Player {
       y -= vy;
     if (keys['s'])
       y += vy;
+      
+      if(vy >= 20){
+      vy = 20;
+    }
   }
 
     
   void edge() {
     // Border of player movement
-    if (y > border-100) {
-      y = border-100;
-    } else if (y < 0) {
-      y = 0;
+    if (y > border-150) {
+      y = border-150;
+    } else if (y < 50) {
+      y = 50;
     }
   }
   

@@ -22,12 +22,9 @@ class ObstacleFire{
   
     if(xfire < 0){
       xfire = width+30;
-      yfire = random(50,height/2);
+      yfire = random(50,height-350);
       speed *=1.05;
-      myPlayer.vy *= 1.05;
-    }
-    if(myPlayer.vy >= 20){
-    myPlayer.vy = 20;
+      myPlayer.vy *= 1.01;
     }
     if(speed >= 35){
       speed = 35;

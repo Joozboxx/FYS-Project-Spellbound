@@ -1,6 +1,7 @@
 Player myPlayer;
 ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
+ObstacleLife EnemyLife;
 Background backgroundLevel;
 
 void setup() {
@@ -9,6 +10,7 @@ void setup() {
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
+  EnemyLife = new ObstacleLife();
   backgroundLevel = new Background();
  
 }
@@ -25,7 +27,9 @@ void draw() {
   EnemyFire.draw();
   EnemyFire.update();
   EnemyWater.draw();
-  EnemyWater.draw();
+  EnemyWater.update();
+  EnemyLife.draw();
+  EnemyLife.update();
   
   text(round(frameRate),10,20);
 }
