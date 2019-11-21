@@ -2,7 +2,6 @@ Player myPlayer;
 ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 Background backgroundLevel;
-Bullet bullet;
 
 void setup() {
   //Set window size
@@ -11,7 +10,6 @@ void setup() {
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
   backgroundLevel = new Background();
-  bullet = new Bullet();
  
 }
 
@@ -28,8 +26,6 @@ void draw() {
   EnemyFire.update();
   EnemyWater.draw();
   EnemyWater.draw();
-  bullet.draw();
-  bullet.update();
   
   text(round(frameRate),10,20);
 }
