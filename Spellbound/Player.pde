@@ -36,9 +36,8 @@ class Player {
       yPlayer -= playerSpeed;
     if (keys['s'])
       yPlayer += playerSpeed;
-      
-      if(playerSpeed >= 20){
-      playerSpeed = 20;
+    if(playerSpeed >= 25){
+    playerSpeed = 25;
     }
   }
 
