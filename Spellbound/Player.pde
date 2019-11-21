@@ -28,6 +28,10 @@ class Player {
     move();
     edge();
     collide();
+    
+    if (keys['p']){
+      bullet.fire(0,8);
+    }
   }
 
     
@@ -37,6 +41,8 @@ class Player {
       y -= vy;
     if (keys['s'])
       y += vy;
+    
+    
   }
 
     
