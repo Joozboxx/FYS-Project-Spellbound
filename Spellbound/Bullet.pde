@@ -35,7 +35,10 @@ class Bullet {
 
     vx = speed * cos(angle);
   }
-
+  void run(){
+    update();
+    draw();
+  }
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
