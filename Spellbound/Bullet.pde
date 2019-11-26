@@ -5,7 +5,7 @@ class Bullet {
   float vx, vy;
   boolean isFired;
   Bullet[] bullet = new Bullet[200];
-
+  int cooldownTimer;
   // Giving the bullet initial values
   Bullet() {
     bullets.add(this);
@@ -26,9 +26,7 @@ class Bullet {
     vx = 0;
     vy = 0;
   }
-  void keyPressed(){
  
-  }
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
     isFired = true;
@@ -38,7 +36,17 @@ class Bullet {
 
     vx = speed * cos(angle);
   }
-
+  void cooldown(){
+    if (isFired == true){
+      cooldownTimer = 10;
+      cooldownTimer -= 1;
+      
+    }
+  
+  
+  
+  
+  }
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
@@ -48,18 +56,20 @@ class Bullet {
   }
   void die(){
     for (int i = 0; i < bullets.size(); i++) {
-      bullets.get(i);
-      if (bulletX > width) {
+      Bullet b = bullets.get(i);
+      if (bulletX > width){
         bullets.remove(i);
-        i--;      
-      }
-  
+      }   
     }
   
   }
+  
+  
   // This method draws the bullet
   void draw() {
     fill(255, 0, 0);
     ellipse(bulletX, bulletY, diameter, diameter);
+    textSize(40);
+    text(cooldownTimer , 1800,100);
   }
 }
