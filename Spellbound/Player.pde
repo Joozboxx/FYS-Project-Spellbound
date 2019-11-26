@@ -16,6 +16,7 @@ class Player {
   }
 
   void draw() {
+    println(playerSpeed);
     // Draw the player shape
     fill(0);
     image(player, xPlayer, yPlayer, PlayerSizeW, PlayerSizeH);
