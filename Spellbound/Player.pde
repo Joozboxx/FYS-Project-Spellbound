@@ -107,6 +107,15 @@ class Player {
     if (key == 'p') {
       new Bullet().fire(0, 8);
     }
+    if (key == 'l') {
+      new EarthBullet().fire(0, 8);
+    }
+    if (key == 'k') {
+      new LifeBullet().fire(0, 8);
+    }
+    if (key == 'o') {
+      new WaterBullet().fire(0, 8);
+    }
   }
 
   void keyReleased() {
