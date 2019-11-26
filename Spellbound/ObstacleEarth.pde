@@ -5,7 +5,7 @@ class ObstacleEarth {
   
   ObstacleEarth() {
     xearth = width;                
-    yearth = random(50, height-350);
+    yearth = random(20, height-500);
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -21,7 +21,7 @@ class ObstacleEarth {
 
     if (xearth < 0) {
       xearth = width+60;
-      yearth = random(50, height-400);
+      yearth = random(20, height-500);
       speed *=1.05;
     }
 
