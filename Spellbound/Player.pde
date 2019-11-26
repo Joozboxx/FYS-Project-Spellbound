@@ -27,10 +27,6 @@ class Player {
     move();
     edge();
     collide();
-    if (keys['p']) {
-
-      bullet.fire(0, 8);
-    }
   }
 
   void move() {
@@ -103,6 +99,9 @@ class Player {
   // Get keyboard input
   void keyPressed() {
     keys[key] = true;
+    if (key == 'p') {
+      new Bullet().fire(0, 8);
+    }
   }
 
   void keyReleased() {

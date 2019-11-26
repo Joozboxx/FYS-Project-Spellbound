@@ -8,6 +8,7 @@ class Bullet {
 
   // Giving the bullet initial values
   Bullet() {
+    bullets.add(this);
 
     diameter = 30;
     reset();
@@ -25,7 +26,9 @@ class Bullet {
     vx = 0;
     vy = 0;
   }
-
+  void keyPressed(){
+ 
+  }
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
     isFired = true;
@@ -35,10 +38,7 @@ class Bullet {
 
     vx = speed * cos(angle);
   }
-  void run(){
-    update();
-    draw();
-  }
+
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
@@ -46,7 +46,17 @@ class Bullet {
     bulletX += vx;
     bulletY += vy;
   }
-
+  void die(){
+    for (int i = 0; i < bullets.size(); i++) {
+      bullets.get(i);
+      if (bulletX > width) {
+        bullets.remove(i);
+        i--;      
+      }
+  
+    }
+  
+  }
   // This method draws the bullet
   void draw() {
     fill(255, 0, 0);
