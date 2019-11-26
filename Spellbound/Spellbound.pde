@@ -6,6 +6,7 @@ ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
 Bullet bullet;
 ArrayObstacle ArrayObs;
+ArrayList<Bullet> bullets ;
 
 void setup() {
   //Set window size
@@ -16,7 +17,10 @@ void setup() {
   bullet = new Bullet();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
-
+  bullets = new ArrayList<Bullet>();
+  for (int i = 0; i <10; i++){
+    bullets.add(new Bullet());
+  }
   backgroundLevel = new Background();
   ArrayObs = new ArrayObstacle();
 }
@@ -43,8 +47,11 @@ void draw() {
   EnemyEarth.draw();
   EnemyEarth.update();
 
-  bullet.draw();
-  bullet.update();
+  for(Bullet b : bullets){
+    b.update();
+    b.draw();
+  
+  }
 
   ArrayObs.update();
 
