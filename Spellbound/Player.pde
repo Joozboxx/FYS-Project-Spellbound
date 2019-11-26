@@ -80,6 +80,22 @@ class Player {
     {
       return true;
     }
+    // Checks if the player hits the obstacle
+    if ((xPlayer + PlayerSizeW >= EnemyLife.xlife)
+      &&(xPlayer <= EnemyLife.xlife + EnemyLife.xSize)
+      &&(yPlayer+PlayerSizeH >= EnemyLife.ylife)
+      &&(yPlayer<=EnemyLife.ylife + EnemyLife.ySize))
+    {
+      return true;
+    }
+    // Checks if the player hits the obstacle
+    if ((xPlayer + PlayerSizeW >= EnemyEarth.xearth)
+      &&(xPlayer <= EnemyEarth.xearth + EnemyEarth.xSize)
+      &&(yPlayer+PlayerSizeH >= EnemyEarth.yearth)
+      &&(yPlayer<=EnemyEarth.yearth + EnemyEarth.ySize))
+    {
+      return true;
+    }
     return false;
   }
 

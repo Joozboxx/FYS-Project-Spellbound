@@ -3,7 +3,7 @@ class ObstacleFire {
   float xfire, yfire, xSize, ySize, speed;
   PImage fire = loadImage("elementfire.png");
   ObstacleFire() {
-    xfire = width/2;
+    xfire = width+500;
     yfire = height/2;
     xSize = 65;
     ySize = 400;
@@ -22,8 +22,6 @@ class ObstacleFire {
     if (xfire < 0) {
       xfire = width+30;
       yfire = random(50, height-350);
-      speed *=1.05;
-      yfire = random(50, height/2);
       speed *=1.05;
     }
 
