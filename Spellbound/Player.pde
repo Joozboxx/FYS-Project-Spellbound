@@ -2,7 +2,7 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
-  boolean [] keys = new boolean[256];
+  boolean [] keys = new boolean[512];
   PImage player = loadImage("spellboundplayer.png");
   //Setup player variables
   Player() {
@@ -16,7 +16,6 @@ class Player {
   }
 
   void draw() {
-    println(playerSpeed);
     // Draw the player shape
     fill(0);
     image(player, xPlayer, yPlayer, PlayerSizeW, PlayerSizeH);
@@ -40,6 +39,11 @@ class Player {
 
     if (playerSpeed >= 20) {
       playerSpeed = 20;
+    }
+     if (EnemyFire.xfire + EnemyFire.xSize < 0 && EnemyWater.xwater + EnemyWater.xSize < 0 && EnemyLife.xlife + EnemyLife.xSize < 0 && EnemyEarth.xearth + EnemyEarth.xSize < 0) {
+      myPlayer.playerSpeed *= 1.02;
+      println("increasing speed!!");
+      println(myPlayer.playerSpeed);
     }
   }
 

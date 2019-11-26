@@ -2,6 +2,7 @@ class ObstacleLife {
 
   float xlife, ylife, xSize, ySize, speed;
   PImage life = loadImage("elementlife.png");
+  
   ObstacleLife() {
     xlife = width;                
     ylife = random(20, height-500);
@@ -18,10 +19,12 @@ class ObstacleLife {
   void update() {
     xlife -= speed; 
 
-    if (xlife < 0) {
-      xlife = width+30;
+    if (xlife + xSize <0) {
+      xlife = width;
       ylife = random(20, height-500);
-      speed *=1.05;
+      speed *=1.05; 
+      ArrayObs.life = false;
+      ArrayObs.fire = true;
     }
 
     if (speed >= 35) {

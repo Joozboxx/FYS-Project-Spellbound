@@ -2,6 +2,7 @@ class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed;
   PImage water = loadImage("elementwater.png");
+  
   ObstacleWater() {
     xwater = width;
     ywater = random(20, height-500);
@@ -18,10 +19,12 @@ class ObstacleWater {
   void update() {
     xwater -= speed; 
 
-    if (xwater < 0) {
-      xwater = width+30;
+    if (xwater + xSize < 0 ) {
+      xwater = width;
       ywater = random(20, height-500);
       speed *=1.05;
+      ArrayObs.water = false;
+      ArrayObs.life = true;
     }
 
     if (speed >= 35) {
