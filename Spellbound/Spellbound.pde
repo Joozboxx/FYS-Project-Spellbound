@@ -4,7 +4,6 @@ ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
-Bullet bullet;
 ArrayObstacle ArrayObs;
 ArrayList<Bullet> bullets ;
 
@@ -14,7 +13,7 @@ void setup() {
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
-  bullet = new Bullet();
+  
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   bullets = new ArrayList<Bullet>();
