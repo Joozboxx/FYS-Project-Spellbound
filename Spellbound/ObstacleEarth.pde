@@ -4,8 +4,8 @@ class ObstacleEarth {
   PImage earth = loadImage("elementearth.png");
   
   ObstacleEarth() {
-    xearth = width+300;                
-    yearth = height+height;
+    xearth = width;                
+    yearth = random(20, height-500);
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -19,10 +19,12 @@ class ObstacleEarth {
   void update() {
     xearth -= speed; 
 
-    if (xearth < 0) {
-      xearth = width+60;
-      yearth = random(50, height-350);
+    if (xearth + xSize < 0) {
+      xearth = width;
+      yearth = random(20, height-500);
       speed *=1.05;
+      ArrayObs.earth = false;  
+      ArrayObs.water = true;
     }
 
     if (speed >= 35) {

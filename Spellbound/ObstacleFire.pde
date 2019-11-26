@@ -2,9 +2,10 @@ class ObstacleFire {
 
   float xfire, yfire, xSize, ySize, speed;
   PImage fire = loadImage("elementfire.png");
+  
   ObstacleFire() {
-    xfire = width+500;
-    yfire = height/2;
+    xfire = width;
+    yfire = random(20, height-500);
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -18,11 +19,12 @@ class ObstacleFire {
   void update() {
     xfire -= speed; 
 
-
-    if (xfire < 0) {
-      xfire = width+30;
-      yfire = random(50, height-350);
+    if (xfire + xSize < 0) {
+      xfire = width;
+      yfire = random(20, height-500);
       speed *=1.05;
+      ArrayObs.fire = false;
+      ArrayObs.earth = true;
     }
 
     if (speed >= 35) {

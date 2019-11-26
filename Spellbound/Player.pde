@@ -2,7 +2,7 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
-  boolean [] keys = new boolean[256];
+  boolean [] keys = new boolean[512];
   PImage player = loadImage("spellboundplayer.png");
   //Setup player variables
   Player() {
@@ -27,10 +27,6 @@ class Player {
     move();
     edge();
     collide();
-    if (keys['p']) {
-
-      bullet.fire(0, 8);
-    }
   }
 
   void move() {
@@ -43,6 +39,11 @@ class Player {
 
     if (playerSpeed >= 20) {
       playerSpeed = 20;
+    }
+     if (EnemyFire.xfire + EnemyFire.xSize < 0 && EnemyWater.xwater + EnemyWater.xSize < 0 && EnemyLife.xlife + EnemyLife.xSize < 0 && EnemyEarth.xearth + EnemyEarth.xSize < 0) {
+      myPlayer.playerSpeed *= 1.02;
+      println("increasing speed!!");
+      println(myPlayer.playerSpeed);
     }
   }
 
@@ -103,6 +104,18 @@ class Player {
   // Get keyboard input
   void keyPressed() {
     keys[key] = true;
+    if (key == 'p') {
+      new Bullet().fire(0, 8);
+    }
+    if (key == 'l') {
+      new EarthBullet().fire(0, 8);
+    }
+    if (key == 'k') {
+      new LifeBullet().fire(0, 8);
+    }
+    if (key == 'o') {
+      new WaterBullet().fire(0, 8);
+    }
   }
 
   void keyReleased() {
