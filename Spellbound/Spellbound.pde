@@ -11,6 +11,7 @@ ArrayList<Bullet> bullets ;
 void setup() {
   //Set window size
   size(1920, 1080, P2D);
+
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
@@ -18,9 +19,11 @@ void setup() {
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   bullets = new ArrayList<Bullet>();
-  for (int i = 0; i <10; i++){
+
+  for (int i = 0; i <10; i++) {
     bullets.add(new Bullet());
   }
+
   backgroundLevel = new Background();
   ArrayObs = new ArrayObstacle();
 }
@@ -43,14 +46,13 @@ void draw() {
 
   EnemyLife.draw();
   EnemyLife.update();
-  
+
   EnemyEarth.draw();
   EnemyEarth.update();
 
-  for(Bullet b : bullets){
+  for (Bullet b : bullets) {
     b.update();
     b.draw();
-  
   }
 
   ArrayObs.update();
