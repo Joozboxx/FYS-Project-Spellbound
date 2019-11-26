@@ -4,7 +4,6 @@ ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
-Bullet bullet;
 ArrayObstacle ArrayObs;
 ArrayList<Bullet> bullets ;
 
@@ -14,12 +13,11 @@ void setup() {
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
-  bullet = new Bullet();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   bullets = new ArrayList<Bullet>();
   for (int i = 0; i <10; i++){
-    bullets.add(new Bullet());
+    new Bullet();
   }
   backgroundLevel = new Background();
   ArrayObs = new ArrayObstacle();
@@ -50,6 +48,7 @@ void draw() {
   for(Bullet b : bullets){
     b.update();
     b.draw();
+    
   
   }
 
