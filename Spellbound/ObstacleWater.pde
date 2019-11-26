@@ -3,8 +3,8 @@ class ObstacleWater {
   float xwater, ywater, xSize, ySize, speed;
   PImage water = loadImage("elementwater.png");
   ObstacleWater() {
-    xwater = width/2;
-    ywater = height/2;
+    xwater = width;
+    ywater = random(50, height-350);
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -20,7 +20,7 @@ class ObstacleWater {
 
     if (xwater < 0) {
       xwater = width+30;
-      ywater = random(50, height-350);
+      ywater = random(50, height-400);
       speed *=1.05;
     }
 

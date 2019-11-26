@@ -10,7 +10,7 @@ ArrayList<Bullet> bullets ;
 
 void setup() {
   //Set window size
-  size(1920, 1080, P2D);
+  size(1920, 980, P2D);
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
@@ -18,11 +18,13 @@ void setup() {
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   bullets = new ArrayList<Bullet>();
-  for (int i = 0; i <10; i++){
-    bullets.add(new Bullet());
-  }
   backgroundLevel = new Background();
   ArrayObs = new ArrayObstacle();
+  
+  for (int i = 0; i <10; i++) {
+    bullets.add(new Bullet());
+  }
+  
 }
 
 void draw() {
@@ -35,28 +37,16 @@ void draw() {
   myPlayer.draw();
   myPlayer.update();
 
-  EnemyFire.draw();
-  EnemyFire.update();
-
-  EnemyWater.draw();
-  EnemyWater.update();
-
-  EnemyLife.draw();
-  EnemyLife.update();
-  
-  EnemyEarth.draw();
-  EnemyEarth.update();
-
-  for(Bullet b : bullets){
-    b.update();
-    b.draw();
-  
-  }
-
+  ArrayObs.Check();
   ArrayObs.update();
 
-  text(round(frameRate), 10, 20);
+  for (Bullet b : bullets) {
+    b.update();
+    b.draw();
+  }
 }
+
+
 
 void keyPressed() {
   myPlayer.keyPressed();

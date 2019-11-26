@@ -4,7 +4,7 @@ class ObstacleLife {
   PImage life = loadImage("elementlife.png");
   ObstacleLife() {
     xlife = width;                
-    ylife = height+height;
+    ylife = random(50, height-350);
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -20,7 +20,7 @@ class ObstacleLife {
 
     if (xlife < 0) {
       xlife = width+30;
-      ylife = random(50, height-350);
+      ylife = random(50, height-400);
       speed *=1.05;
     }
 
