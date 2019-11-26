@@ -26,7 +26,7 @@ void setup() {
 void draw() {
   //Set background color
   background(150, 100, 250);
-
+  
   // Draw player class
   backgroundLevel.draw();
   backgroundLevel.drawSun();
@@ -45,7 +45,8 @@ void draw() {
   EnemyEarth.draw();
   EnemyEarth.update();
 
-  for(Bullet b : bullets){
+  for (int i = 0; i < bullets.size(); i++) {
+    Bullet b = bullets.get(i);
     b.update();
     b.draw();
     
