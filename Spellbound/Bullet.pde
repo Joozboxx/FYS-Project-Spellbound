@@ -6,6 +6,11 @@ class Bullet {
   boolean isFired, ableToFire;
   int cooldownTimer;
   color fireBulletColor = color(255,0,0);
+  int radius = 15;
+  float xfire = EnemyFire.xfire;
+  float yfire = EnemyFire.yfire;
+  float xSize = 65;
+  float ySize = 400;
   // Giving the bullet initial values
   Bullet() {
     bullets.add(this);
@@ -52,11 +57,14 @@ class Bullet {
   
   }
   
-  void collisionWithObject(){
+  
+   
+
+  
+   
   
   
   
-  }
   
   // This method draws the bullet
   void draw() {
@@ -64,5 +72,33 @@ class Bullet {
     ellipse(bulletX, bulletY, diameter, diameter);
     textSize(40);
     text(cooldownTimer, 1800,100);
-  }
+    boolean hit = circleRect(bulletX,bulletY,radius, xfire,yfire,xSize,ySize);
+    if (hit){
+      println("collision");
+    }
+   }  
+      boolean circleRect(float bulletX, float bulletY, float radius, float xfire, float yfire, float xSize, float ySize) {
+    
+    // temporary variables to set edges for testing
+      float testX = bulletX;
+      float testY = bulletY;
+
+  // which edge is closest?
+      if (bulletX < xfire)         testX = xfire;      // test left edge
+      else if (bulletX > xfire+ xSize) testX = xfire+xSize;   // right edge
+      if (bulletY < yfire)         testY = yfire;      // top edge
+      else if (bulletY > yfire+ySize) testY = yfire+ySize;   // bottom edge
+
+  // get distance from closest edges
+      float distX = bulletX-testX;
+      float distY = bulletY-testY;
+      float distance = sqrt( (distX*distX) + (distY*distY) );
+
+  // if the distance is less than the radius, collision!
+      if (distance <= radius) {
+        return true;
+      }
+      return false;
+    }
+  
 }
