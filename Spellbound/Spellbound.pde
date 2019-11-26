@@ -35,6 +35,8 @@ void draw() {
   // Draw player class
   backgroundLevel.draw();
   backgroundLevel.drawSun();
+  backgroundLevel.drawClouds();
+  backgroundLevel.drawGrass();
   myPlayer.draw();
   myPlayer.update();
 
