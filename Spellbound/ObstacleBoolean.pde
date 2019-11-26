@@ -21,7 +21,7 @@ class ArrayObstacle {
     {
     }
     //calls the life class
-    if (life == true && water == false) {
+    if (life == true) {
       EnemyLife.draw();
       EnemyLife.update();
     } else

@@ -60,15 +60,6 @@ void draw() {
 
   ArrayObs.Check();
 
-  EnemyWater.draw();
-  EnemyWater.update();
-
-  EnemyLife.draw();
-  EnemyLife.update();
-
-  EnemyEarth.draw();
-  EnemyEarth.update();
-
   for (int i = 0; i < bullets.size(); i++) {
     Bullet b = bullets.get(i);
 

@@ -41,8 +41,8 @@ class Background {
     drawGrass();
     
     // Move the grass
-    grassOneX -= 2;
-    grassTwoX -= 2;
+    grassOneX -= 4;
+    grassTwoX -= 4;
 
     // Draw the clouds
     drawClouds();
