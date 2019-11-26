@@ -3,33 +3,22 @@ class Bullet {
   float bulletX, bulletY;
   float diameter;
   float vx, vy;
-  boolean isFired;
-  Bullet[] bullet = new Bullet[200];
+  boolean isFired, ableToFire;
   int cooldownTimer;
+  color fireBulletColor = color(255,0,0);
   // Giving the bullet initial values
   Bullet() {
     bullets.add(this);
-
     diameter = 30;
-    reset();
+    
   }
 
-  void reset() {
-    // The bullet is not being fired
-    isFired = false;
 
-    // the bullet starts outside of the screen
-    bulletX = -700;
-    bulletY = -700;
-
-    // the bullet doesnt have any velocity yet
-    vx = 0;
-    vy = 0;
-  }
- 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
     isFired = true;
+    ableToFire = false;
+    
     // Start the bullet at the player position
     bulletX = (myPlayer.xPlayer + 220);
     bulletY = (myPlayer.yPlayer + 87) ;
@@ -39,10 +28,9 @@ class Bullet {
   void cooldown(){
     if (isFired == true){
       cooldownTimer = 10;
-      cooldownTimer -= 1;
       
     }
-  
+    
   
   
   
@@ -64,12 +52,17 @@ class Bullet {
   
   }
   
+  void collisionWithObject(){
+  
+  
+  
+  }
   
   // This method draws the bullet
   void draw() {
-    fill(255, 0, 0);
+    fill(fireBulletColor);
     ellipse(bulletX, bulletY, diameter, diameter);
     textSize(40);
-    text(cooldownTimer , 1800,100);
+    text(cooldownTimer, 1800,100);
   }
 }
