@@ -1,4 +1,4 @@
-class ArrayObstacle {
+class booleanObs {
 
   boolean water = true;
   boolean fire = false;

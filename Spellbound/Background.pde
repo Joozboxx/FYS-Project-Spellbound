@@ -26,8 +26,8 @@ class Background {
   float cloudOneY = 30;
   float cloudTwoX = 1250;
   float cloudTwoY = 30;
-  float cloudOneSpeed = 3; 
-  float cloudTwoSpeed = 3;
+  float cloudOneSpeed = 2; 
+  float cloudTwoSpeed = 2;
 
   // Grass variables
   float grassOneX = 0; 
@@ -109,13 +109,13 @@ class Background {
     // If grass one moves past 0, add grass two and speed grass up
     if (grassOneX + grassOne.width < 0) {
       grassOneX = grassTwoX + grassTwo.width;  
-      grassSpeed *= 1.005;
+      grassSpeed *= 1.01;
     }
     
     // If grass two moves past 0, add grass one and speed grass up
     if (grassTwoX + grassTwo.width < 0) {
       grassTwoX = grassOneX + grassOne.width;
-      grassSpeed *= 1.005;
+      grassSpeed *= 1.01;
     }
     
     //cap speed of grass

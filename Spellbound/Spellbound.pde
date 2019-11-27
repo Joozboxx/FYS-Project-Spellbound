@@ -4,7 +4,7 @@ ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
-ArrayObstacle ArrayObs;
+booleanObs ArrayObs;
 ArrayList<Bullet> bullets ;
 ArrayList<EarthBullet> earthBullets ;
 ArrayList<LifeBullet> lifeBullets ;
@@ -29,7 +29,7 @@ void setup() {
   waterBullets = new ArrayList<WaterBullet>();
   lifeBullets = new ArrayList<LifeBullet>();
   backgroundLevel = new Background();
-  ArrayObs = new ArrayObstacle();
+  ArrayObs = new booleanObs();
 
   for (int i = 0; i <10; i++) {
     bullets.add(new Bullet());
