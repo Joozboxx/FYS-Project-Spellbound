@@ -26,6 +26,23 @@ class ObstacleLife {
       ArrayObs.life = false;
       ArrayObs.fire = true;
     }
+    
+    //COLLISION MET LIFEBULLET
+    for (int i = 0; i < lifeBullets.size(); i++) {
+      //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
+      if (lifeBullets.size()>0) {
+        LifeBullet b = lifeBullets.get(i);
+        //pakt de waarden
+        if ((b.bulletX+b.diameter/2)> xlife && (b.bulletY+b.diameter/2)>ylife && (b.bulletY-b.diameter/2)<(ylife+ySize)) {
+          //als de x waarde van de bullet groter is dan de x van het obstakel, 
+          //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
+          //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
+          xlife=width+500;
+          ylife=random(0, (height-ySize));
+          //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
+        }
+      }
+    }
 
     if (speed >= 35) {
       speed = 35;
