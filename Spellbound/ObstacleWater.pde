@@ -5,7 +5,7 @@ class ObstacleWater {
   
   ObstacleWater() {
     xwater = width;
-    ywater = random(20, height-500);
+    ywater = random(0, (height-ySize));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -43,6 +43,7 @@ class ObstacleWater {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xwater=width+500;
           ywater=random(0, (height-ySize));
+          waterBullets.remove(i);
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }

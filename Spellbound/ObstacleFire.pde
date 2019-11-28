@@ -5,7 +5,7 @@ class ObstacleFire {
   
   ObstacleFire() {
     xfire = width;
-    yfire = random(20, height-500);
+    yfire = random(0, (height-ySize));
     xSize = 65;
     ySize = 400;
     speed = 15;
