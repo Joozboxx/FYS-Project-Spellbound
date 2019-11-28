@@ -44,6 +44,8 @@ class ObstacleLife {
           xlife=width+500;
           ylife=random(0, (height-ySize));
           lifeBullets.remove(i);
+          ArrayObs.life = false;
+      ArrayObs.earth = true;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }
