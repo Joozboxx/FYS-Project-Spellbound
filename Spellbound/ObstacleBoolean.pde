@@ -1,5 +1,7 @@
 class booleanObs {
 
+  
+  //boolean for all element obstacles
   boolean water = true;
   boolean fire = false;
   boolean earth = false;
@@ -35,4 +37,5 @@ class booleanObs {
     {
     }
   }
+  
 }

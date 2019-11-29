@@ -5,7 +5,7 @@ class ObstacleWater {
   
   ObstacleWater() {
     xwater = width;
-    ywater = random(0, (height-ySize));
+    ywater = random(0, (height-500));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -22,7 +22,7 @@ class ObstacleWater {
     if (xwater + xSize < 0 ) {
       xwater = width;
       ywater = random(20, height-500);
-      speed *=1.05;
+      speed *=1.1;
       ArrayObs.water = false;
       ArrayObs.life = true;
     }
@@ -43,6 +43,7 @@ class ObstacleWater {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xwater=width+500;
           ywater=random(0, (height-ySize));
+          speed *=1.1;
           waterBullets.remove(i);
           ArrayObs.water = false;
       ArrayObs.life = true;

@@ -5,7 +5,7 @@ class ObstacleEarth {
   
   ObstacleEarth() {
     xearth = width;                
-    yearth = random(0, (height-ySize));
+    yearth = random(0, (height-500));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -22,7 +22,7 @@ class ObstacleEarth {
     if (xearth + xSize < 0) {
       xearth = width;
       yearth = random(20, height-500);
-      speed *=1.05;
+      speed *=1.1;
       ArrayObs.earth = false;  
       ArrayObs.water = true;
     }
@@ -43,9 +43,10 @@ class ObstacleEarth {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xearth=width+500;
           yearth=random(0, (height-ySize));
+          speed *=1.1;
           earthBullets.remove(i);
            ArrayObs.earth = false;  
-      ArrayObs.water = true;
+      ArrayObs.fire = true;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }

@@ -5,7 +5,7 @@ class ObstacleLife {
   
   ObstacleLife() {
     xlife = width;                
-    ylife = random(0, (height-ySize));
+    ylife = random(0, (height-500));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -22,7 +22,7 @@ class ObstacleLife {
     if (xlife + xSize <0) {
       xlife = width;
       ylife = random(20, height-500);
-      speed *=1.05; 
+      speed *=1.1; 
       ArrayObs.life = false;
       ArrayObs.fire = true;
     }
@@ -43,6 +43,7 @@ class ObstacleLife {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xlife=width+500;
           ylife=random(0, (height-ySize));
+          speed *=1.1;
           lifeBullets.remove(i);
           ArrayObs.life = false;
       ArrayObs.earth = true;
