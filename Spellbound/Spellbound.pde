@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 Background backgroundLevel;
 Player myPlayer;
 ObstacleFire EnemyFire;
