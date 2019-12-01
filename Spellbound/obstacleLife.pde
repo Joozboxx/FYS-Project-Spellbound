@@ -2,7 +2,7 @@ class ObstacleLife {
 
   float xlife, ylife, xSize, ySize, speed;
   PImage life = loadImage("elementlife.png");
-  
+
   ObstacleLife() {
     xlife = width;                
     ylife = random(0, (height-500));
@@ -30,7 +30,7 @@ class ObstacleLife {
     if (speed >= 35) {
       speed = 35;
     }
-    
+
     //COLLISION MET LIFEBULLET
     for (int i = 0; i < lifeBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
@@ -46,7 +46,9 @@ class ObstacleLife {
           speed *=1.1;
           lifeBullets.remove(i);
           ArrayObs.life = false;
-      ArrayObs.earth = true;
+          ArrayObs.earth = true;
+
+          points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }

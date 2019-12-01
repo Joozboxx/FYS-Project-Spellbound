@@ -2,7 +2,7 @@ class ObstacleEarth {
 
   float xearth, yearth, xSize, ySize, speed;
   PImage earth = loadImage("elementearth.png");
-  
+
   ObstacleEarth() {
     xearth = width;                
     yearth = random(0, (height-500));
@@ -30,7 +30,7 @@ class ObstacleEarth {
     if (speed >= 35) {
       speed = 35;
     }
-    
+
     //COLLISION MET LIFEBULLET
     for (int i = 0; i < earthBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
@@ -45,8 +45,10 @@ class ObstacleEarth {
           yearth=random(0, (height-ySize));
           speed *=1.1;
           earthBullets.remove(i);
-           ArrayObs.earth = false;  
-      ArrayObs.fire = true;
+          ArrayObs.earth = false;  
+          ArrayObs.fire = true;
+          
+          points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }

@@ -2,7 +2,7 @@ class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed;
   PImage water = loadImage("elementwater.png");
-  
+
   ObstacleWater() {
     xwater = width;
     ywater = random(0, (height-500));
@@ -30,7 +30,7 @@ class ObstacleWater {
     if (speed >= 35) {
       speed = 35;
     }
-    
+
     //COLLISION MET LIFEBULLET
     for (int i = 0; i < waterBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
@@ -46,7 +46,9 @@ class ObstacleWater {
           speed *=1.1;
           waterBullets.remove(i);
           ArrayObs.water = false;
-      ArrayObs.life = true;
+          ArrayObs.life = true;
+          
+          points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }
