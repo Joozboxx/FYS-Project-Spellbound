@@ -41,6 +41,7 @@ class EarthBullet {
     // Use the velocity to calculate the new position
     bulletX += vx;
     bulletY += vy;
+    die();
   }
   void die(){
     for (int i = 0; i < bullets.size(); i++) {

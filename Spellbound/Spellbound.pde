@@ -15,7 +15,7 @@ ArrayList<WaterBullet> waterBullets ;
 int points = 0;
 void setup() {
   //Set window size
-  size(1920, 1080, P2D);
+  size(1920, 980, P2D);
 
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
