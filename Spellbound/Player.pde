@@ -40,11 +40,15 @@ class Player {
     if (playerSpeed >= 20) {
       playerSpeed = 20;
     }
-     if (EnemyFire.xfire + EnemyFire.xSize < 0 && EnemyWater.xwater + EnemyWater.xSize < 0 && EnemyLife.xlife + EnemyLife.xSize < 0 && EnemyEarth.xearth + EnemyEarth.xSize < 0) {
+    if (EnemyFire.xfire + EnemyFire.xSize < 0 && EnemyWater.xwater + EnemyWater.xSize < 0 && EnemyLife.xlife + EnemyLife.xSize < 0 && EnemyEarth.xearth + EnemyEarth.xSize < 0) {
       myPlayer.playerSpeed *= 1.02;
       println("increasing speed!!");
       println(myPlayer.playerSpeed);
     }
+    
+      fill(186, 55, 100);
+  textSize(32);
+  text("obstacles hit:" + points, 10, 50);
   }
 
   void edge() {
@@ -60,6 +64,7 @@ class Player {
     if (checkCollision()) {
       fill(255, 0, 0, 90);
       rect(0, 0, 1920, 1080);
+      setup();
     }
   }
 

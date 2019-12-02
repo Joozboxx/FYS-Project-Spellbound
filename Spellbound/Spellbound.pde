@@ -89,9 +89,6 @@ void draw() {
     w.draw();
   }
 
-  fill(186, 55, 100);
-  textSize(32);
-  text("obstacles hit:" + points, 10, 50);
 }
 
 void keyPressed() {
