@@ -7,12 +7,12 @@ ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
 booleanObs ArrayObs;
-ArrayList<Bullet> bullets ;
+ArrayList<FireBullet> fireBullets ;
 ArrayList<EarthBullet> earthBullets ;
 ArrayList<LifeBullet> lifeBullets ;
 ArrayList<WaterBullet> waterBullets ;
 
-int points;
+int points = 0;
 void setup() {
   //Set window size
   size(1920, 980, P2D);
@@ -22,11 +22,10 @@ void setup() {
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
-  bullets = new ArrayList<Bullet>();
-  points = 0;
+  fireBullets = new ArrayList<FireBullet>();
 
   for (int i = 0; i <10; i++) {
-    bullets.add(new Bullet());
+    fireBullets.add(new FireBullet());
   }
 
   earthBullets = new ArrayList<EarthBullet>();
@@ -36,7 +35,7 @@ void setup() {
   ArrayObs = new booleanObs();
 
   for (int i = 0; i <10; i++) {
-    bullets.add(new Bullet());
+    fireBullets.add(new FireBullet());
   }
   for (int i = 0; i <10; i++) {
     earthBullets.add(new EarthBullet());
@@ -64,11 +63,11 @@ void draw() {
 
   ArrayObs.Check();
 
-  for (int i = 0; i < bullets.size(); i++) {
-    Bullet b = bullets.get(i);
+  for (int i = 0; i < fireBullets.size(); i++) {
+    FireBullet f = fireBullets.get(i);
 
-    b.update();
-    b.draw();
+    f.update();
+    f.draw();
   }
 
   for (int i = 0; i < earthBullets.size(); i++) {
