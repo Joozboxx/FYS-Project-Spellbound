@@ -4,6 +4,9 @@ class Player {
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
   boolean [] keys = new boolean[512];
   PImage player = loadImage("spellboundplayer.png");
+  float lastShot = 0;
+  float bulletCooldown = 3000;
+  boolean ableToFire;
   //Setup player variables
   Player() {
 
@@ -19,6 +22,8 @@ class Player {
     // Draw the player shape
     fill(0);
     image(player, xPlayer, yPlayer, PlayerSizeW, PlayerSizeH);
+    textSize(40);
+    
   }
 
 
@@ -27,6 +32,7 @@ class Player {
     move();
     edge();
     collide();
+    
   }
 
   void move() {
@@ -105,21 +111,34 @@ class Player {
     return false;
   }
 
-
+  boolean cooldown(){
+  
+    println("lastshot = " + lastShot);
+    println("millis = " + millis());
+    if( lastShot < millis() - bulletCooldown){
+      lastShot = millis();
+      return true;
+    }
+    return false;
+  }
   // Get keyboard input
   void keyPressed() {
     keys[key] = true;
-    if (key == 'p') {
+    if (key == 'p'&& cooldown()) {
       new Bullet().fire(0, 8);
+      
     }
-    if (key == 'l') {
+    if (key == 'l'&& cooldown()) {
       new EarthBullet().fire(0, 8);
+      
     }
-    if (key == 'k') {
+    if (key == 'k'&& cooldown()) {
       new LifeBullet().fire(0, 8);
+      
     }
-    if (key == 'o') {
+    if (key == 'o'&& cooldown()) {
       new WaterBullet().fire(0, 8);
+      
     }
   }
 
