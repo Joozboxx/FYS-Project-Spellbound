@@ -60,7 +60,6 @@ class Player {
     {
     case 'p':
       new Bullet().fire(0, 8);
-      println("idk");
       break;
     case 'l':
       new EarthBullet().fire(0, 8);
