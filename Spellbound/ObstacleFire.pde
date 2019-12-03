@@ -31,23 +31,23 @@ class ObstacleFire {
       speed = 35;
     }
     //COLLISION MET LIFEBULLET
-    for (int i = 0; i < bullets.size(); i++) {
+    for (int i = 0; i < fireBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (lifeBullets.size()>0) {
-        Bullet b = bullets.get(i);
+        FireBullet f = fireBullets.get(i);
         //pakt de waarden
-        if ((b.bulletX+b.diameter/2)> xfire && (b.bulletY+b.diameter/2)>yfire && (b.bulletY-b.diameter/2)<(yfire+ySize)) {
+        if ((f.bulletX+f.diameter/2)> xfire && (f.bulletY+f.diameter/2)>yfire && (f.bulletY-f.diameter/2)<(yfire+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xfire=width+500;
           yfire=random(0, (height-ySize));
-          bullets.remove(i);
+          fireBullets.remove(i);
           speed *=1.1;
           ArrayObs.fire = false;
           ArrayObs.water = true;
-          myPlayer.playerSpeed *= 1.01;
-          points++;
+          
+         points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }
