@@ -35,12 +35,13 @@ class LifeBullet {
     // Use the velocity to calculate the new position
     bulletX += vx;
     bulletY += vy;
+    die();
   }
   void die() {
-    for (int i = 0; i < bullets.size(); i++) {
-      EarthBullet b = earthBullets.get(i);
+    for (int i = 0; i < lifeBullets.size(); i++) {
+      LifeBullet b = lifeBullets.get(i);
       if (bulletX > width) {
-        earthBullets.remove(i);
+        lifeBullets.remove(i);
       }
     }
   }
