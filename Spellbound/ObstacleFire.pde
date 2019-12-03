@@ -4,7 +4,7 @@ class ObstacleFire {
   PImage fire = loadImage("elementfire.png");
 
   ObstacleFire() {
-    xfire = width;
+    xfire = width+width/2;
     yfire = random(0, (height-500));
     xSize = 65;
     ySize = 400;
@@ -40,7 +40,7 @@ class ObstacleFire {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-          xfire=width+500;
+          xfire=width+width/2;
           yfire=random(0, (height-ySize));
           fireBullets.remove(i);
           speed *=1.1;

@@ -12,7 +12,7 @@ ArrayList<EarthBullet> earthBullets ;
 ArrayList<LifeBullet> lifeBullets ;
 ArrayList<WaterBullet> waterBullets ;
 
-int points = 0;
+int points;
 void setup() {
   //Set window size
   size(1920, 980, P2D);
@@ -23,7 +23,7 @@ void setup() {
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   fireBullets = new ArrayList<FireBullet>();
-
+  points = 0;
   for (int i = 0; i <10; i++) {
     fireBullets.add(new FireBullet());
   }
@@ -88,7 +88,6 @@ void draw() {
     w.update();
     w.draw();
   }
-
 }
 
 void keyPressed() {

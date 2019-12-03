@@ -4,7 +4,7 @@ class ObstacleWater {
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
-    xwater = width;
+    xwater = width+width/2;
     ywater = random(0, (height-500));
     xSize = 65;
     ySize = 400;
@@ -20,7 +20,7 @@ class ObstacleWater {
     xwater -= speed; 
 
     if (xwater + xSize < 0 ) {
-      xwater = width;
+      xwater = width+width/2;
       ywater = random(20, height-500);
       speed *=1.1;
       ArrayObs.water = false;
