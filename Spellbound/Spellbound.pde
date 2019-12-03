@@ -7,12 +7,14 @@ ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
 booleanObs ArrayObs;
+PauseMenu pauseScreen;
 ArrayList<Bullet> bullets ;
 ArrayList<EarthBullet> earthBullets ;
 ArrayList<LifeBullet> lifeBullets ;
 ArrayList<WaterBullet> waterBullets ;
-
 int points;
+boolean isPauseGame = false;
+
 void setup() {
   //Set window size
   size(1920, 980, P2D);
@@ -33,6 +35,7 @@ void setup() {
   waterBullets = new ArrayList<WaterBullet>();
   lifeBullets = new ArrayList<LifeBullet>();
   backgroundLevel = new Background();
+  pauseScreen = new PauseMenu();
   ArrayObs = new booleanObs();
 
   for (int i = 0; i <10; i++) {
@@ -53,47 +56,57 @@ void draw() {
   //Set background color
   background(150, 100, 250);
 
-  // Draw classes
-  backgroundLevel.draw();
-  backgroundLevel.drawSun();
-  backgroundLevel.drawClouds();
-  backgroundLevel.drawGrass();
+  // If the game is paused, don't show the rest of the game
+  if (!isPauseGame) {
+    // Draw classes
+    backgroundLevel.draw();
+    backgroundLevel.drawSun();
+    backgroundLevel.drawClouds();
+    backgroundLevel.drawGrass();
 
-  myPlayer.draw();
-  myPlayer.update();
+    myPlayer.draw();
+    myPlayer.update();
 
-  ArrayObs.Check();
+    ArrayObs.Check();
 
-  for (int i = 0; i < bullets.size(); i++) {
-    Bullet b = bullets.get(i);
+    for (int i = 0; i < bullets.size(); i++) {
+      Bullet b = bullets.get(i);
 
-    b.update();
-    b.draw();
+      b.update();
+      b.draw();
+    }
+
+    for (int i = 0; i < earthBullets.size(); i++) {
+      EarthBullet e = earthBullets.get(i);
+
+      e.update();
+      e.draw();
+    }
+    for (int i = 0; i < lifeBullets.size(); i++) {
+      LifeBullet l = lifeBullets.get(i);
+
+      l.update();
+      l.draw();
+    }
+    for (int i = 0; i < waterBullets.size(); i++) {
+      WaterBullet w = waterBullets.get(i);
+
+      w.update();
+      w.draw();
+    }
+  } 
+  else {
+    pauseScreen.draw();
+    pauseScreen.pauseMenu();
   }
-
-  for (int i = 0; i < earthBullets.size(); i++) {
-    EarthBullet e = earthBullets.get(i);
-
-    e.update();
-    e.draw();
-  }
-  for (int i = 0; i < lifeBullets.size(); i++) {
-    LifeBullet l = lifeBullets.get(i);
-
-    l.update();
-    l.draw();
-  }
-  for (int i = 0; i < waterBullets.size(); i++) {
-    WaterBullet w = waterBullets.get(i);
-
-    w.update();
-    w.draw();
-  }
-
-}
-
+}  
 void keyPressed() {
   myPlayer.keyPressed();
+  
+  // If key 'v' is pressed, pause the game 
+  if (key == ' '){
+    isPauseGame = !isPauseGame;
+  }
 }
 
 void keyReleased() {
