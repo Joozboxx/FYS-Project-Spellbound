@@ -2,7 +2,7 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
-  boolean [] keys = new boolean[512];
+  boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
   //Setup player variables
   Player() {
@@ -27,28 +27,52 @@ class Player {
     move();
     edge();
     collide();
+  
   }
 
   void move() {
     // Move the player with keyboard keys
-    if (keys['w'])
-
+    //87 is w
+    if (keys[87])
       yPlayer -= playerSpeed;
-    if (keys['s'])
+
+    if (keys[83])
       yPlayer += playerSpeed;
 
     if (playerSpeed >= 20) {
       playerSpeed = 20;
     }
-    if (EnemyFire.xfire + EnemyFire.xSize < 0 && EnemyWater.xwater + EnemyWater.xSize < 0 && EnemyLife.xlife + EnemyLife.xSize < 0 && EnemyEarth.xearth + EnemyEarth.xSize < 0) {
-      myPlayer.playerSpeed *= 1.02;
+    if (EnemyFire.xfire + EnemyFire.xSize < 0 || EnemyWater.xwater + EnemyWater.xSize < 0 || EnemyLife.xlife + EnemyLife.xSize < 0 || EnemyEarth.xearth + EnemyEarth.xSize < 0) {
+      myPlayer.playerSpeed *= 1.01;
       println("increasing speed!!");
       println(myPlayer.playerSpeed);
     }
-    
-      fill(186, 55, 100);
-  textSize(32);
-  text("obstacles hit:" + points, 10, 50);
+
+    fill(186, 55, 100);
+    textSize(32);
+    text("obstacles hit:" + points, 10, 50);
+  }
+
+  //calls the bullets to fire with the appropriate key
+  void shotsfired() {
+
+    switch(key)
+    {
+    case 'p':
+      new Bullet().fire(0, 8);
+      println("idk");
+      break;
+    case 'l':
+      new EarthBullet().fire(0, 8);
+      break;
+    case 'k':
+      new LifeBullet().fire(0, 8);
+      break;
+    case 'o':
+      new WaterBullet().fire(0, 8);
+      break;
+      default:
+    }
   }
 
   void edge() {
@@ -108,22 +132,12 @@ class Player {
 
   // Get keyboard input
   void keyPressed() {
-    keys[key] = true;
-    if (key == 'p') {
-      new Bullet().fire(0, 8);
-    }
-    if (key == 'l') {
-      new EarthBullet().fire(0, 8);
-    }
-    if (key == 'k') {
-      new LifeBullet().fire(0, 8);
-    }
-    if (key == 'o') {
-      new WaterBullet().fire(0, 8);
-    }
+    keys[keyCode] = true;
+     shotsfired();
   }
 
+
   void keyReleased() {
-    keys[key] = false;
+    keys[keyCode] = false;
   }
 }
