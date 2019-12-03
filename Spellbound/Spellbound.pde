@@ -8,7 +8,8 @@ ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
 booleanObs ArrayObs;
 PauseMenu pauseScreen;
-ArrayList<Bullet> bullets ;
+
+ArrayList<FireBullet> fireBullets ;
 ArrayList<EarthBullet> earthBullets ;
 ArrayList<LifeBullet> lifeBullets ;
 ArrayList<WaterBullet> waterBullets ;
@@ -24,13 +25,8 @@ void setup() {
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
-  bullets = new ArrayList<Bullet>();
+  fireBullets = new ArrayList<FireBullet>();
   points = 0;
-
-  for (int i = 0; i <10; i++) {
-    bullets.add(new Bullet());
-  }
-
   earthBullets = new ArrayList<EarthBullet>();
   waterBullets = new ArrayList<WaterBullet>();
   lifeBullets = new ArrayList<LifeBullet>();
@@ -39,7 +35,7 @@ void setup() {
   ArrayObs = new booleanObs();
 
   for (int i = 0; i <10; i++) {
-    bullets.add(new Bullet());
+    fireBullets.add(new FireBullet());
   }
   for (int i = 0; i <10; i++) {
     earthBullets.add(new EarthBullet());
@@ -56,6 +52,7 @@ void draw() {
   //Set background color
   background(150, 100, 250);
 
+
   // If the game is paused, don't show the rest of the game
   if (!isPauseGame) {
     // Draw classes
@@ -69,13 +66,12 @@ void draw() {
 
     ArrayObs.Check();
 
-    for (int i = 0; i < bullets.size(); i++) {
-      Bullet b = bullets.get(i);
+    for (int i = 0; i < fireBullets.size(); i++) {
+      FireBullet f = fireBullets.get(i);
 
-      b.update();
-      b.draw();
+      f.update();
+      f.draw();
     }
-
     for (int i = 0; i < earthBullets.size(); i++) {
       EarthBullet e = earthBullets.get(i);
 
@@ -94,17 +90,17 @@ void draw() {
       w.update();
       w.draw();
     }
-  } 
-  else {
+  } else {
     pauseScreen.draw();
     pauseScreen.pauseMenu();
   }
 }  
+
 void keyPressed() {
   myPlayer.keyPressed();
-  
+
   // If key 'v' is pressed, pause the game 
-  if (key == ' '){
+  if (key == ' ') {
     isPauseGame = !isPauseGame;
   }
 }

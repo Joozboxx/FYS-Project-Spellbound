@@ -1,16 +1,20 @@
-class EarthBullet {
+class FireBullet {
   // Properties of the bullet
   float bulletX, bulletY;
   float diameter;
   float vx, vy;
   boolean isFired, ableToFire;
   int cooldownTimer;
-  color earthBulletColor = color(255,160,0);
+  color fireBulletColor = color(255, 0, 0);
+  int radius = 15;
+  float xfire = EnemyFire.xfire;
+  float yfire = EnemyFire.yfire;
+  float xSize = 65;
+  float ySize = 400;
   // Giving the bullet initial values
-  EarthBullet() {
-    earthBullets.add(this);
+  FireBullet() {
+    fireBullets.add(this);
     diameter = 30;
-    
   }
 
 
@@ -18,51 +22,49 @@ class EarthBullet {
   void fire(float angle, float speed) {   
     isFired = true;
     ableToFire = false;
-    
+
     // Start the bullet at the player position
     bulletX = (myPlayer.xPlayer + 220);
     bulletY = (myPlayer.yPlayer + 87) ;
 
     vx = speed * cos(angle);
   }
-  void cooldown(){
-    if (isFired == true){
+  void cooldown() {
+    if (isFired == true) {
       cooldownTimer = 10;
-      
     }
-    
-  
-  
-  
   }
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
     // Use the velocity to calculate the new position
     bulletX += vx;
-    bulletY += vy; 
+    bulletY += vy;
   }
-  void die(){
-    for (int i = 0; i <= earthBullets.size(); i++) {
-
-      EarthBullet e = earthBullets.get(i);
-      if (bulletX > width){
-        earthBullets.remove(i);
-      }   
+  void die() {
+    for (int i = 0; i < fireBullets.size(); i++) {
+      FireBullet b = fireBullets.get(i);
+      if (bulletX > width-50) {
+        fireBullets.remove(i);
+      }
     }
-  
   }
-  
-  void collisionWithObject(){
-  
-  
-  
-  }
-  
+
+
+
+
+
+
+
+
+
+
   // This method draws the bullet
   void draw() {
-    fill(earthBulletColor);
+    fill(fireBulletColor);
     ellipse(bulletX, bulletY, diameter, diameter);
     
-  }
+    
+  }  
+  
 }

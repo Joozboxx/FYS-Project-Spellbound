@@ -4,7 +4,7 @@ class ObstacleWater {
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
-    xwater = width;
+    xwater = width+width/2;
     ywater = random(0, (height-500));
     xSize = 65;
     ySize = 400;
@@ -20,7 +20,7 @@ class ObstacleWater {
     xwater -= speed; 
 
     if (xwater + xSize < 0 ) {
-      xwater = width;
+      xwater = width+width/2;
       ywater = random(20, height-500);
       speed *=1.1;
       ArrayObs.water = false;
@@ -47,7 +47,7 @@ class ObstacleWater {
           waterBullets.remove(i);
           ArrayObs.water = false;
           ArrayObs.life = true;
-          
+          myPlayer.playerSpeed *= 1.01;
           points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }

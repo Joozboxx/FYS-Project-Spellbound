@@ -4,7 +4,7 @@ class ObstacleLife {
   PImage life = loadImage("elementlife.png");
 
   ObstacleLife() {
-    xlife = width;                
+    xlife =width+width/2;                
     ylife = random(0, (height-500));
     xSize = 65;
     ySize = 400;
@@ -24,7 +24,7 @@ class ObstacleLife {
       ylife = random(20, height-500);
       speed *=1.1; 
       ArrayObs.life = false;
-      ArrayObs.fire = true;
+      ArrayObs.earth = true;
     }
 
     if (speed >= 35) {
@@ -41,13 +41,13 @@ class ObstacleLife {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-          xlife=width+500;
+          xlife=width+width/2;
           ylife=random(0, (height-ySize));
           speed *=1.1;
           lifeBullets.remove(i);
           ArrayObs.life = false;
           ArrayObs.earth = true;
-
+          myPlayer.playerSpeed *= 1.01;
           points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }

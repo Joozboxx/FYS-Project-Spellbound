@@ -2,8 +2,11 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
-  boolean [] keys = new boolean[512];
+  boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
+  float lastShot = 0;
+  float bulletCooldown = 1800;
+  boolean ableToFire;
   //Setup player variables
   Player() {
 
@@ -31,24 +34,59 @@ class Player {
 
   void move() {
     // Move the player with keyboard keys
-    if (keys['w'])
-
+    //87 is w
+    if (keys[87])
       yPlayer -= playerSpeed;
-    if (keys['s'])
+
+    if (keys[83])
       yPlayer += playerSpeed;
 
     if (playerSpeed >= 20) {
       playerSpeed = 20;
     }
-    if (EnemyFire.xfire + EnemyFire.xSize < 0 && EnemyWater.xwater + EnemyWater.xSize < 0 && EnemyLife.xlife + EnemyLife.xSize < 0 && EnemyEarth.xearth + EnemyEarth.xSize < 0) {
-      myPlayer.playerSpeed *= 1.02;
+    if (EnemyFire.xfire + EnemyFire.xSize < 0 || EnemyWater.xwater + EnemyWater.xSize < 0 || EnemyLife.xlife + EnemyLife.xSize < 0 || EnemyEarth.xearth + EnemyEarth.xSize < 0) {
+      myPlayer.playerSpeed *= 1.01;
       println("increasing speed!!");
       println(myPlayer.playerSpeed);
     }
+
+    fill(186, 55, 100);
+    textSize(32);
+    text("obstacles hit:" + points, 10, 50);
+  }
+
+  //calls the bullets to fire with the appropriate key
+  void shotsfired() {
+ /*switch(keyCode)
+    {
+    case 80: cooldown:
+      new FireBullet().fire(0, 8);
+      break;
+    case 76: cooldown:
+      new EarthBullet().fire(0, 8);
+      break;
+    case 75: cooldown:
+      new LifeBullet().fire(0, 8);
+      break;
+    case 79: cooldown:
+      new WaterBullet().fire(0, 8);
+      break;
+    default:
+    }*/
     
-      fill(186, 55, 100);
-  textSize(32);
-  text("obstacles hit:" + points, 10, 50);
+    if (keyCode == 80&& cooldown()) {
+      new FireBullet().fire(0, 8);
+    }
+    if (keyCode == 76&& cooldown()) {
+      new EarthBullet().fire(0, 8);
+    }
+    if (keyCode == 75&& cooldown()) {
+      new LifeBullet().fire(0, 8);
+    }
+     if (keyCode == 79&& cooldown()) {
+      new WaterBullet().fire(0, 8);
+     }
+   
   }
 
   void edge() {
@@ -67,6 +105,19 @@ class Player {
       setup();
     }
   }
+
+  // checks if 2 seconds have gone by since the last bullet was shot
+  boolean cooldown() {
+
+    println("lastshot = " + lastShot);
+    println("millis = " + millis());
+    if ( lastShot < millis() - bulletCooldown) {
+      lastShot = millis();
+      return true;
+    }
+    return false;
+  }
+
 
   boolean checkCollision() {
 
@@ -108,22 +159,14 @@ class Player {
 
   // Get keyboard input
   void keyPressed() {
-    keys[key] = true;
-    if (key == 'p') {
-      new Bullet().fire(0, 8);
-    }
-    if (key == 'l') {
-      new EarthBullet().fire(0, 8);
-    }
-    if (key == 'k') {
-      new LifeBullet().fire(0, 8);
-    }
-    if (key == 'o') {
-      new WaterBullet().fire(0, 8);
-    }
+    keys[keyCode] = true;
+    shotsfired();
+      
+    
   }
 
+
   void keyReleased() {
-    keys[key] = false;
+    keys[keyCode] = false;
   }
 }
