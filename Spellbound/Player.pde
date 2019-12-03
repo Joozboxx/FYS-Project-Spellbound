@@ -5,7 +5,7 @@ class Player {
   boolean [] keys = new boolean[512];
   PImage player = loadImage("spellboundplayer.png");
   float lastShot = 0;
-  float bulletCooldown = 3000;
+  float bulletCooldown = 2000;
   boolean ableToFire;
   //Setup player variables
   Player() {
@@ -22,7 +22,7 @@ class Player {
     // Draw the player shape
     fill(0);
     image(player, xPlayer, yPlayer, PlayerSizeW, PlayerSizeH);
-    textSize(40);
+    textSize(32);
     
   }
 
@@ -111,6 +111,7 @@ class Player {
     return false;
   }
 
+  // checks if 2 seconds have gone by since the last bullet was shot
   boolean cooldown(){
   
     println("lastshot = " + lastShot);
@@ -125,7 +126,7 @@ class Player {
   void keyPressed() {
     keys[key] = true;
     if (key == 'p'&& cooldown()) {
-      new Bullet().fire(0, 8);
+      new FireBullet().fire(0, 8);
       
     }
     if (key == 'l'&& cooldown()) {

@@ -46,8 +46,8 @@ class ObstacleFire {
           speed *=1.1;
           ArrayObs.fire = false;
           ArrayObs.water = true;
-          
-         points++;
+          myPlayer.playerSpeed *= 1.01;
+          points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
         }
       }

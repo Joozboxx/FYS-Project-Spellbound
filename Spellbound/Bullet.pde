@@ -40,11 +40,12 @@ class Bullet {
     // Use the velocity to calculate the new position
     bulletX += vx;
     bulletY += vy;
+    die();
   }
   void die() {
     for (int i = 0; i < bullets.size(); i++) {
       Bullet b = bullets.get(i);
-      if (bulletX > width-50) {
+      if (bulletX > width) {
         bullets.remove(i);
       }
     }
