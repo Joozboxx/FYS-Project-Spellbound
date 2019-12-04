@@ -22,19 +22,42 @@ class ObstacleFire {
     if (xfire + xSize < 0) {
       xfire = width;
       yfire = random(20, height-500);
-      speed *=1.1;
-      ArrayObs.fire = false;
-      ArrayObs.earth = true;
+      speed *=1.15;
+      EnemyEarth.speed *=1.15;
+      EnemyWater.speed *= 1.15;
+      EnemyLife.speed *= 1.15;
+
+      int elementType = (int)random(0, 3);
+
+      // Every case switches the element randomly when hit by bullet
+      switch(elementType)
+      {
+      case 0:
+        ArrayObs.earth = true;
+        ArrayObs.fire = false;
+        println("fire");
+        break;
+      case 1:
+        ArrayObs.water = true;
+        ArrayObs.fire = false;
+        println("water");
+        break;
+      case 2:
+        ArrayObs.life = true;
+        ArrayObs.fire = false;
+        println("life");
+        break;
+      }
     }
 
-    if (speed >= 35) {
-      speed = 35;
+    if (speed >= 30) {
+      speed = 30;
     }
     //COLLISION MET LIFEBULLET
     for (int i = 0; i < fireBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (lifeBullets.size()>0) {
-        FireBullet f = fireBullets.get(i);
+        BulletFire f = fireBullets.get(i);
         //pakt de waarden
         if ((f.bulletX+f.diameter/2)> xfire && (f.bulletY+f.diameter/2)>yfire && (f.bulletY-f.diameter/2)<(yfire+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
@@ -43,7 +66,11 @@ class ObstacleFire {
           xfire=width+width/2;
           yfire=random(0, (height-ySize));
           fireBullets.remove(i);
-          speed *=1.1;
+          speed *=1.15;
+          EnemyEarth.speed *=1.15;
+          EnemyWater.speed *= 1.15;
+          EnemyLife.speed *= 1.15;
+          myPlayer.playerSpeed *= 1.04;
           points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
           int elementType = (int)random(0, 3);

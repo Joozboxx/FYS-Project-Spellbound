@@ -14,7 +14,7 @@ class Player {
     yPlayer = height/2;
     PlayerSizeH = 200;
     PlayerSizeW = 250;
-    playerSpeed = 10;
+    playerSpeed = 12;
     border = height-(PlayerSizeH-100);
   }
 
@@ -30,6 +30,12 @@ class Player {
     move();
     edge();
     collide();
+    
+    // Adds 1 point when you hit an obstacle
+    fill(186, 55, 100);
+    textSize(32);
+    textAlign(CENTER);
+    text("OBSTACLES HIT: " + points, width/2, 50);
   }
 
   void move() {
@@ -49,47 +55,43 @@ class Player {
       println("increasing speed!!");
       println(myPlayer.playerSpeed);
     }
-
-    fill(186, 55, 100);
-    textSize(32);
-    text("obstacles hit:" + points, 10, 50);
   }
 
-  //calls the bullets to fire with the appropriate key
+  // Calls the bullets to fire with the appropriate key
   void shotsfired() {
- /*switch(keyCode)
-    {
-    case 80: cooldown:
-      new FireBullet().fire(0, 8);
-      break;
-    case 76: cooldown:
-      new EarthBullet().fire(0, 8);
-      break;
-    case 75: cooldown:
-      new LifeBullet().fire(0, 8);
-      break;
-    case 79: cooldown:
-      new WaterBullet().fire(0, 8);
-      break;
-    default:
-    }*/
-    
+    /*switch(keyCode)
+     {
+     case 80: cooldown:
+     new FireBullet().fire(0, 8);
+     break;
+     case 76: cooldown:
+     new EarthBullet().fire(0, 8);
+     break;
+     case 75: cooldown:
+     new LifeBullet().fire(0, 8);
+     break;
+     case 79: cooldown:
+     new WaterBullet().fire(0, 8);
+     break;
+     default:
+     }*/
+
     if (keyCode == 76&& cooldown()) {
-      new FireBullet().fire(0, 8);
+      new BulletFire().fire(0, 8);
     }
     if (keyCode == 75&& cooldown()) {
-      new EarthBullet().fire(0, 8);
+      new BulletEarth().fire(0, 8);
     }
     if (keyCode == 74&& cooldown()) {
-      new LifeBullet().fire(0, 8);
+      new BulletLife().fire(0, 8);
     }
-     if (keyCode == 73&& cooldown()) {
-      new WaterBullet().fire(0, 8);
-     }
-   if (keyCode == 72&& cooldown()) {
+    if (keyCode == 73&& cooldown()) {
+      new BulletWater().fire(0, 8);
+    }
+    if (keyCode == 72&& cooldown()) {
       setup();
-      gameIsOver=false;
-     }
+      gameIsOver = false;
+    }
   }
 
   void edge() {
@@ -109,7 +111,7 @@ class Player {
     }
   }
 
-  // checks if 2 seconds have gone by since the last bullet was shot
+  // Checks if 2 seconds have gone by since the last bullet was shot
   boolean cooldown() {
 
     println("lastshot = " + lastShot);
@@ -164,8 +166,6 @@ class Player {
   void keyPressed() {
     keys[keyCode] = true;
     shotsfired();
-      
-    
   }
 
 

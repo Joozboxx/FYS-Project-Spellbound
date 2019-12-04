@@ -1,14 +1,19 @@
-class LifeBullet {
+class BulletFire {
   // Properties of the bullet
   float bulletX, bulletY;
   float diameter;
   float vx, vy;
   boolean isFired, ableToFire;
   int cooldownTimer;
-  color lifeBulletColor = color(0, 255, 0);
+  color fireBulletColor = color(255, 0, 0);
+  int radius = 15;
+  float xfire = EnemyFire.xfire;
+  float yfire = EnemyFire.yfire;
+  float xSize = 65;
+  float ySize = 400;
   // Giving the bullet initial values
-  LifeBullet() {
-    lifeBullets.add(this);
+  BulletFire() {
+    fireBullets.add(this);
     diameter = 30;
   }
 
@@ -37,20 +42,29 @@ class LifeBullet {
     bulletY += vy;
   }
   void die() {
-    for (int i = 0; i < lifeBullets.size(); i++) {
-      LifeBullet l = lifeBullets.get(i);
-      if (bulletX > width) {
-        earthBullets.remove(i);
+    for (int i = 0; i < fireBullets.size(); i++) {
+      BulletFire b = fireBullets.get(i);
+      if (bulletX > width - 500) {
+        fireBullets.remove(i);
       }
     }
   }
 
-  void collisionWithObject() {
-  }
+
+
+
+
+
+
+
+
 
   // This method draws the bullet
   void draw() {
-    fill(lifeBulletColor);
+    fill(fireBulletColor);
     ellipse(bulletX, bulletY, diameter, diameter);
-  }
+    
+    
+  }  
+  
 }

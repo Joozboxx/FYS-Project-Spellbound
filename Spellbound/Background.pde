@@ -40,7 +40,7 @@ class Background {
 
     // Draw the grass
     drawGrass();
-    
+
     // Move the grass
     grassOneX -= grassSpeed;
     grassTwoX -= grassSpeed;
@@ -111,18 +111,18 @@ class Background {
       grassOneX = grassTwoX + grassTwo.width;  
       grassSpeed *= 1.01;
     }
-    
+
     // If grass two moves past 0, add grass one and speed grass up
     if (grassTwoX + grassTwo.width < 0) {
       grassTwoX = grassOneX + grassOne.width;
       grassSpeed *= 1.01;
     }
-    
+
     //cap speed of grass
-    if(grassSpeed >= 30){
+    if (grassSpeed >= 30) {
       grassSpeed = 30;
     }
-    
+
     // Draw the grass
     image(grassOne, grassOneX, height-grassOne.height+1);
     image(grassTwo, grassTwoX, height - grassOne.height+1);

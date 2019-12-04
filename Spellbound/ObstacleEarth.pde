@@ -22,19 +22,43 @@ class ObstacleEarth {
     if (xearth + xSize < 0) {
       xearth = width+width/2;
       yearth = random(20, height-500);
-      speed *=1.1;
+      speed *=1.15;
+      EnemyFire.speed *=1.15;
+      EnemyWater.speed *= 1.15;
+      EnemyLife.speed *= 1.15;
 
+      int elementType = (int)random(0, 3);
+
+      // Every case switches the element randomly when hit by bullet
+      switch(elementType)
+      {
+      case 0:
+        ArrayObs.fire = true;
+        ArrayObs.earth = false;
+        println("fire");
+        break;
+      case 1:
+        ArrayObs.water = true;
+        ArrayObs.earth = false;
+        println("water");
+        break;
+      case 2:
+        ArrayObs.life = true;
+        ArrayObs.earth = false;
+        println("life");
+        break;
+      }
     }
 
-    if (speed >= 35) {
-      speed = 35;
+    if (speed >= 30) {
+      speed = 30;
     }
 
     //COLLISION MET LIFEBULLET
     for (int i = 0; i < earthBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (earthBullets.size()>0) {
-        EarthBullet b = earthBullets.get(i);
+        BulletEarth b = earthBullets.get(i);
         //pakt de waarden
         if ((b.bulletX+b.diameter/2)> xearth && (b.bulletY+b.diameter/2)>yearth && (b.bulletY-b.diameter/2)<(yearth+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
@@ -42,13 +66,16 @@ class ObstacleEarth {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xearth=width+width/2;
           yearth=random(0, (height-ySize));
-          speed *=1.1;
+          speed *=1.15;
+          EnemyFire.speed *=1.15;
+          EnemyWater.speed *= 1.15;
+          EnemyLife.speed *= 1.15;
           earthBullets.remove(i);
-          myPlayer.playerSpeed *= 1.01;
+          myPlayer.playerSpeed *= 1.04;
           points++;
-          
+
           int elementType = (int)random(0, 3);
-          
+
           // Every case switches the element randomly when hit by bullet
           switch(elementType)
           {

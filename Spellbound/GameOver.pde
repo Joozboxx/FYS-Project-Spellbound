@@ -11,10 +11,14 @@ class GameOver {
     textAlign(CENTER);
     fill(255);
     textSize(150);
-    text("GAME OVER", width/2, height/2+75);
+    text("GAME OVER", width/2, height/2);
 
     fill(255);
     textSize(32);
-    text("You had " + points + " points", width/2, height/2 + 200);
+    text("You had " + points + " points", width/2, height/2 + 100);
+    
+    fill(255);
+    textSize(32);
+    text("Press H or START to restart the game", width/2, height/2 + 200);
   }
 }

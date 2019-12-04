@@ -1,4 +1,4 @@
-class WaterBullet {
+class BulletWater {
   // Properties of the bullet
   float bulletX, bulletY;
   float diameter;
@@ -7,7 +7,7 @@ class WaterBullet {
   int cooldownTimer;
   color waterBulletColor = color(0, 0, 255);
   // Giving the bullet initial values
-  WaterBullet() {
+  BulletWater() {
     waterBullets.add(this);
     diameter = 30;
   }
@@ -39,8 +39,8 @@ class WaterBullet {
   }
   void die() {
     for (int i = 0; i < waterBullets.size(); i++) {
-      WaterBullet w = waterBullets.get(i);
-      if (bulletX > width) {
+      BulletWater w = waterBullets.get(i);
+      if (bulletX > width - 500) {
         waterBullets.remove(i);
       }
     }
