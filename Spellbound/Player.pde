@@ -5,7 +5,7 @@ class Player {
   boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
   float lastShot = 0;
-  float bulletCooldown = 1800;
+  float bulletCooldown = 800;
   boolean ableToFire;
   //Setup player variables
   Player() {
@@ -74,19 +74,22 @@ class Player {
     default:
     }*/
     
-    if (keyCode == 80&& cooldown()) {
+    if (keyCode == 76&& cooldown()) {
       new FireBullet().fire(0, 8);
     }
-    if (keyCode == 76&& cooldown()) {
+    if (keyCode == 75&& cooldown()) {
       new EarthBullet().fire(0, 8);
     }
-    if (keyCode == 75&& cooldown()) {
+    if (keyCode == 74&& cooldown()) {
       new LifeBullet().fire(0, 8);
     }
-     if (keyCode == 79&& cooldown()) {
+     if (keyCode == 73&& cooldown()) {
       new WaterBullet().fire(0, 8);
      }
-   
+   if (keyCode == 72&& cooldown()) {
+      setup();
+      gameIsOver=false;
+     }
   }
 
   void edge() {
@@ -102,7 +105,7 @@ class Player {
     if (checkCollision()) {
       fill(255, 0, 0, 90);
       rect(0, 0, 1920, 1080);
-      setup();
+      gameIsOver=true;
     }
   }
 

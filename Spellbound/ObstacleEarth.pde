@@ -47,9 +47,10 @@ class ObstacleEarth {
           myPlayer.playerSpeed *= 1.01;
           points++;
           
-          int test = (int)random(0, 3);
-
-          switch(test)
+          int elementType = (int)random(0, 3);
+          
+          // Every case switches the element randomly when hit by bullet
+          switch(elementType)
           {
           case 0:
             ArrayObs.fire = true;

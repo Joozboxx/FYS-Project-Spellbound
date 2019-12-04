@@ -45,11 +45,30 @@ class ObstacleWater {
           ywater=random(0, (height-ySize));
           speed *=1.1;
           waterBullets.remove(i);
-          ArrayObs.water = false;
-          ArrayObs.life = true;
           myPlayer.playerSpeed *= 1.01;
           points++;
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
+          int elementType = (int)random(0, 3);
+
+          // Every case switches the element randomly when hit by bullet
+          switch(elementType)
+          {
+          case 0:
+            ArrayObs.fire = true;
+            ArrayObs.water = false;
+            println("fire");
+            break;
+          case 1:
+            ArrayObs.earth = true;
+            ArrayObs.water = false;
+            println("water");
+            break;
+          case 2:
+            ArrayObs.life = true;
+            ArrayObs.water = false;
+            println("life");
+            break;
+          }
         }
       }
     }
