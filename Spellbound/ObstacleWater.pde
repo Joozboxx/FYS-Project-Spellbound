@@ -1,6 +1,6 @@
 class ObstacleWater {
 
-  float xwater, ywater, xSize, ySize, speed;
+  float xwater, ywater, xSize, ySize, speed,speedx;
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
@@ -9,6 +9,7 @@ class ObstacleWater {
     xSize = 65;
     ySize = 400;
     speed = 15;
+    speedx = 1.05;
   }
 
   void draw() {
@@ -66,13 +67,14 @@ class ObstacleWater {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xwater=width+500;
           ywater=random(0, (height-ySize));
-          speed *=1.15;
-          EnemyEarth.speed *=1.15;
-          EnemyLife.speed *= 1.15;
-          EnemyFire.speed *= 1.15;
+          speed *= speedx;
+          EnemyEarth.speed *=speedx;
+          EnemyLife.speed *= speedx;
+          EnemyFire.speed *= speedx;
           waterBullets.remove(i);
           myPlayer.playerSpeed *= 1.04;
           points++;
+          println(speed);
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
           int elementType = (int)random(0, 3);
 

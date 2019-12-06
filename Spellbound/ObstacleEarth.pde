@@ -1,6 +1,6 @@
 class ObstacleEarth {
 
-  float xearth, yearth, xSize, ySize, speed;
+  float xearth, yearth, xSize, ySize, speed,speedx;
   PImage earth = loadImage("elementearth.png");
 
   ObstacleEarth() {
@@ -9,6 +9,7 @@ class ObstacleEarth {
     xSize = 65;
     ySize = 400;
     speed = 15;
+    speedx = 1.05;
   }
 
   void draw() {
@@ -22,10 +23,10 @@ class ObstacleEarth {
     if (xearth + xSize < 0) {
       xearth = width+width/2;
       yearth = random(20, height-500);
-      speed *=1.15;
-      EnemyFire.speed *=1.15;
-      EnemyWater.speed *= 1.15;
-      EnemyLife.speed *= 1.15;
+      speed *=speedx;
+      EnemyFire.speed *=speedx;
+      EnemyWater.speed *= speedx;
+      EnemyLife.speed *= speedx;
 
       int elementType = (int)random(0, 3);
 
@@ -66,14 +67,14 @@ class ObstacleEarth {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xearth=width+width/2;
           yearth=random(0, (height-ySize));
-          speed *=1.15;
-          EnemyFire.speed *=1.15;
-          EnemyWater.speed *= 1.15;
-          EnemyLife.speed *= 1.15;
+          speed *=speedx;
+          EnemyFire.speed *=speedx;
+          EnemyWater.speed *= speedx;
+          EnemyLife.speed *= speedx;
           earthBullets.remove(i);
           myPlayer.playerSpeed *= 1.04;
           points++;
-
+println(speed);
           int elementType = (int)random(0, 3);
 
           // Every case switches the element randomly when hit by bullet

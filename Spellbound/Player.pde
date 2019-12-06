@@ -50,11 +50,11 @@ class Player {
     if (playerSpeed >= 20) {
       playerSpeed = 20;
     }
-    if (EnemyFire.xfire + EnemyFire.xSize < 0 || EnemyWater.xwater + EnemyWater.xSize < 0 || EnemyLife.xlife + EnemyLife.xSize < 0 || EnemyEarth.xearth + EnemyEarth.xSize < 0) {
+  /*  if (EnemyFire.xfire + EnemyFire.xSize < 0 || EnemyWater.xwater + EnemyWater.xSize < 0 || EnemyLife.xlife + EnemyLife.xSize < 0 || EnemyEarth.xearth + EnemyEarth.xSize < 0) {
       myPlayer.playerSpeed *= 1.01;
       println("increasing speed!!");
       println(myPlayer.playerSpeed);
-    }
+    }*/
   }
 
   // Calls the bullets to fire with the appropriate key
@@ -113,9 +113,6 @@ class Player {
 
   // Checks if 2 seconds have gone by since the last bullet was shot
   boolean cooldown() {
-
-    println("lastshot = " + lastShot);
-    println("millis = " + millis());
     if ( lastShot < millis() - bulletCooldown) {
       lastShot = millis();
       return true;

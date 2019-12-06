@@ -20,7 +20,7 @@ boolean gameIsOver = false;
 
 void setup() {
   //Set window size
-  size(1920, 980, P2D);
+  size(1920, 1080, P2D);
 
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();

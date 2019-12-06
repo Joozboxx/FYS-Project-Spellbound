@@ -1,6 +1,6 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed;
+  float xfire, yfire, xSize, ySize, speed,speedx;
   PImage fire = loadImage("elementfire.png");
 
   ObstacleFire() {
@@ -9,6 +9,7 @@ class ObstacleFire {
     xSize = 65;
     ySize = 400;
     speed = 15;
+    speedx = 1.05;
   }
 
   void draw() {
@@ -22,10 +23,10 @@ class ObstacleFire {
     if (xfire + xSize < 0) {
       xfire = width;
       yfire = random(20, height-500);
-      speed *=1.15;
-      EnemyEarth.speed *=1.15;
-      EnemyWater.speed *= 1.15;
-      EnemyLife.speed *= 1.15;
+      speed *=speedx;
+      EnemyEarth.speed *=speedx;
+      EnemyWater.speed *= speedx;
+      EnemyLife.speed *= speedx;
 
       int elementType = (int)random(0, 3);
 
@@ -66,12 +67,13 @@ class ObstacleFire {
           xfire=width+width/2;
           yfire=random(0, (height-ySize));
           fireBullets.remove(i);
-          speed *=1.15;
-          EnemyEarth.speed *=1.15;
-          EnemyWater.speed *= 1.15;
-          EnemyLife.speed *= 1.15;
+          speed *=speedx;
+          EnemyEarth.speed *=speedx;
+          EnemyWater.speed *= speedx;
+          EnemyLife.speed *= speedx;
           myPlayer.playerSpeed *= 1.04;
           points++;
+          println(speed);
           //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
           int elementType = (int)random(0, 3);
 
