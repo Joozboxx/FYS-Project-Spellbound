@@ -67,8 +67,8 @@ void draw() {
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
 
-      myPlayer.draw();
       myPlayer.update();
+      myPlayer.draw();
 
       ArrayObs.Check();
 
