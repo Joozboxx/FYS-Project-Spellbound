@@ -2,10 +2,11 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
+  float xShadow, y, floating, d, angle;
   boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
   float lastShot = 0;
-  float bulletCooldown = 800;
+  float bulletCooldown = 1800;
   boolean ableToFire;
   //Setup player variables
   Player() {
@@ -16,14 +17,39 @@ class Player {
     PlayerSizeW = 250;
     playerSpeed = 12;
     border = height-(PlayerSizeH-100);
+    xShadow = width/10;
   }
 
   void draw() {
     // Draw the player shape
-    fill(0);
-    image(player, xPlayer, yPlayer, PlayerSizeW, PlayerSizeH);
+
+
+    //player
+    noFill();
+    image(player, xPlayer, yPlayer-floating, PlayerSizeW, PlayerSizeH);
+
+    //shadow under player
+    ellipseMode(CORNER);
+    noStroke();
+    fill(20, 120);
+    ellipse(xShadow, 980, 0.9*(d), 0.04*d);
+    
+    tween(width/10, 0);
   }
 
+void tween(float tempX, float tempY) {
+//float for player
+  floating = sin(angle)*(250)*0.07;
+  angle += 0.03;
+
+
+  y = tempY;
+// tweening for shadow
+  pushMatrix();
+  translate(xShadow, y);
+  d = dist(xShadow, 200, xShadow+(yPlayer*0.4), floating); 
+  popMatrix();
+}
 
   void update() {
     // Handle player
@@ -31,6 +57,7 @@ class Player {
     edge();
     collide();
     
+
     // Adds 1 point when you hit an obstacle
     fill(186, 55, 100);
     textSize(32);
@@ -38,135 +65,139 @@ class Player {
     text("OBSTACLES HIT: " + points, width/2, 50);
   }
 
-  void move() {
-    // Move the player with keyboard keys
-    //87 is w
-    if (keys[87])
-      yPlayer -= playerSpeed;
 
-    if (keys[83])
-      yPlayer += playerSpeed;
 
-    if (playerSpeed >= 20) {
-      playerSpeed = 20;
-    }
+
+
+void move() {
+  // Move the player with keyboard keys
+  //87 is w
+  if (keys[87])
+    yPlayer -= playerSpeed;
+
+  if (keys[83])
+    yPlayer += playerSpeed;
+
+  if (playerSpeed >= 20) {
+    playerSpeed = 20;
+  }
   /*  if (EnemyFire.xfire + EnemyFire.xSize < 0 || EnemyWater.xwater + EnemyWater.xSize < 0 || EnemyLife.xlife + EnemyLife.xSize < 0 || EnemyEarth.xearth + EnemyEarth.xSize < 0) {
-      myPlayer.playerSpeed *= 1.01;
-      println("increasing speed!!");
-      println(myPlayer.playerSpeed);
-    }*/
+   myPlayer.playerSpeed *= 1.01;
+   println("increasing speed!!");
+   println(myPlayer.playerSpeed);
+   }*/
+}
+
+// Calls the bullets to fire with the appropriate key
+void shotsfired() {
+  /*switch(keyCode)
+   {
+   case 80: cooldown:
+   new FireBullet().fire(0, 8);
+   break;
+   case 76: cooldown:
+   new EarthBullet().fire(0, 8);
+   break;
+   case 75: cooldown:
+   new LifeBullet().fire(0, 8);
+   break;
+   case 79: cooldown:
+   new WaterBullet().fire(0, 8);
+   break;
+   default:
+   }*/
+
+  if (keyCode == 76&& cooldown()) {
+    new BulletFire().fire(0, 8);
   }
-
-  // Calls the bullets to fire with the appropriate key
-  void shotsfired() {
-    /*switch(keyCode)
-     {
-     case 80: cooldown:
-     new FireBullet().fire(0, 8);
-     break;
-     case 76: cooldown:
-     new EarthBullet().fire(0, 8);
-     break;
-     case 75: cooldown:
-     new LifeBullet().fire(0, 8);
-     break;
-     case 79: cooldown:
-     new WaterBullet().fire(0, 8);
-     break;
-     default:
-     }*/
-
-    if (keyCode == 76&& cooldown()) {
-      new BulletFire().fire(0, 8);
-    }
-    if (keyCode == 75&& cooldown()) {
-      new BulletEarth().fire(0, 8);
-    }
-    if (keyCode == 74&& cooldown()) {
-      new BulletLife().fire(0, 8);
-    }
-    if (keyCode == 73&& cooldown()) {
-      new BulletWater().fire(0, 8);
-    }
-    if (keyCode == 72&& cooldown()) {
-      setup();
-      gameIsOver = false;
-    }
+  if (keyCode == 75&& cooldown()) {
+    new BulletEarth().fire(0, 8);
   }
-
-  void edge() {
-    // Border of player movement
-    if (yPlayer > border-150) {
-      yPlayer = border-150;
-    } else if (yPlayer < 50) {
-      yPlayer = 50;
-    }
+  if (keyCode == 74&& cooldown()) {
+    new BulletLife().fire(0, 8);
   }
-
-  void collide() {
-    if (checkCollision()) {
-      fill(255, 0, 0, 90);
-      rect(0, 0, 1920, 1080);
-      gameIsOver=true;
-    }
+  if (keyCode == 73&& cooldown()) {
+    new BulletWater().fire(0, 8);
   }
-
-  // Checks if 2 seconds have gone by since the last bullet was shot
-  boolean cooldown() {
-    if ( lastShot < millis() - bulletCooldown) {
-      lastShot = millis();
-      return true;
-    }
-    return false;
+  if (keyCode == 72&& cooldown()) {
+    setup();
+    gameIsOver = false;
   }
+}
 
-
-  boolean checkCollision() {
-
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyFire.xfire)
-      &&(xPlayer <= EnemyFire.xfire + EnemyFire.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyFire.yfire )
-      &&(yPlayer<=EnemyFire.yfire + EnemyFire.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyWater.xwater)
-      &&(xPlayer <= EnemyWater.xwater + EnemyWater.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyWater.ywater)
-      &&(yPlayer<=EnemyWater.ywater + EnemyWater.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyLife.xlife)
-      &&(xPlayer <= EnemyLife.xlife + EnemyLife.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyLife.ylife)
-      &&(yPlayer<=EnemyLife.ylife + EnemyLife.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyEarth.xearth)
-      &&(xPlayer <= EnemyEarth.xearth + EnemyEarth.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyEarth.yearth)
-      &&(yPlayer<=EnemyEarth.yearth + EnemyEarth.ySize))
-    {
-      return true;
-    }
-    return false;
+void edge() {
+  // Border of player movement
+  if (yPlayer > border-250) {
+    yPlayer = border-250;
+  } else if (yPlayer < 50) {
+    yPlayer = 50;
   }
+}
 
-
-  // Get keyboard input
-  void keyPressed() {
-    keys[keyCode] = true;
-    shotsfired();
+void collide() {
+  if (checkCollision()) {
+    fill(255, 0, 0, 90);
+    rect(0, 0, 1920, 1080);
+    gameIsOver=true;
   }
+}
 
-
-  void keyReleased() {
-    keys[keyCode] = false;
+// Checks if 2 seconds have gone by since the last bullet was shot
+boolean cooldown() {
+  if ( lastShot < millis() - bulletCooldown) {
+    lastShot = millis();
+    return true;
   }
+  return false;
+}
+
+
+boolean checkCollision() {
+
+  // Checks if the player hits the obstacle
+  if ((xPlayer + PlayerSizeW >= EnemyFire.xfire)
+    &&(xPlayer <= EnemyFire.xfire + EnemyFire.xSize)
+    &&(yPlayer+PlayerSizeH >= EnemyFire.yfire )
+    &&(yPlayer<=EnemyFire.yfire + EnemyFire.ySize))
+  {
+    return true;
+  }
+  // Checks if the player hits the obstacle
+  if ((xPlayer + PlayerSizeW >= EnemyWater.xwater)
+    &&(xPlayer <= EnemyWater.xwater + EnemyWater.xSize)
+    &&(yPlayer+PlayerSizeH >= EnemyWater.ywater)
+    &&(yPlayer<=EnemyWater.ywater + EnemyWater.ySize))
+  {
+    return true;
+  }
+  // Checks if the player hits the obstacle
+  if ((xPlayer + PlayerSizeW >= EnemyLife.xlife)
+    &&(xPlayer <= EnemyLife.xlife + EnemyLife.xSize)
+    &&(yPlayer+PlayerSizeH >= EnemyLife.ylife)
+    &&(yPlayer<=EnemyLife.ylife + EnemyLife.ySize))
+  {
+    return true;
+  }
+  // Checks if the player hits the obstacle
+  if ((xPlayer + PlayerSizeW >= EnemyEarth.xearth)
+    &&(xPlayer <= EnemyEarth.xearth + EnemyEarth.xSize)
+    &&(yPlayer+PlayerSizeH >= EnemyEarth.yearth)
+    &&(yPlayer<=EnemyEarth.yearth + EnemyEarth.ySize))
+  {
+    return true;
+  }
+  return false;
+}
+
+
+// Get keyboard input
+void keyPressed() {
+  keys[keyCode] = true;
+  shotsfired();
+}
+
+
+void keyReleased() {
+  keys[keyCode] = false;
+}
 }

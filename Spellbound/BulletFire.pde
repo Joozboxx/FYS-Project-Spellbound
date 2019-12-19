@@ -64,7 +64,6 @@ class BulletFire {
     fill(fireBulletColor);
     ellipse(bulletX, bulletY, diameter, diameter);
     
-    
   }  
   
 }
