@@ -6,6 +6,7 @@ class booleanObs {
   boolean fire = false;
   boolean earth = false;
   boolean life = false;
+  boolean wall = false;
 
   void Check() {
     // Calls the fire class
@@ -33,6 +34,12 @@ class booleanObs {
     if (water ==true) { 
       EnemyWater.update();
       EnemyWater.draw();
+    } else
+    {
+    }
+    if (wall ==true) { 
+      EnemyWall.update();
+      EnemyWall.draw();
     } else
     {
     }

@@ -6,6 +6,7 @@ ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
+ObstacleWall EnemyWall;
 booleanObs ArrayObs;
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
@@ -27,6 +28,7 @@ void setup() {
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
+    EnemyWall = new ObstacleWall();
   fireBullets = new ArrayList<BulletFire>();
   points = 0;
   earthBullets = new ArrayList<BulletEarth>();

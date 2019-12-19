@@ -38,9 +38,9 @@ class Player {
   }
 
 void tween(float tempX, float tempY) {
-//float for player
+//float for player(meaning,meaning,meaning)
   floating = sin(angle)*(250)*0.07;
-  //speed of float
+  //speed of float(up and down)
   angle += 0.03;
 
 
@@ -48,6 +48,7 @@ void tween(float tempX, float tempY) {
 // tweening for shadow
   pushMatrix();
   translate(xShadow, y);
+  //tweening size for shadow(meaning,meanign,emeainign,meanign)
   d = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
   popMatrix();
 }
@@ -91,22 +92,6 @@ void move() {
 
 // Calls the bullets to fire with the appropriate key
 void shotsfired() {
-  /*switch(keyCode)
-   {
-   case 80: cooldown:
-   new FireBullet().fire(0, 8);
-   break;
-   case 76: cooldown:
-   new EarthBullet().fire(0, 8);
-   break;
-   case 75: cooldown:
-   new LifeBullet().fire(0, 8);
-   break;
-   case 79: cooldown:
-   new WaterBullet().fire(0, 8);
-   break;
-   default:
-   }*/
 
   if (keyCode == 76&& cooldown()) {
     new BulletFire().fire(0, 8);

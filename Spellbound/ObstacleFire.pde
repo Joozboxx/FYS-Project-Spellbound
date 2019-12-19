@@ -1,6 +1,6 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed,speedx;
+  float xfire, yfire, xSize, ySize, speed, speedx;
   PImage fire = loadImage("elementfire.png");
 
   ObstacleFire() {
@@ -23,12 +23,15 @@ class ObstacleFire {
     if (xfire + xSize < 0) {
       xfire = width;
       yfire = random(20, height-500);
+
+      //speed of all obstacles get increased when passed the border
       speed *=speedx;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyLife.speed *= speedx;
+      EnemyWall.speed *= speedx;
 
-      int elementType = (int)random(0, 3);
+      int elementType = (int)random(0, 4);
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -47,6 +50,11 @@ class ObstacleFire {
         ArrayObs.life = true;
         ArrayObs.fire = false;
         println("life");
+        break;
+      case 3:
+        ArrayObs.wall = true;
+        ArrayObs.fire = false;
+        println("wall");
         break;
       }
     }
@@ -67,15 +75,18 @@ class ObstacleFire {
           xfire=width+width/2;
           yfire=random(0, (height-ySize));
           fireBullets.remove(i);
+
+          //speed of all obstacles get increased when destroyed
           speed *=speedx;
           EnemyEarth.speed *=speedx;
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
+          EnemyWall.speed *= speedx;
+
           myPlayer.playerSpeed *= 1.04;
           points++;
-          println(speed);
-          //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
-          int elementType = (int)random(0, 3);
+         
+          int elementType = (int)random(0, 4);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)
@@ -94,6 +105,11 @@ class ObstacleFire {
             ArrayObs.life = true;
             ArrayObs.fire = false;
             println("life");
+            break;
+          case 3:
+            ArrayObs.wall = true;
+            ArrayObs.fire = false;
+            println("wall");
             break;
           }
         }

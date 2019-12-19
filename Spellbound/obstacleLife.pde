@@ -1,6 +1,6 @@
 class ObstacleLife {
 
-  float xlife, ylife, xSize, ySize, speed,speedx;
+  float xlife, ylife, xSize, ySize, speed, speedx;
   PImage life = loadImage("elementlife.png");
 
   ObstacleLife() {
@@ -23,12 +23,15 @@ class ObstacleLife {
     if (xlife + xSize <0) {
       xlife = width;
       ylife = random(20, height-500);
+
+      //speed of all obstacles get increased when passed the border
       speed *=speedx; 
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyFire.speed *= speedx;
+      EnemyWall.speed *= speedx;
 
-      int elementType = (int)random(0, 3);
+      int elementType = (int)random(0, 4);
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -47,6 +50,11 @@ class ObstacleLife {
         ArrayObs.earth = true;
         ArrayObs.life = false;
         println("life");
+        break;
+      case 3:
+        ArrayObs.wall = true;
+        ArrayObs.life = false;
+        println("wall");
         break;
       }
     }
@@ -67,16 +75,20 @@ class ObstacleLife {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xlife=width+width/2;
           ylife=random(0, (height-ySize));
+
+          //speed of all obstacles get increased when destroyed
           speed *=speedx;
           EnemyEarth.speed *=speedx;
           EnemyWater.speed *= speedx;
           EnemyFire.speed *= speedx;
+          EnemyWall.speed *= speedx;
+
+
           lifeBullets.remove(i);
           myPlayer.playerSpeed *= 1.04;
           points++;
-          println(speed);
-          //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
-          int elementType = (int)random(0, 3);
+   
+          int elementType = (int)random(0, 4);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)
@@ -95,6 +107,11 @@ class ObstacleLife {
             ArrayObs.earth = true;
             ArrayObs.life = false;
             println("life");
+            break;
+          case 3:
+            ArrayObs.wall = true;
+            ArrayObs.life = false;
+            println("wall");
             break;
           }
         }

@@ -1,6 +1,6 @@
 class ObstacleEarth {
 
-  float xearth, yearth, xSize, ySize, speed,speedx;
+  float xearth, yearth, xSize, ySize, speed, speedx;
   PImage earth = loadImage("elementearth.png");
 
   ObstacleEarth() {
@@ -23,12 +23,15 @@ class ObstacleEarth {
     if (xearth + xSize < 0) {
       xearth = width+width/2;
       yearth = random(20, height-500);
+
+      //speed of all obstacles get increased when passed the border
       speed *=speedx;
       EnemyFire.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyLife.speed *= speedx;
+      EnemyWall.speed *= speedx;
 
-      int elementType = (int)random(0, 3);
+      int elementType = (int)random(0, 4);
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -47,6 +50,11 @@ class ObstacleEarth {
         ArrayObs.life = true;
         ArrayObs.earth = false;
         println("life");
+        break;
+      case 3:
+        ArrayObs.wall = true;
+        ArrayObs.earth = false;
+        println("wall");
         break;
       }
     }
@@ -67,15 +75,20 @@ class ObstacleEarth {
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xearth=width+width/2;
           yearth=random(0, (height-ySize));
+
+          //speed of all obstacles get increased when destroyed
           speed *=speedx;
           EnemyFire.speed *=speedx;
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
+          EnemyWall.speed *= speedx;
+
+
           earthBullets.remove(i);
           myPlayer.playerSpeed *= 1.04;
           points++;
-println(speed);
-          int elementType = (int)random(0, 3);
+          println(speed);
+          int elementType = (int)random(0, 4);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)
@@ -95,10 +108,13 @@ println(speed);
             ArrayObs.earth = false;
             println("life");
             break;
+          case 3:
+            ArrayObs.wall = true;
+            ArrayObs.earth = false;
+            println("wall");
+            break;
           }
         }
-
-        //Voeg hier de dingen toe die je wilt dat er gebeuren als er collision is, op het moment verandert hij alleen de x, en y van het obstakel. Je kan hier bijvoorbeeld de bullet removen, of punten geven
       }
     }
   }
