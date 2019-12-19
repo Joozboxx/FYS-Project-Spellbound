@@ -40,6 +40,7 @@ class Player {
 void tween(float tempX, float tempY) {
 //float for player
   floating = sin(angle)*(250)*0.07;
+  //speed of float
   angle += 0.03;
 
 
@@ -47,7 +48,7 @@ void tween(float tempX, float tempY) {
 // tweening for shadow
   pushMatrix();
   translate(xShadow, y);
-  d = dist(xShadow, 200, xShadow+(yPlayer*0.4), floating); 
+  d = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
   popMatrix();
 }
 
