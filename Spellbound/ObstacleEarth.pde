@@ -87,7 +87,7 @@ class ObstacleEarth {
           earthBullets.remove(i);
           myPlayer.playerSpeed *= 1.04;
           points++;
-          println(speed);
+     
           int elementType = (int)random(0, 4);
 
           // Every case switches the element randomly when hit by bullet

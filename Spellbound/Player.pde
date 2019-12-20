@@ -172,6 +172,14 @@ boolean checkCollision() {
   {
     return true;
   }
+  // Checks if the player hits the obstacle wall
+  if ((xPlayer + PlayerSizeW >= EnemyWall.xwall)
+    &&(xPlayer <= EnemyWall.xwall + EnemyWall.xSize)
+    &&(yPlayer+PlayerSizeH >= EnemyWall.ywall)
+    &&(yPlayer<=EnemyWall.ywall + EnemyWall.ySize))
+  {
+    return true;
+  }
   return false;
 }
 
