@@ -6,7 +6,7 @@ class Player {
   boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
   float lastShot = 0;
-  float bulletCooldown = 1800;
+  float bulletCooldown = 900;
   boolean ableToFire;
   //Setup player variables
   Player() {
@@ -20,9 +20,8 @@ class Player {
     xShadow = width/10;
   }
 
+// Draws the player shape
   void draw() {
-    // Draw the player shape
-
 
     //player
     noFill();
@@ -74,20 +73,22 @@ void tween(float tempX, float tempY) {
 void move() {
   // Move the player with keyboard keys
   //87 is w
-  if (keys[87])
+  if (keys[87]){
     yPlayer -= playerSpeed;
-
-  if (keys[83])
+  }
+else{
+  yPlayer +=0.8;
+}
+  if (keys[83]){
     yPlayer += playerSpeed;
-
+  }
+else{
+  yPlayer +=0.8;
+}
   if (playerSpeed >= 20) {
     playerSpeed = 20;
   }
-  /*  if (EnemyFire.xfire + EnemyFire.xSize < 0 || EnemyWater.xwater + EnemyWater.xSize < 0 || EnemyLife.xlife + EnemyLife.xSize < 0 || EnemyEarth.xearth + EnemyEarth.xSize < 0) {
-   myPlayer.playerSpeed *= 1.01;
-   println("increasing speed!!");
-   println(myPlayer.playerSpeed);
-   }*/
+ 
 }
 
 // Calls the bullets to fire with the appropriate key

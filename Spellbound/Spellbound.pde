@@ -7,7 +7,7 @@ ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
 ObstacleWall EnemyWall;
-booleanObs ArrayObs;
+booleanObs BoolObs;
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
 
@@ -15,29 +15,30 @@ ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
 ArrayList<BulletWater> waterBullets ;
-int points;
 boolean isPauseGame = false;
 boolean gameIsOver = false;
 
+int points;
+
 void setup() {
   //Set window size
-  size(1920, 1080, P2D);
+  size(1920, 1080, P3D);
+
+  backgroundLevel = new Background();
 
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
-    EnemyWall = new ObstacleWall();
+  EnemyWall = new ObstacleWall();
+  BoolObs = new booleanObs();
+
   fireBullets = new ArrayList<BulletFire>();
-  points = 0;
   earthBullets = new ArrayList<BulletEarth>();
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
-  backgroundLevel = new Background();
-  pauseScreen = new PauseMenu();
-  ArrayObs = new booleanObs();
-  gameOverScreen = new GameOver();
+
 
   for (int i = 0; i <10; i++) {
     fireBullets.add(new BulletFire());
@@ -51,15 +52,25 @@ void setup() {
   for (int i = 0; i <10; i++) {
     waterBullets.add(new BulletWater());
   }
+
+  pauseScreen = new PauseMenu();
+
+  gameOverScreen = new GameOver();
+
+  //points you have at the start of the game
+  points = 0;
 }
 
 void draw() {
   //Set background color
   background(150, 100, 250);
 
+
+
+
   if (gameIsOver) {
-    gameOverScreen.draw();
     gameOverScreen.gameOverScreen();
+    gameOverScreen.draw();
   } else {
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
@@ -72,7 +83,7 @@ void draw() {
       myPlayer.update();
       myPlayer.draw();
 
-      ArrayObs.Check();
+      BoolObs.Check();
 
       for (int i = 0; i < fireBullets.size(); i++) {
         BulletFire f = fireBullets.get(i);
@@ -101,11 +112,12 @@ void draw() {
         // Square for bullet bug (REMOVE LATER!)
         noStroke();
         fill(170, 213, 224);
-        rect(0, 0, 25, 25);
+        rect(0, 0, 40, 40);
       }
-    } else {
-      pauseScreen.draw();
+    } 
+    else {
       pauseScreen.pauseMenu();
+      pauseScreen.draw();
     }
   }
 }

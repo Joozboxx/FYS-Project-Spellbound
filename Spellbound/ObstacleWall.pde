@@ -8,7 +8,7 @@ class ObstacleWall {
     ywall = random(0, (height-500));
     xSize = 65;
     ySize = 400;
-    speed = 20;
+    speed = 12;
     speedx = 1.05;
   }
 
@@ -37,23 +37,23 @@ class ObstacleWall {
       switch(elementType)
       {
       case 0:
-        ArrayObs.fire = true;
-        ArrayObs.wall = false;
+        BoolObs.fire = true;
+        BoolObs.wall = false;
         println("fire");
         break;
       case 1:
-        ArrayObs.water = true;
-        ArrayObs.wall = false;
+        BoolObs.water = true;
+        BoolObs.wall = false;
         println("water");
         break;
       case 2:
-        ArrayObs.earth = true;
-        ArrayObs.wall = false;
+        BoolObs.earth = true;
+        BoolObs.wall = false;
         println("life");
         break;
         case 3:
-        ArrayObs.life = true;
-        ArrayObs.wall = false;
+        BoolObs.life = true;
+        BoolObs.wall = false;
         println("life");
         break;
       }

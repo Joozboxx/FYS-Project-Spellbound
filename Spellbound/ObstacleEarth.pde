@@ -37,23 +37,23 @@ class ObstacleEarth {
       switch(elementType)
       {
       case 0:
-        ArrayObs.fire = true;
-        ArrayObs.earth = false;
+        BoolObs.fire = true;
+        BoolObs.earth = false;
         println("fire");
         break;
       case 1:
-        ArrayObs.water = true;
-        ArrayObs.earth = false;
+        BoolObs.water = true;
+        BoolObs.earth = false;
         println("water");
         break;
       case 2:
-        ArrayObs.life = true;
-        ArrayObs.earth = false;
+        BoolObs.life = true;
+        BoolObs.earth = false;
         println("life");
         break;
       case 3:
-        ArrayObs.wall = true;
-        ArrayObs.earth = false;
+        BoolObs.wall = true;
+        BoolObs.earth = false;
         println("wall");
         break;
       }
@@ -94,23 +94,23 @@ class ObstacleEarth {
           switch(elementType)
           {
           case 0:
-            ArrayObs.fire = true;
-            ArrayObs.earth = false;
+            BoolObs.fire = true;
+            BoolObs.earth = false;
             println("fire");
             break;
           case 1:
-            ArrayObs.water = true;
-            ArrayObs.earth = false;
+            BoolObs.water = true;
+            BoolObs.earth = false;
             println("water");
             break;
           case 2:
-            ArrayObs.life = true;
-            ArrayObs.earth = false;
+            BoolObs.life = true;
+            BoolObs.earth = false;
             println("life");
             break;
           case 3:
-            ArrayObs.wall = true;
-            ArrayObs.earth = false;
+            BoolObs.wall = true;
+            BoolObs.earth = false;
             println("wall");
             break;
           }
