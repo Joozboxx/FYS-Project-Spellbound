@@ -13,7 +13,6 @@ class ObstacleLife {
   }
 
   void draw() {
-    fill(255, 0, 0);
     image(life, xlife, ylife, xSize, ySize);
   }
 

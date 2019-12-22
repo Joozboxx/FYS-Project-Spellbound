@@ -13,7 +13,6 @@ class ObstacleFire {
   }
 
   void draw() {
-    fill(255, 0, 0);
     image(fire, xfire, yfire, xSize, ySize);
   }
 

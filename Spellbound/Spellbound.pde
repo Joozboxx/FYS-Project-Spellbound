@@ -63,7 +63,6 @@ void setup() {
 
 void draw() {
   //Set background color
-  background(150, 100, 250);
 
 
 
@@ -80,10 +79,12 @@ void draw() {
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
 
+
+      BoolObs.Check();
+
       myPlayer.update();
       myPlayer.draw();
 
-      BoolObs.Check();
 
       for (int i = 0; i < fireBullets.size(); i++) {
         BulletFire f = fireBullets.get(i);
@@ -108,14 +109,14 @@ void draw() {
 
         w.update();
         w.draw();
-
-        // Square for bullet bug (REMOVE LATER!)
+noFill();
+        
+      }
+      // Square for bullet bug (REMOVE LATER!)
         noStroke();
         fill(170, 213, 224);
         rect(0, 0, 40, 40);
-      }
-    } 
-    else {
+    } else {
       pauseScreen.pauseMenu();
       pauseScreen.draw();
     }

@@ -5,7 +5,7 @@ class PauseMenu {
  }
  
  void pauseMenu(){
-   fill(0);
+   fill(0,15);
    rect(0,0,1920,1080); 
    
    textAlign(CENTER);

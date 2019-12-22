@@ -13,7 +13,6 @@ class ObstacleWall {
   }
 
   void draw() {
-    fill(255, 0, 0);
     image(wall, xwall, ywall, xSize, ySize);
   }
 
