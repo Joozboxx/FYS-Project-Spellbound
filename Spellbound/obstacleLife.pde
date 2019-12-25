@@ -5,7 +5,7 @@ class ObstacleLife {
 
   ObstacleLife() {
     xlife =width+width/2;                
-    ylife = random(0, (height-500));
+    ylife = random(20, (height-450));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -21,7 +21,7 @@ class ObstacleLife {
 
     if (xlife + xSize <0) {
       xlife = width;
-      ylife = random(20, height-500);
+      ylife = random(20, (height-450));
 
       //speed of all obstacles get increased when passed the border
       speed *=speedx; 
@@ -73,7 +73,7 @@ class ObstacleLife {
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
           xlife=width+width/2;
-          ylife=random(0, (height-ySize));
+          ylife=random(20, (height-450));
 
           //speed of all obstacles get increased when destroyed
           speed *=speedx;

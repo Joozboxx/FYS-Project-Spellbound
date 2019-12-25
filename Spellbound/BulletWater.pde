@@ -52,7 +52,7 @@ class BulletWater {
   // This method draws the bullet
   void draw() {
     noTint();
-    image(waterBulletIm, bulletX, bulletY, diameter+100, diameter);
+    image(waterBulletIm, bulletX-60, bulletY, diameter+200, diameter);
     noTint();
   }
 }

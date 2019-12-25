@@ -5,7 +5,7 @@ class ObstacleWall {
 
   ObstacleWall() {
     xwall =width+width/2;                
-    ywall = random(0, (height-500));
+    ywall = random(20, (height-450));
     xSize = 65;
     ySize = 400;
     speed = 12;
@@ -21,11 +21,11 @@ class ObstacleWall {
 
     if (xwall + xSize <0) {
       xwall = width;
-      ywall = random(20, height-500);
+      ywall = random(20, (height-450));
       
       //speed of all obstacles get increased when passed the border
       speed *=speedx; 
-      EnemyEarth.speed *=speedx;
+      EnemyEarth.speed *= speedx;
       EnemyWater.speed *= speedx;
       EnemyFire.speed *= speedx;
       EnemyLife.speed *= speedx;
@@ -58,8 +58,8 @@ class ObstacleWall {
       }
     }
 
-    if (speed >= 30) {
-      speed = 30;
+    if (speed >= 25) {
+      speed = 25;
     }
   }
 }

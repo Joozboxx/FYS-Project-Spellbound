@@ -5,7 +5,7 @@ class ObstacleWater {
 
   ObstacleWater() {
     xwater = width+width/2;
-    ywater = random(0, (height-500));
+    ywater = random(20, (height-450));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -19,6 +19,17 @@ class ObstacleWater {
     image(water, xwater, ywater, xSize, ySize);
     noTint();
   }
+  
+      void activate(){
+   for(int i = 0; i < 30; i++){
+     fill(255,0,0);
+    particles.add(new Particle(xwater,ywater+200,random(10) - 5,random(10) - 5,5));
+    
+    if(transparency <=10){
+      particles.remove(i);
+    }
+  }
+}
 
   void update() {
     xwater -= speed; 
@@ -27,7 +38,7 @@ class ObstacleWater {
 
     if (xwater + xSize < 0 ) {
       xwater = width+width/2;
-      ywater = random(20, height-500);
+      ywater = random(20, (height-450));
 
       //speed of all obstacles get increased when passed the border
       speed *=1.15;
@@ -80,6 +91,7 @@ class ObstacleWater {
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
 
+activate();
 
           //speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -125,11 +137,15 @@ class ObstacleWater {
       }
       if (transparency <=10) {
         xwater=width+500;
-        ywater=random(0, (height-ySize));
+        ywater=random(20, (height-450));
         transpDecrease = 0;
         transparency = 255;
         BoolObs.water = false;
+       
       }
+  
+
+
     }
   }
 }

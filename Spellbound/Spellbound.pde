@@ -15,6 +15,9 @@ ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
 ArrayList<BulletWater> waterBullets ;
+
+ArrayList<Particle> particles;
+
 boolean isPauseGame = false;
 boolean gameIsOver = false;
 
@@ -39,7 +42,9 @@ void setup() {
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
 
-
+  particles = new ArrayList<Particle>();
+  
+  
   for (int i = 0; i <10; i++) {
     fireBullets.add(new BulletFire());
   }
@@ -51,6 +56,10 @@ void setup() {
   }
   for (int i = 0; i <10; i++) {
     waterBullets.add(new BulletWater());
+  }
+  
+  for(int i = 0; i < 10; i++){
+    particles.add(new Particle(random(0,1000),random(0,1000),random(10) - 5,random(10) - 5,5));
   }
 
   pauseScreen = new PauseMenu();
@@ -109,18 +118,18 @@ void draw() {
 
         w.update();
         w.draw();
-noFill();
-        
       }
-      // Square for bullet bug (REMOVE LATER!)
-        noStroke();
-        fill(170, 213, 224);
-        rect(0, 0, 40, 40);
-    } else {
-      pauseScreen.pauseMenu();
-      pauseScreen.draw();
-    }
-  }
+      for (int i = 0; i < particles.size(); i++) {
+        Particle p = particles.get(i);
+        
+        p.update();
+
+      }
+    }else {
+  pauseScreen.pauseMenu();
+  pauseScreen.draw();
+}
+}
 }
 
 void keyPressed() {

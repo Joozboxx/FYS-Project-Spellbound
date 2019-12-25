@@ -5,7 +5,7 @@ class ObstacleEarth {
 
   ObstacleEarth() {
     xearth = width+width/2;                
-    yearth = random(0, (height-500));
+    yearth = random(20, (height-450));
     xSize = 65;
     ySize = 400;
     speed = 15;
@@ -22,7 +22,7 @@ class ObstacleEarth {
 
     if (xearth + xSize < 0) {
       xearth = width+width/2;
-      yearth = random(20, height-500);
+      yearth = random(20, (height-450));
 
       //speed of all obstacles get increased when passed the border
       speed *=speedx;
@@ -73,7 +73,7 @@ class ObstacleEarth {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-          xearth=width+width/2;
+          xearth=random(20, (height-450));
           yearth=random(0, (height-ySize));
 
           //speed of all obstacles get increased when destroyed

@@ -15,6 +15,7 @@ class booleanObs {
       EnemyFire.draw();
     } else
     {
+      fire = false;
     }
     // Calls the earth class
     if (earth == true) {
@@ -22,6 +23,7 @@ class booleanObs {
       EnemyEarth.draw();
     } else
     {
+      earth = false;
     }
     // Calls the life class
     if (life == true) {
@@ -29,6 +31,7 @@ class booleanObs {
       EnemyLife.draw();
     } else
     {
+      life = false;
     }
     // Calls the water class
     if (water ==true) { 
@@ -36,12 +39,14 @@ class booleanObs {
       EnemyWater.draw();
     } else
     {
+      water = false;
     }
     if (wall ==true) { 
       EnemyWall.update();
       EnemyWall.draw();
     } else
     {
+      wall = false;
     }
   }
 }
