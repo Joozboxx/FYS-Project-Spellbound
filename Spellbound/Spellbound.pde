@@ -58,9 +58,6 @@ void setup() {
     waterBullets.add(new BulletWater());
   }
   
-  for(int i = 0; i < 10; i++){
-    particles.add(new Particle(random(0,1000),random(0,1000),random(10) - 5,random(10) - 5,5));
-  }
 
   pauseScreen = new PauseMenu();
 
