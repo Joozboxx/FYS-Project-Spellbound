@@ -1,6 +1,6 @@
 class ObstacleWater {
 
-  float xwater, ywater, xSize, ySize, speed, speedx, transparency, transpDecrease;
+  float xwater, ywater, xSize, ySize, speed, speedx;
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
@@ -10,37 +10,52 @@ class ObstacleWater {
     ySize = 400;
     speed = 15;
     speedx = 1.05;
-    transparency = 255;
-    transpDecrease = 0;
   }
 
   void draw() {
-    tint(255, transparency);
     image(water, xwater, ywater, xSize, ySize);
-    noTint();
   }
-  
-      void activate(){
-   for(int i = 0; i < 30; i++){
-     fill(255,0,0);
-    particles.add(new Particle(xwater,ywater+200,random(10) - 5,random(10) - 5,5));
-    
-    if(transparency <=10){
-      particles.remove(i);
-    }
-  }
-}
+
+
 
   void update() {
     xwater -= speed; 
-    transparency -= transpDecrease;
+
+    //speed cap for obstacle
+    if (speed >= 30) {
+      speed = 30;
+    }
+
+    //calls void for when obstacle hits border of screen
+    borderHit();
+    //calls void when correct bullet hits obstacle
+    bulletHit();
+
+    //what happens when the obstacle gets destroyed
+    if (BoolObs.water == false) {
+      xwater=width+xSize;
+      ywater=random(20, (height-450));
+    }
+  }
 
 
+
+  //particle effect when obstacle gets destroyed
+  void particlefx() {
+    for (int i = 0; i < 30; i++) {
+      //particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
+      particles.add(new Particle(xwater, ywater+200, random(10) - 5,random(70)-10, 20));
+    }
+  }
+
+
+
+  void borderHit() {
     if (xwater + xSize < 0 ) {
-      xwater = width+width/2;
+      xwater = width+xSize;
       ywater = random(20, (height-450));
 
-      //speed of all obstacles get increased when passed the border
+      //accelerates obstacle speed everytime the edge of screen gets hit
       speed *=1.15;
       EnemyEarth.speed *=speedx;
       EnemyLife.speed *= speedx;
@@ -74,15 +89,15 @@ class ObstacleWater {
         break;
       }
     }
+  }
 
-    if (speed >= 30) {
-      speed = 30;
-    }
 
-    //COLLISION MET LIFEBULLET
+//COLLISION with Waterbullet
+  void bulletHit() {
+    
     for (int i = 0; i < waterBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
-      if (lifeBullets.size()>0) {
+      if (waterBullets.size()>0) {
         BulletWater b = waterBullets.get(i);
 
         //pakt de waarden
@@ -90,8 +105,12 @@ class ObstacleWater {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-
-activate();
+         
+          
+          waterBullets.remove(i);
+          points++;
+          //calls void of particles
+          particlefx();
 
           //speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -99,11 +118,11 @@ activate();
           EnemyLife.speed *= speedx;
           EnemyFire.speed *= speedx;
           EnemyWall.speed *= speedx;
-
-
-          waterBullets.remove(i);
           myPlayer.playerSpeed *= 1.04;
-          points++;
+
+
+
+
 
           int elementType = (int)random(0, 4);
 
@@ -111,41 +130,28 @@ activate();
           switch(elementType)
           {
           case 0:
+            BoolObs.water = false;
             BoolObs.fire = true;
-
-            transpDecrease = 130;
             println("fire");
             break;
           case 1:
+            BoolObs.water = false;
             BoolObs.earth = true;
-
-            transpDecrease =130;
             println("water");
             break;
           case 2:
+            BoolObs.water = false;
             BoolObs.life = true;
-            transpDecrease = 130;
             println("life");
             break;
           case 3:
+            BoolObs.water = false;
             BoolObs.wall = true;
-            transpDecrease = 130;
             println("wall");
             break;
           }
         }
       }
-      if (transparency <=10) {
-        xwater=width+500;
-        ywater=random(20, (height-450));
-        transpDecrease = 0;
-        transparency = 255;
-        BoolObs.water = false;
-       
-      }
-  
-
-
     }
   }
 }

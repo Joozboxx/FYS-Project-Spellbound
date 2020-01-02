@@ -4,7 +4,7 @@ class ObstacleFire {
   PImage fire = loadImage("elementfire.png");
 
   ObstacleFire() {
-    xfire = width+width/2;
+    xfire = width+xSize;
     yfire = random(20, (height-450));
     xSize = 65;
     ySize = 400;
@@ -16,15 +16,46 @@ class ObstacleFire {
     image(fire, xfire, yfire, xSize, ySize);
   }
 
+
+
   void update() {
     xfire -= speed; 
 
-    if (xfire + xSize < 0) {
-      xfire = width;
+    //speed cap for obstacle
+    if (speed >= 30) {
+      speed = 30;
+    }
+
+    //calls void for when obstacle hits border of screen
+    borderHit();
+    //calls void when correct bullet hits obstacle
+    bulletHit();
+
+    //what happens when the obstacle gets destroyed
+    if (BoolObs.fire == false) {
+      xfire=width+xSize;
+      yfire=random(20, (height-450));
+    }
+  }
+
+
+
+  //particle effect when obstacle gets destroyed
+  void particlefx() {
+    for (int i = 0; i < 30; i++) {
+      particles.add(new Particle(xfire, yfire+200, random(10) - 5, random(10) - 5, 20));
+    }
+  }
+
+
+
+  void borderHit() {
+    if (xfire + xSize < 0 ) {
+      xfire = width+xSize;
       yfire = random(20, (height-450));
 
-      //speed of all obstacles get increased when passed the border
-      speed *=speedx;
+      //accelerates obstacle speed everytime the edge of screen gets hit
+      speed *=1.15;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyLife.speed *= speedx;
@@ -36,17 +67,17 @@ class ObstacleFire {
       switch(elementType)
       {
       case 0:
-        BoolObs.earth = true;
+        BoolObs.life = true;
         BoolObs.fire = false;
         println("fire");
         break;
       case 1:
-        BoolObs.water = true;
+        BoolObs.earth = true;
         BoolObs.fire = false;
         println("water");
         break;
       case 2:
-        BoolObs.life = true;
+        BoolObs.water = true;
         BoolObs.fire = false;
         println("life");
         break;
@@ -57,51 +88,58 @@ class ObstacleFire {
         break;
       }
     }
+  }
 
-    if (speed >= 30) {
-      speed = 30;
-    }
+
+
+  void bulletHit() {
     //COLLISION MET LIFEBULLET
     for (int i = 0; i < fireBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
-      if (lifeBullets.size()>0) {
-        BulletFire f = fireBullets.get(i);
+      if (fireBullets.size()>0) {
+        BulletFire b = fireBullets.get(i);
+
         //pakt de waarden
-        if ((f.bulletX+f.diameter/2)> xfire && (f.bulletY+f.diameter/2)>yfire && (f.bulletY-f.diameter/2)<(yfire+ySize)) {
+        if ((b.bulletX+b.diameter/2)> xfire && (b.bulletY+b.diameter/2)>yfire && (b.bulletY-b.diameter/2)<(yfire+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-          xfire=width+width/2;
-          yfire=random(20, (height-450));
+
+
           fireBullets.remove(i);
+          points++;
+          //calls void of particles
+          particlefx();
 
           //speed of all obstacles get increased when destroyed
-          speed *=speedx;
+          speed *= speedx;
           EnemyEarth.speed *=speedx;
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
           EnemyWall.speed *= speedx;
-
           myPlayer.playerSpeed *= 1.04;
-          points++;
-         
+
+
+
+
+
           int elementType = (int)random(0, 4);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)
           {
           case 0:
-            BoolObs.earth = true;
+            BoolObs.life = true;
             BoolObs.fire = false;
             println("fire");
             break;
           case 1:
-            BoolObs.water = true;
+            BoolObs.earth = true;
             BoolObs.fire = false;
             println("water");
             break;
           case 2:
-            BoolObs.life = true;
+            BoolObs.water = true;
             BoolObs.fire = false;
             println("life");
             break;

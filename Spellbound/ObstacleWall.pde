@@ -4,7 +4,7 @@ class ObstacleWall {
   PImage wall = loadImage("elementWALL.png");
 
   ObstacleWall() {
-    xwall =width+width/2;                
+    xwall =width+xSize;                
     ywall = random(20, (height-450));
     xSize = 65;
     ySize = 400;
@@ -20,7 +20,7 @@ class ObstacleWall {
     xwall -= speed; 
 
     if (xwall + xSize <0) {
-      xwall = width;
+      xwall = width+xSize;
       ywall = random(20, (height-450));
       
       //speed of all obstacles get increased when passed the border

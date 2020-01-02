@@ -15,7 +15,7 @@ ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
 ArrayList<BulletWater> waterBullets ;
-
+//array list for all particle effects you get after hitting an obstacle
 ArrayList<Particle> particles;
 
 boolean isPauseGame = false;
