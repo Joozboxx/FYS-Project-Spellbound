@@ -50,7 +50,7 @@ class BulletLife {
 
   // This method draws the bullet
   void draw() {
-    tint(255);
+    tint(0,255,0);
     image(waterBulletIm, bulletX, bulletY, diameter+100, diameter);
     noTint();
   }

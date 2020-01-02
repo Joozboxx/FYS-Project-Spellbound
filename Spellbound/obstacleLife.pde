@@ -43,7 +43,7 @@ class ObstacleLife {
   //particle effect when obstacle gets destroyed
   void particlefx() {
     for (int i = 0; i < 30; i++) {
-      particles.add(new Particle(xlife, ylife+200, random(10) - 5, random(10) - 5, 20));
+      particles.add(new Particle(xlife, ylife+200,random(10) - 5,random(30)-10, 20));
     }
   }
 

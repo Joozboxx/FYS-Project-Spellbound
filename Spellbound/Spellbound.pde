@@ -68,11 +68,7 @@ void setup() {
 }
 
 void draw() {
-  //Set background color
-
-
-
-
+ 
   if (gameIsOver) {
     gameOverScreen.gameOverScreen();
     gameOverScreen.draw();

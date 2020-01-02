@@ -51,7 +51,7 @@ class BulletFire {
  
   // This method draws the bullet
   void draw() {
-     tint(255);
+     tint(255,0,0);
     image(waterBulletIm, bulletX, bulletY, diameter+100, diameter);
     noTint();
   }  

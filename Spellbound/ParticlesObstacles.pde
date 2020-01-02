@@ -19,6 +19,9 @@ class Particle {
 
 
   void update() {
+    
+    elementcolors();
+    
     //colors (UwU)
     stroke(0,100);
     fill(r, g, b);
@@ -34,7 +37,7 @@ class Particle {
     //shape of particles
     ellipse(this.x, this.y, size, size);
     
-    elementcolors();
+    
   }
   
   void elementcolors(){
@@ -54,9 +57,9 @@ class Particle {
       b=0;
     }
     if(BoolObs.earth){
-      r=30;
-      g=160;
-      b=0;
+      r=250;
+      g=200;
+      b=20;
     }
   }
 }
