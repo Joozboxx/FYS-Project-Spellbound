@@ -1,15 +1,19 @@
 class BulletWater {
   // Properties of the bullet
   float bulletX, bulletY;
-  float diameter;
+  float sizeX,sizeY;
   float vx, vy;
   boolean isFired, ableToFire;
   int cooldownTimer;
   PImage waterBulletIm = loadImage("waterbullet.png");
+ 
+  
+  
   // Giving the bullet initial values
   BulletWater() {
     waterBullets.add(this);
-    diameter = 30;
+    sizeX = 130;
+    sizeY = 30;
   }
 
 
@@ -52,7 +56,7 @@ class BulletWater {
   // This method draws the bullet
   void draw() {
     noTint();
-    image(waterBulletIm, bulletX-60, bulletY, diameter+200, diameter);
+    image(waterBulletIm, bulletX, bulletY, sizeX, sizeY);
     noTint();
   }
 }

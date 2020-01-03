@@ -1,7 +1,7 @@
 class BulletEarth {
   // Properties of the bullet
   float bulletX, bulletY;
-  float diameter;
+  float sizeX, sizeY;
   float vx, vy;
   boolean isFired, ableToFire;
   int cooldownTimer;
@@ -9,7 +9,8 @@ class BulletEarth {
   // Giving the bullet initial values
   BulletEarth() {
     earthBullets.add(this);
-    diameter = 30;
+    sizeX = 130;
+    sizeY = 30;
     
   }
 
@@ -62,7 +63,7 @@ class BulletEarth {
   // This method draws the bullet
   void draw() {
     fill(earthBulletColor);
-    ellipse(bulletX, bulletY, diameter, diameter);
+    ellipse(bulletX, bulletY, sizeX, sizeY);
     
   }
 }

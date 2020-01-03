@@ -100,7 +100,7 @@ class ObstacleEarth {
         BulletEarth b = earthBullets.get(i);
 
         //pakt de waarden
-        if ((b.bulletX+b.diameter/2)> xearth && (b.bulletY+b.diameter/2)>yearth && (b.bulletY-b.diameter/2)<(yearth+ySize)) {
+        if ((b.bulletX+b.sizeX)> xearth && (b.bulletY+b.sizeY)>yearth && (b.bulletY-b.sizeY)<(yearth+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje

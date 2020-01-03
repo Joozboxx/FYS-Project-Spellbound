@@ -43,7 +43,7 @@ class ObstacleLife {
   //particle effect when obstacle gets destroyed
   void particlefx() {
     for (int i = 0; i < 30; i++) {
-      particles.add(new Particle(xlife, ylife+200,random(10) - 5,random(30)-10, 20));
+      particles.add(new Particle(xlife, ylife+200, random(10) - 5, random(30)-10, 20));
     }
   }
 
@@ -100,7 +100,7 @@ class ObstacleLife {
         BulletLife b = lifeBullets.get(i);
 
         //pakt de waarden
-        if ((b.bulletX+b.diameter/2)> xlife && (b.bulletY+b.diameter/2)>ylife && (b.bulletY-b.diameter/2)<(ylife+ySize)) {
+        if ((b.bulletX+b.sizeX)> xlife && (b.bulletY+b.sizeY)>ylife && (b.bulletY-b.sizeY)<(ylife+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje

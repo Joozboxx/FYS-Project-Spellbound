@@ -100,7 +100,7 @@ class ObstacleFire {
         BulletFire b = fireBullets.get(i);
 
         //pakt de waarden
-        if ((b.bulletX+b.diameter/2)> xfire && (b.bulletY+b.diameter/2)>yfire && (b.bulletY-b.diameter/2)<(yfire+ySize)) {
+        if ((b.bulletX+b.sizeX)> xfire && (b.bulletY+b.sizeY)>yfire && (b.bulletY-b.sizeY)<(yfire+ySize)) {
           //als de x waarde van de bullet groter is dan de x van het obstakel, 
           //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
           //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje

@@ -44,7 +44,7 @@ class ObstacleWater {
   void particlefx() {
     for (int i = 0; i < 30; i++) {
       //particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
-      particles.add(new Particle(xwater, ywater+200, random(10) - 5,random(30)-10, 20));
+      particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));
     }
   }
 
@@ -92,25 +92,23 @@ class ObstacleWater {
   }
 
 
-//COLLISION with Waterbullet
+  //COLLISION with Waterbullet
   void bulletHit() {
-    
+
     for (int i = 0; i < waterBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (waterBullets.size()>0) {
         BulletWater b = waterBullets.get(i);
 
-        //pakt de waarden
-        if ((b.bulletX+b.diameter/2)> xwater && (b.bulletY+b.diameter/2)>ywater && (b.bulletY-b.diameter/2)<(ywater+ySize)) {
-          //als de x waarde van de bullet groter is dan de x van het obstakel, 
-          //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
-          //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-         
-          
+        //collision check for bullet vs correct obstacle
+        if ((b.bulletX+b.sizeX)> xwater && (b.bulletY+b.sizeY)>ywater && (b.bulletY-b.sizeY)<(ywater+ySize)) {
+
+
           waterBullets.remove(i);
           points++;
           //calls void of particles
           particlefx();
+        
 
           //speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -132,22 +130,18 @@ class ObstacleWater {
           case 0:
             BoolObs.water = false;
             BoolObs.fire = true;
-            println("fire");
             break;
           case 1:
             BoolObs.water = false;
             BoolObs.earth = true;
-            println("water");
             break;
           case 2:
             BoolObs.water = false;
             BoolObs.life = true;
-            println("life");
             break;
           case 3:
             BoolObs.water = false;
             BoolObs.wall = true;
-            println("wall");
             break;
           }
         }

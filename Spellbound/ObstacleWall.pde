@@ -19,13 +19,33 @@ class ObstacleWall {
   void update() {
     xwall -= speed; 
 
-    if (xwall + xSize <0) {
+    //speed cap for obstacle
+    if (speed >= 25) {
+      speed = 25;
+    }
+
+    //calls void for when obstacle hits border of screen
+    borderHit();
+    
+
+    //what happens when the obstacle gets destroyed
+    if (BoolObs.wall == false) {
+      xwall=width+xSize;
+      ywall=random(20, (height-450));
+    }
+  }
+
+
+
+
+  void borderHit() {
+    if (xwall + xSize < 0 ) {
       xwall = width+xSize;
       ywall = random(20, (height-450));
-      
-      //speed of all obstacles get increased when passed the border
-      speed *=speedx; 
-      EnemyEarth.speed *= speedx;
+
+      //accelerates obstacle speed everytime the edge of screen gets hit
+      speed *=speedx;
+      EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyFire.speed *= speedx;
       EnemyLife.speed *= speedx;
@@ -38,28 +58,22 @@ class ObstacleWall {
       case 0:
         BoolObs.fire = true;
         BoolObs.wall = false;
-        println("fire");
         break;
       case 1:
-        BoolObs.water = true;
-        BoolObs.wall = false;
-        println("water");
-        break;
-      case 2:
         BoolObs.earth = true;
         BoolObs.wall = false;
-        println("life");
         break;
-        case 3:
+      case 2:
+        BoolObs.water = true;
+        BoolObs.wall = false;
+        break;
+      case 3:
         BoolObs.life = true;
         BoolObs.wall = false;
-        println("life");
         break;
       }
     }
-
-    if (speed >= 25) {
-      speed = 25;
-    }
   }
+
+
 }
