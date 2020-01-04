@@ -36,9 +36,6 @@ class ObstacleEarth {
     if (BoolObs.earth == false) {
       xearth=width+xSize;
       yearth=random(20, (height-450));
-      EnemyWater.blueparticles = false;
-      EnemyFire.redparticles = false;
-      EnemyLife.greenparticles = false;
     }
   }
 
@@ -95,9 +92,9 @@ class ObstacleEarth {
   }
 
 
-
+   //COLLISION with earthbullet
   void bulletHit() {
-    //COLLISION MET LIFEBULLET
+ 
     for (int i = 0; i < earthBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (earthBullets.size()>0) {
@@ -105,15 +102,16 @@ class ObstacleEarth {
 
         //pakt de waarden
         if ((b.bulletX+b.sizeX)> xearth && (b.bulletY+b.sizeY)>yearth && (b.bulletY-b.sizeY)<(yearth+ySize)) {
-          //als de x waarde van de bullet groter is dan de x van het obstakel, 
-          //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
-          //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
 
 
           earthBullets.remove(i);
           points++;
-          //calls void of particles
+          //boolean which activates the right color for the particles: red
           yellowparticles = true;
+          EnemyWater.blueparticles = false;
+          EnemyFire.redparticles = false;
+          EnemyLife.greenparticles = false;
+          //calls void of particles
           particlefx();
 
 

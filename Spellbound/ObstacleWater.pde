@@ -35,9 +35,6 @@ class ObstacleWater {
     if (BoolObs.water == false) {
       xwater=width+xSize;
       ywater=random(20, (height-450));
-      EnemyLife.greenparticles = false;
-      EnemyFire.redparticles = false;
-      EnemyEarth.yellowparticles = false;
     }
   }
 
@@ -109,8 +106,12 @@ class ObstacleWater {
 
           waterBullets.remove(i);
           points++;
-          //calls void of particles
+          //boolean which activates the right color for the particles: blue
           blueparticles=true;
+          EnemyLife.greenparticles = false;
+          EnemyFire.redparticles = false;
+          EnemyEarth.yellowparticles = false;
+          //calls void of particles
           particlefx();
 
 

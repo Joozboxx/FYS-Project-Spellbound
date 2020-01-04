@@ -36,9 +36,6 @@ class ObstacleFire {
     if (BoolObs.fire == false) {
       xfire=width+xSize;
       yfire=random(20, (height-450));
-      EnemyWater.blueparticles = false;
-      EnemyLife.greenparticles = false;
-      EnemyEarth.yellowparticles = false;
     }
   }
 
@@ -105,15 +102,15 @@ class ObstacleFire {
 
         //pakt de waarden
         if ((b.bulletX+b.sizeX)> xfire && (b.bulletY+b.sizeY)>yfire && (b.bulletY-b.sizeY)<(yfire+ySize)) {
-          //als de x waarde van de bullet groter is dan de x van het obstakel, 
-          //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
-          //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-
 
           fireBullets.remove(i);
           points++;
-          //calls void of particles
+          //boolean which activates the right color for the particles: red
           redparticles = true;
+          EnemyWater.blueparticles = false;
+          EnemyLife.greenparticles = false;
+          EnemyEarth.yellowparticles = false;
+          //calls void of particles
           particlefx();
 
           //speed of all obstacles get increased when destroyed
