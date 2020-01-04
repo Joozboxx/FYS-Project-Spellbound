@@ -6,6 +6,7 @@ class Particle {
   float size;
   //colors: red,green,nlue
   float r, g, b;
+  float colordecrease = 50;
 
 
 
@@ -21,12 +22,12 @@ class Particle {
   void update() {
     particlecolor();
     //colors (UwU)
-    stroke(0, 100);
+    strokeWeight(5);
+    stroke(r-colordecrease, g-colordecrease, b-colordecrease, 50);
     fill(r, g, b);
 
     //shape of particles
     ellipse(this.x, this.y, size, size);
-
 
     //how much particles goes to the right
     this.x+= this.xvel ;

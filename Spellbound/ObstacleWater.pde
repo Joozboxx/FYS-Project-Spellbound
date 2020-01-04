@@ -1,7 +1,7 @@
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed, speedx;
-  boolean blueparticles = false;
+  boolean blueparticles,dead = false;
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
@@ -25,7 +25,7 @@ class ObstacleWater {
     if (speed >= 30) {
       speed = 30;
     }
-
+   
     //calls void for when obstacle hits border of screen
     borderHit();
     //calls void when correct bullet hits obstacle
@@ -102,8 +102,7 @@ class ObstacleWater {
 
         //collision check for bullet vs correct obstacle
         if ((b.bulletX+b.sizeX)> xwater && (b.bulletY+b.sizeY)>ywater && (b.bulletY-b.sizeY)<(ywater+ySize)) {
-
-
+          
           waterBullets.remove(i);
           points++;
           //boolean which activates the right color for the particles: blue

@@ -5,7 +5,7 @@ class BulletFire {
   float vx, vy;
   boolean isFired, ableToFire;
   int cooldownTimer;
-  PImage waterBulletIm = loadImage("firebullet.png");
+  PImage fireBulletIm = loadImage("firebullet.png");
 
 
 
@@ -53,7 +53,6 @@ class BulletFire {
 
   // This method draws the bullet
   void draw() {
-    image(waterBulletIm, bulletX, bulletY, sizeX, sizeY);
-    noTint();
+    image(fireBulletIm, bulletX, bulletY, sizeX, sizeY);
   }
 }
