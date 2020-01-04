@@ -1,6 +1,7 @@
 class ObstacleEarth {
 
   float xearth, yearth, xSize, ySize, speed, speedx;
+  boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
 
   ObstacleEarth() {
@@ -35,6 +36,9 @@ class ObstacleEarth {
     if (BoolObs.earth == false) {
       xearth=width+xSize;
       yearth=random(20, (height-450));
+      EnemyWater.blueparticles = false;
+      EnemyFire.redparticles = false;
+      EnemyLife.greenparticles = false;
     }
   }
 
@@ -43,7 +47,7 @@ class ObstacleEarth {
   //particle effect when obstacle gets destroyed
   void particlefx() {
     for (int i = 0; i < 30; i++) {
-      particles.add(new Particle(xearth, yearth+200,random(10) - 5,random(30)-10, 20));
+      particles.add(new Particle(xearth, yearth+200, random(10) - 5, random(30)-10, 20));
     }
   }
 
@@ -109,6 +113,7 @@ class ObstacleEarth {
           earthBullets.remove(i);
           points++;
           //calls void of particles
+          yellowparticles = true;
           particlefx();
 
 
@@ -120,10 +125,10 @@ class ObstacleEarth {
           EnemyWall.speed *= speedx;
           myPlayer.playerSpeed *= 1.04;
 
-   
-   
-   
-   
+
+
+
+
           int elementType = (int)random(0, 4);
 
           // Every case switches the element randomly when hit by bullet

@@ -59,6 +59,7 @@ class Background {
     image(wingBack, dragonX + 48, dragonY - 117);
     image(dragon, dragonX, dragonY);
     image(wingFront, dragonX + 83, dragonY - 123);
+   
   }
 
   void drawSun() {

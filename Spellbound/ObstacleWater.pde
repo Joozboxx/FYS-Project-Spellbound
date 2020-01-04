@@ -1,6 +1,7 @@
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed, speedx;
+  boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
@@ -20,7 +21,6 @@ class ObstacleWater {
 
   void update() {
     xwater -= speed; 
-
     //speed cap for obstacle
     if (speed >= 30) {
       speed = 30;
@@ -35,6 +35,9 @@ class ObstacleWater {
     if (BoolObs.water == false) {
       xwater=width+xSize;
       ywater=random(20, (height-450));
+      EnemyLife.greenparticles = false;
+      EnemyFire.redparticles = false;
+      EnemyEarth.yellowparticles = false;
     }
   }
 
@@ -107,8 +110,9 @@ class ObstacleWater {
           waterBullets.remove(i);
           points++;
           //calls void of particles
+          blueparticles=true;
           particlefx();
-        
+
 
           //speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -117,10 +121,6 @@ class ObstacleWater {
           EnemyFire.speed *= speedx;
           EnemyWall.speed *= speedx;
           myPlayer.playerSpeed *= 1.04;
-
-
-
-
 
           int elementType = (int)random(0, 4);
 

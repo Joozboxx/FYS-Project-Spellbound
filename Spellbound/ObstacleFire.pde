@@ -1,6 +1,7 @@
 class ObstacleFire {
 
   float xfire, yfire, xSize, ySize, speed, speedx;
+  boolean redparticles = false;
   PImage fire = loadImage("elementfire.png");
 
   ObstacleFire() {
@@ -35,6 +36,9 @@ class ObstacleFire {
     if (BoolObs.fire == false) {
       xfire=width+xSize;
       yfire=random(20, (height-450));
+      EnemyWater.blueparticles = false;
+      EnemyLife.greenparticles = false;
+      EnemyEarth.yellowparticles = false;
     }
   }
 
@@ -43,7 +47,7 @@ class ObstacleFire {
   //particle effect when obstacle gets destroyed
   void particlefx() {
     for (int i = 0; i < 30; i++) {
-      particles.add(new Particle(xfire, yfire+200,random(10) - 5,random(30)-10, 20));
+      particles.add(new Particle(xfire, yfire+200, random(10) - 5, random(30)-10, 20));
     }
   }
 
@@ -109,6 +113,7 @@ class ObstacleFire {
           fireBullets.remove(i);
           points++;
           //calls void of particles
+          redparticles = true;
           particlefx();
 
           //speed of all obstacles get increased when destroyed

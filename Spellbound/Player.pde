@@ -122,9 +122,7 @@ void edge() {
 }
 
 void collide() {
-  if (checkCollision()) {
-    fill(255, 0, 0, 90);
-    rect(0, 0, 1920, 1080);
+  if (checkCollision()){
     gameIsOver=true;
   }
 }

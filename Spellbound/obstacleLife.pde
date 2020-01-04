@@ -1,6 +1,7 @@
 class ObstacleLife {
 
   float xlife, ylife, xSize, ySize, speed, speedx;
+  boolean greenparticles = false;
   PImage life = loadImage("elementlife.png");
 
   ObstacleLife() {
@@ -35,6 +36,9 @@ class ObstacleLife {
     if (BoolObs.life == false) {
       xlife=width+xSize;
       ylife=random(20, (height-450));
+      EnemyWater.blueparticles = false;
+      EnemyFire.redparticles = false;
+      EnemyEarth.yellowparticles = false;
     }
   }
 
@@ -101,14 +105,12 @@ class ObstacleLife {
 
         //pakt de waarden
         if ((b.bulletX+b.sizeX)> xlife && (b.bulletY+b.sizeY)>ylife && (b.bulletY-b.sizeY)<(ylife+ySize)) {
-          //als de x waarde van de bullet groter is dan de x van het obstakel, 
-          //EN de y waarde van de bullet tussen de y waarde (bovenste punt) en de y waarde+size (onderste punt) zit. 
-          //de diameter/2 zorgt ervoor dat de collision rekening houdt met de grootte van het balletje
-
+          
 
           lifeBullets.remove(i);
           points++;
           //calls void of particles
+          greenparticles = true;
           particlefx();
 
           //speed of all obstacles get increased when destroyed
