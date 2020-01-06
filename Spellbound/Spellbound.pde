@@ -11,6 +11,7 @@ booleanObs BoolObs;
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
 
+
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
@@ -26,6 +27,7 @@ int points;
 void setup() {
   //Set window size
   size(1920, 1080, P3D);
+  frameRate(120);
 
   backgroundLevel = new Background();
 
@@ -68,7 +70,7 @@ void setup() {
 }
 
 void draw() {
- 
+
   if (gameIsOver) {
     gameOverScreen.gameOverScreen();
     gameOverScreen.draw();
@@ -80,7 +82,6 @@ void draw() {
       backgroundLevel.drawSun();   
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
-
 
       BoolObs.Check();
 
@@ -116,7 +117,6 @@ void draw() {
         Particle p = particles.get(i);
         
         p.update();
-
       }
     }else {
   pauseScreen.pauseMenu();

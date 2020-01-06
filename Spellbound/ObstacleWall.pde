@@ -51,7 +51,6 @@ class ObstacleWall {
       EnemyLife.speed *= speedx;
 
       int elementType = (int)random(0, 4);
-
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
       {

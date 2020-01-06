@@ -24,7 +24,6 @@ class Player {
   void draw() {
 
     //player
-    noFill();
     image(player, xPlayer, yPlayer-floating, PlayerSizeW, PlayerSizeH);
 
     //shadow under player
@@ -71,20 +70,23 @@ void tween(float tempX, float tempY) {
 
 
 void move() {
-  // Move the player with keyboard keys
-  //87 is w
+//if you press UP/W you go up, otherwise you will slowly go down
   if (keys[87]){
     yPlayer -= playerSpeed;
   }
 else{
   yPlayer +=0.8;
 }
+//if you press DOWN/S you go down, otherwise you will slowly go down
   if (keys[83]){
     yPlayer += playerSpeed;
   }
 else{
   yPlayer +=0.8;
 }
+
+
+//playerspeed cap, for moving is 20
   if (playerSpeed >= 20) {
     playerSpeed = 20;
   }
@@ -95,16 +97,16 @@ else{
 void shotsfired() {
 
   if (keyCode == 76&& cooldown()) {
-    new BulletFire().fire(0, 8);
+    new BulletFire().fire(0, 15);
   }
   if (keyCode == 75&& cooldown()) {
-    new BulletEarth().fire(0, 8);
+    new BulletEarth().fire(0, 15);
   }
   if (keyCode == 74&& cooldown()) {
-    new BulletLife().fire(0, 8);
+    new BulletLife().fire(0, 15);
   }
   if (keyCode == 73&& cooldown()) {
-    new BulletWater().fire(0, 8);
+    new BulletWater().fire(0, 15);
   }
   if (keyCode == 72&& cooldown()) {
     setup();

@@ -1,7 +1,7 @@
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed, speedx;
-  boolean blueparticles,dead = false;
+  boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");
 
   ObstacleWater() {
@@ -12,7 +12,8 @@ class ObstacleWater {
     speed = 15;
     speedx = 1.05;
   }
-
+  
+//draws the obstacle
   void draw() {
     image(water, xwater, ywater, xSize, ySize);
   }
@@ -92,11 +93,11 @@ class ObstacleWater {
   }
 
 
-  //COLLISION with Waterbullet
+  //Collision with Waterbullet
   void bulletHit() {
 
     for (int i = 0; i < waterBullets.size(); i++) {
-      //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
+      //Ensures a collision check as long as there is more than 0 bullets in the game
       if (waterBullets.size()>0) {
         BulletWater b = waterBullets.get(i);
 
