@@ -28,7 +28,8 @@ class Background {
   float cloudTwoY = 30;
   float cloudOneSpeed = 2; 
   float cloudTwoSpeed = 2;
-
+  float backgroundX = 0;
+  float backgroundY = 0;
   // Grass variables
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
@@ -36,7 +37,7 @@ class Background {
 
   void draw() {
     // Draw the background layer
-    image(backgroundLayer, 0, 0);
+    image(backgroundLayer, backgroundX, backgroundY);
 
     // Draw the grass
     drawGrass();
@@ -59,7 +60,18 @@ class Background {
     image(wingBack, dragonX + 48, dragonY - 117);
     image(dragon, dragonX, dragonY);
     image(wingFront, dragonX + 83, dragonY - 123);
-   
+    if ( EnemyEarth.screenShakeTimer > 0){
+      float shakeAmount = random(-10,10);
+      
+      pushMatrix();
+      translate(this.backgroundX,this.backgroundY);
+      
+      PImage background = get();
+      imageMode(CORNER);
+      image(background,shakeAmount , shakeAmount);
+      EnemyEarth.screenShakeTimer--;
+      popMatrix();
+    }
   }
 
   void drawSun() {
