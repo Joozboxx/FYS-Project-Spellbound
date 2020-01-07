@@ -167,7 +167,7 @@ class Player {
 
     //restarts the game after you press H
     if (keyCode == 72&& cooldown()) {
-      restartgame.restartt();
+      setup();
       gameIsOver = false;
     }
   }
