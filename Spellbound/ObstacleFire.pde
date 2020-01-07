@@ -10,7 +10,7 @@ class ObstacleFire {
     xSize = 65;
     ySize = 400;
     speed = 15;
-    speedx = 1.05;
+    speedx = 1.03;
   }
 
   void draw() {
@@ -119,7 +119,7 @@ class ObstacleFire {
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
           EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= 1.04;
+          myPlayer.playerSpeed *= 1.03;
 
 
 

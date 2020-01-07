@@ -9,7 +9,7 @@ class ObstacleWall {
     xSize = 65;
     ySize = 400;
     speed = 12;
-    speedx = 1.05;
+    speedx = 1.03;
   }
 
   void draw() {
