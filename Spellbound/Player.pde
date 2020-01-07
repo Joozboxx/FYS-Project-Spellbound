@@ -150,7 +150,7 @@ class Player {
     //restarts the game after you press H
     if (keyCode == 72&& cooldown()) {
       setup();
-      gameMode = 1;
+      gameMode = 2;
     }
   }
 
@@ -165,7 +165,7 @@ class Player {
 
   void collide() {
     if (checkCollision()) {
-      gameMode = 0;
+      gameMode = 1;
     }
   }
 
