@@ -121,7 +121,7 @@ class ObstacleWater {
           EnemyLife.speed *= speedx;
           EnemyFire.speed *= speedx;
           EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= 1.03;
+          myPlayer.playerSpeed *= 1.04;
 
           int elementType = (int)random(0, 4);
 

@@ -14,6 +14,7 @@ class BulletFire {
     fireBullets.add(this);
     sizeX = 130;
     sizeY = 30;
+        bulletX = -sizeX;
   }
 
 

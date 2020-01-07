@@ -121,7 +121,7 @@ class ObstacleEarth {
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
           EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= 1.03;
+          myPlayer.playerSpeed *= 1.04;
 
 
 
