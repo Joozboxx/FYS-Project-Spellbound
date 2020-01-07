@@ -9,10 +9,13 @@ class Player {
   float bulletCooldown = 900;
   boolean ableToFire;
 
+
   //wind fx
   float [] windX = new float [15];
   float []windY = new float [15];
   float windSize = 200;
+
+
 
   //Setup player variables
   Player() {
@@ -35,6 +38,8 @@ class Player {
     }
   }
 
+
+
   // Draws the player shape
   void draw() {
 
@@ -46,13 +51,13 @@ class Player {
     noStroke();
     fill(20, 120);
     ellipse(xShadow, 980, 0.9*(d), 0.04*d);
-    
-    
-//calls void tween
+
+
+    //calls void tween
     tween(width/10, 0);
   }
 
-//tweening for the player (up and down "animation")
+  //tweening for the player (up and down "animation")
   void tween(float tempX, float tempY) {
     //float for player(meaning,meaning,meaning)
     floating = sin(angle)*(250)*0.07;
@@ -88,6 +93,9 @@ class Player {
       }
     }//wind effect   
 
+
+
+
     // Adds 1 point when you hit an obstacle
     fill(186, 55, 100);
     textSize(32);
@@ -111,6 +119,8 @@ class Player {
   }
 
   void cap() {
+
+
     //playerspeed cap, for moving is 20
     if (playerSpeed >= 30) {
       playerSpeed = 30;
@@ -149,7 +159,6 @@ class Player {
 
     //restarts the game after you press H
     if (keyCode == 72&& cooldown()) {
-      setup();
       gameMode = 1;
     }
   }

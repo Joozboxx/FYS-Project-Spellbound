@@ -10,7 +10,7 @@ ObstacleWall EnemyWall;
 booleanObs BoolObs;
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
-
+MainMenu mainMenuScreen;
 
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
@@ -20,7 +20,7 @@ ArrayList<BulletWater> waterBullets ;
 ArrayList<Particle> particles;
 
 boolean isPauseGame = false;
-boolean gameIsOver = false;
+int gameMode = 0;
 
 int points;
 
@@ -30,6 +30,7 @@ void setup() {
   frameRate(120);
 
   backgroundLevel = new Background();
+  mainMenuScreen = new MainMenu();
 
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();
@@ -43,10 +44,8 @@ void setup() {
   earthBullets = new ArrayList<BulletEarth>();
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
-
   particles = new ArrayList<Particle>();
-  
-  
+
   for (int i = 0; i <10; i++) {
     fireBullets.add(new BulletFire());
   }
@@ -59,10 +58,8 @@ void setup() {
   for (int i = 0; i <10; i++) {
     waterBullets.add(new BulletWater());
   }
-  
 
   pauseScreen = new PauseMenu();
-
   gameOverScreen = new GameOver();
 
   //points you have at the start of the game
@@ -71,10 +68,16 @@ void setup() {
 
 void draw() {
 
-  if (gameIsOver) {
+  switch(gameMode) {
+  case 0: 
+    mainMenuScreen.mainMenuScreen();
+    mainMenuScreen.draw();
+    break;
+  case 1:
     gameOverScreen.gameOverScreen();
     gameOverScreen.draw();
-  } else {
+    break;
+  case 2:
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
       // Draw classes
@@ -87,7 +90,6 @@ void draw() {
 
       myPlayer.update();
       myPlayer.draw();
-
 
       for (int i = 0; i < fireBullets.size(); i++) {
         BulletFire f = fireBullets.get(i);
@@ -115,14 +117,14 @@ void draw() {
       }
       for (int i = 0; i < particles.size(); i++) {
         Particle p = particles.get(i);
-        
+
         p.update();
       }
-    }else {
-  pauseScreen.pauseMenu();
-  pauseScreen.draw();
-}
-}
+    } else {
+      pauseScreen.pauseMenu();
+      pauseScreen.draw();
+    }
+  }
 }
 
 void keyPressed() {
