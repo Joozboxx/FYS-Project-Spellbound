@@ -1,6 +1,6 @@
 class ObstacleEarth {
 
-  float xearth, yearth, xSize, ySize, speed, speedx;
+  float xearth, yearth, xSize, ySize, speed, speedx, screenShakeTimer;
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
 
@@ -113,7 +113,8 @@ class ObstacleEarth {
           EnemyLife.greenparticles = false;
           //calls void of particles
           particlefx();
-
+  
+          screenShakeTimer = 2;
 
           //speed of all obstacles get increased when destroyed
           speed *= speedx;
