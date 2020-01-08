@@ -114,7 +114,7 @@ class ObstacleEarth {
           //calls void of particles
           particlefx();
   
-          screenShakeTimer = 2;
+          screenShakeTimer = 1.3;
 
           //speed of all obstacles get increased when destroyed
           speed *= speedx;
