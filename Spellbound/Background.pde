@@ -61,7 +61,7 @@ class Background {
     image(dragon, dragonX, dragonY);
     image(wingFront, dragonX + 83, dragonY - 123);
     if ( EnemyEarth.screenShakeTimer > 0){
-      float shakeAmount = random(-10,10);
+      float shakeAmount = 15;
       
       pushMatrix();
       translate(this.backgroundX,this.backgroundY);
