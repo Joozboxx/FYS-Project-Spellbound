@@ -22,6 +22,8 @@ ArrayList<Particle> particles;
 boolean isPauseGame = false;
 int gameMode = 0;
 
+
+Coin BonusCoin;
 int points;
 
 void setup() {
@@ -62,6 +64,8 @@ void setup() {
   pauseScreen = new PauseMenu();
   gameOverScreen = new GameOver();
 
+
+BonusCoin = new Coin();
   //points you have at the start of the game
   points = 0;
 }
@@ -85,6 +89,9 @@ void draw() {
       backgroundLevel.drawSun();   
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
+      
+      BonusCoin.update();
+      BonusCoin.draw();
 
       BoolObs.Check();
 

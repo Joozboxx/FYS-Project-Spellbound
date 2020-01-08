@@ -72,10 +72,13 @@ class Player {
   void update() {
     // Handle player
     move();
+    cap();
     edge();
     collide();
-    cap();
+    
 
+
+//wind effect 
     for (int i = 0; i < windX.length; i++)
     {
       windX[i]-= 30;
@@ -86,7 +89,7 @@ class Player {
 
         windY[i] = random(50, 800);
       }
-    }//wind effect   
+    }  
 
     // Adds 1 point when you hit an obstacle
     fill(186, 55, 100);
