@@ -29,7 +29,7 @@ int points;
 void setup() {
   //Set window size
   size(1920, 1080, P3D);
-  frameRate(120);
+  frameRate(60);
 
   backgroundLevel = new Background();
   mainMenuScreen = new MainMenu();

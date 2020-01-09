@@ -9,7 +9,7 @@ class ObstacleWater {
     ywater = random(20, (height-450));
     xSize = 65;
     ySize = 400;
-    speed = 15;
+    speed = 10;
     speedx = 1.03;
   }
   
@@ -21,7 +21,7 @@ class ObstacleWater {
 
 
   void update() {
-    xwater -= speed; 
+    xwater -= speed;
     //speed cap for obstacle
     if (speed >= 30) {
       speed = 30;

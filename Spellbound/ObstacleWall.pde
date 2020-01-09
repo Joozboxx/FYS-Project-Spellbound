@@ -8,7 +8,7 @@ class ObstacleWall {
     ywall = random(20, (height-450));
     xSize = 65;
     ySize = 400;
-    speed = 12;
+    speed = 8;
     speedx = 1.03;
   }
 

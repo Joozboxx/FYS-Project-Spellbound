@@ -9,7 +9,7 @@ class ObstacleEarth {
     yearth = random(20, (height-450));
     xSize = 65;
     ySize = 400;
-    speed = 15;
+    speed = 10;
     speedx = 1.03;
   }
 
