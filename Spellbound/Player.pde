@@ -2,17 +2,14 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
-  float xShadow, y, floating, d, angle;
+  float xShadow, yShadow, floating, d, angle;
   boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
   float lastShot = 0;
   float bulletCooldown = 900;
   boolean ableToFire;
 
-  //wind fx
-  float [] windX = new float [15];
-  float []windY = new float [15];
-  float windSize = 200;
+
 
   //Setup player variables
   Player() {
@@ -21,18 +18,11 @@ class Player {
     yPlayer = height/2;
     PlayerSizeH = 200;
     PlayerSizeW = 250;
-    playerSpeed = 12;
+    playerSpeed = 9;
     border = height-(PlayerSizeH-100);
     xShadow = width/10;
 
-    //wind fx
-    for (int i =0; i < windX.length; i++) {
-      windX[i] = random(width, width+500);
-    }
-
-    for (int i =0; i < windY.length; i++) {
-      windY[i] = random(50, 1000);
-    }
+    
   }
 
   // Draws the player shape
@@ -60,12 +50,12 @@ class Player {
     angle += 0.03;
 
 
-    y = tempY;
+    yShadow = tempY;
     // tweening for shadow
     pushMatrix();
-    translate(xShadow, y);
-    //tweening size for shadow(meaning,meanign,emeainign,meanign)
-    d = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
+    translate(xShadow, yShadow);
+    //tweening size for shadow(meaning,meanign,emeainign,meanign)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    d = dist(xShadow, 200, xShadow+(yPlayer*0.257)+500, floating); 
     popMatrix();
   }
 
@@ -76,20 +66,6 @@ class Player {
     edge();
     collide();
     
-
-
-//wind effect 
-    for (int i = 0; i < windX.length; i++)
-    {
-      windX[i]-= 30;
-
-      if (windX[i]+windSize <= -400) {
-
-        windX[i] = random(width, width + 500);
-
-        windY[i] = random(50, 800);
-      }
-    }  
 
     // Adds 1 point when you hit an obstacle
     fill(186, 55, 100);
@@ -117,16 +93,6 @@ class Player {
     //playerspeed cap, for moving is 20
     if (playerSpeed >= 30) {
       playerSpeed = 30;
-
-
-      //wind fx
-      for (int i =0; i < windY.length; i++) {
-
-        strokeWeight(5);
-        stroke(185, 255, 255, 60);
-
-        line(windX[i], windY[i], windX[i]+windSize, windY[i]);
-      }
     }
   }
 
@@ -152,7 +118,7 @@ class Player {
 
     //restarts the game after you press H
     if (keyCode == 72&& cooldown()) {
-      setup();
+      
       gameMode = 2;
     }
   }

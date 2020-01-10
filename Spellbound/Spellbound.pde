@@ -11,6 +11,7 @@ booleanObs BoolObs;
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
 MainMenu mainMenuScreen;
+WindEffect Wind;
 
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
@@ -41,6 +42,7 @@ void setup() {
   EnemyEarth = new ObstacleEarth();
   EnemyWall = new ObstacleWall();
   BoolObs = new booleanObs();
+  Wind = new WindEffect();
 
   fireBullets = new ArrayList<BulletFire>();
   earthBullets = new ArrayList<BulletEarth>();
@@ -65,7 +67,7 @@ void setup() {
   gameOverScreen = new GameOver();
 
 
-BonusCoin = new Coin();
+  BonusCoin = new Coin();
   //points you have at the start of the game
   points = 0;
 }
@@ -82,6 +84,7 @@ void draw() {
     gameOverScreen.draw();
     break;
   case 2:
+  
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
       // Draw classes
@@ -89,11 +92,14 @@ void draw() {
       backgroundLevel.drawSun();   
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
-      
+
       BonusCoin.update();
       BonusCoin.draw();
 
       BoolObs.Check();
+
+      Wind.update();
+      Wind.draw();
 
       myPlayer.update();
       myPlayer.draw();

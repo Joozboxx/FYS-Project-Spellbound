@@ -1,6 +1,8 @@
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed, speedx;
+  //zorgt ervoor dat eerst de basis elementen komen. 
+  int maxObstacle = 3;
   boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");
 
@@ -12,8 +14,8 @@ class ObstacleWater {
     speed = 10;
     speedx = 1.03;
   }
-  
-//draws the obstacle
+
+  //draws the obstacle
   void draw() {
     image(water, xwater, ywater, xSize, ySize);
   }
@@ -22,11 +24,16 @@ class ObstacleWater {
 
   void update() {
     xwater -= speed;
+
+    if (points >= 10) {
+      maxObstacle = 4;
+    }
+
     //speed cap for obstacle
     if (speed >= 30) {
       speed = 30;
     }
-   
+
     //calls void for when obstacle hits border of screen
     borderHit();
     //calls void when correct bullet hits obstacle
@@ -63,7 +70,7 @@ class ObstacleWater {
       EnemyFire.speed *= speedx;
       EnemyWall.speed *= speedx;
 
-      int elementType = (int)random(0, 4);
+      int elementType = (int)random(0, maxObstacle);
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -103,7 +110,7 @@ class ObstacleWater {
 
         //collision check for bullet vs correct obstacle
         if ((b.bulletX+b.sizeX)> xwater && (b.bulletY+b.sizeY)>ywater && (b.bulletY-b.sizeY)<(ywater+ySize)) {
-          
+
           waterBullets.remove(i);
           points++;
           //boolean which activates the right color for the particles: blue
@@ -121,9 +128,9 @@ class ObstacleWater {
           EnemyLife.speed *= speedx;
           EnemyFire.speed *= speedx;
           EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= 1.04;
+          myPlayer.playerSpeed *= speedx;
 
-          int elementType = (int)random(0, 4);
+          int elementType = (int)random(0, maxObstacle);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)

@@ -1,54 +1,75 @@
 class Coin {
 
 
-boolean Bonus= false;
+  boolean Bonus= false;
   PImage CoinIm = loadImage("coin.png");
   float CoinX, CoinY, CoinSize;
   float rotation;
   float rotationSpeed = 1.3;
+  int multiplier = 1;
 
   Coin() {
     CoinX = width+width/10;
-    CoinY = height/2;
+    CoinY = random(100, 800);
     CoinSize = 100;
   }
   void draw() {
-    if(points>10){
+    if (points == 12 * multiplier) {
       Bonus = true;
     }
- 
   }
 
-  void update() {
-    
-    if (Bonus){
-   CoinX-=20;
-
-    // Makes sure that rotation is only applied to sun
+  void rotationimage() {
+    //Rotates the Coin
     pushMatrix();
 
     translate(CoinX-100, CoinY);
 
-    // Rotate sun
+
     rotate(radians(rotation));
     rotation -= rotationSpeed;
     image(CoinIm, CoinIm.width/2-380, CoinIm.height/2-380, CoinSize, CoinSize);
 
     // Makes sure that rotation is only applied to sun
     popMatrix();
+  }
 
+  void update() {
+    collision();
 
-    if (CoinY >= height) {
-      CoinY = height;
-    }
-    
-    if(CoinY <= 0) {
-      CoinY = 0;
-    }
-    
-    if (CoinX < 0-CoinSize) {
-      CoinX = width+width/2;
+    if (Bonus) {
+      // speed from Coin
+      CoinX-=40;
+      // calls void that creates the coin
+      rotationimage();
     }
   }
+
+
+
+
+
+  void collision() {
+    //if the player hits the coin, the coin spawns at the beginning of the right side, despawns and gives you 5 points
+    if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= CoinX)
+      &&(myPlayer.xPlayer <= CoinX + CoinSize)
+      &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= CoinY)
+      &&(myPlayer.yPlayer<=CoinY + CoinSize))
+    {
+      CoinX = width+width/10;
+      CoinY = random(100, 800);
+      Bonus = false;
+      points +=5;
+      multiplier++;
+    }
+
+    // if the coin does not get hit, it will despawn and be set at the right side, out of the screen
+    if (CoinX < 0-CoinSize) {
+      CoinX = width+width/10;
+      CoinX = width+width/10;
+      CoinY = random(100, 800);
+      Bonus = false;
+      multiplier++;
+    }
   }
 }

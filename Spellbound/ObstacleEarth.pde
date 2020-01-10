@@ -1,6 +1,8 @@
 class ObstacleEarth {
 
   float xearth, yearth, xSize, ySize, speed, speedx, screenShakeTimer;
+  //zorgt ervoor dat eerst de basis elementen komen. 
+  int maxObstacle = 3;
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
 
@@ -21,6 +23,10 @@ class ObstacleEarth {
 
   void update() {
     xearth -= speed; 
+
+    if (points >= 10) {
+      maxObstacle = 4;
+    }
 
     //speed cap for obstacle
     if (speed >= 30) {
@@ -62,7 +68,10 @@ class ObstacleEarth {
       EnemyLife.speed *= speedx;
       EnemyWall.speed *= speedx;
 
-      int elementType = (int)random(0, 4);
+
+
+      int elementType = (int)random(0, maxObstacle);
+
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -92,9 +101,9 @@ class ObstacleEarth {
   }
 
 
-   //COLLISION with earthbullet
+  //COLLISION with earthbullet
   void bulletHit() {
- 
+
     for (int i = 0; i < earthBullets.size(); i++) {
       //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (earthBullets.size()>0) {
@@ -113,7 +122,7 @@ class ObstacleEarth {
           EnemyLife.greenparticles = false;
           //calls void of particles
           particlefx();
-  
+
           screenShakeTimer = 1.3;
 
           //speed of all obstacles get increased when destroyed
@@ -122,13 +131,13 @@ class ObstacleEarth {
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
           EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= 1.04;
+          myPlayer.playerSpeed *= speedx;
 
 
 
 
 
-          int elementType = (int)random(0, 4);
+          int elementType = (int)random(0, maxObstacle);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)

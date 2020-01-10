@@ -1,6 +1,8 @@
 class ObstacleLife {
 
   float xlife, ylife, xSize, ySize, speed, speedx;
+  //zorgt ervoor dat eerst de basis elementen komen. 
+  int maxObstacle = 3;
   boolean greenparticles = false;
   PImage life = loadImage("elementlife.png");
 
@@ -21,6 +23,10 @@ class ObstacleLife {
 
   void update() {
     xlife -= speed; 
+
+    if (points >= 10) {
+      maxObstacle = 4;
+    }
 
     //speed cap for obstacle
     if (speed >= 30) {
@@ -62,7 +68,7 @@ class ObstacleLife {
       EnemyFire.speed *= speedx;
       EnemyWall.speed *= speedx;
 
-      int elementType = (int)random(0, 4);
+      int elementType = (int)random(0, maxObstacle);
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -120,13 +126,13 @@ class ObstacleLife {
           EnemyWater.speed *= speedx;
           EnemyFire.speed *= speedx;
           EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= 1.03;
+          myPlayer.playerSpeed *= speedx;
 
 
 
 
 
-          int elementType = (int)random(0, 4);
+          int elementType = (int)random(0, maxObstacle);
 
           // Every case switches the element randomly when hit by bullet
           switch(elementType)
