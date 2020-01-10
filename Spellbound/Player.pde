@@ -54,8 +54,8 @@ class Player {
     // tweening for shadow
     pushMatrix();
     translate(xShadow, yShadow);
-    //tweening size for shadow(meaning,meanign,emeainign,meanign)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    d = dist(xShadow, 200, xShadow+(yPlayer*0.257)+500, floating); 
+    //tweening size for shadow(widthSize(resizes according to the X position of the player),widthSize(doesnt make the tweening visible),widthSize(doesnt change the tweening),size of the shadow in general)
+    d = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
     popMatrix();
   }
 
@@ -118,7 +118,7 @@ class Player {
 
     //restarts the game after you press H
     if (keyCode == 72&& cooldown()) {
-      
+      setup();
       gameMode = 2;
     }
   }
