@@ -132,6 +132,9 @@ void draw() {
         Particle p = particles.get(i);
 
         p.update();
+        p.draw();
+        
+ 
       }
     } else {
       pauseScreen.pauseMenu();

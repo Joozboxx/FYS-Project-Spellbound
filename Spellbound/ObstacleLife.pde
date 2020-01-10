@@ -112,11 +112,13 @@ class ObstacleLife {
 
           lifeBullets.remove(i);
           points++;
+          
           //boolean which activates the right color for the particles: green
           greenparticles = true;
           EnemyWater.blueparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
+          
           //calls void of particles
           particlefx();
 

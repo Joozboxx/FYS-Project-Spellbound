@@ -50,11 +50,14 @@ class ObstacleWater {
 
   //particle effect when obstacle gets destroyed
   void particlefx() {
+    
     for (int i = 0; i < 30; i++) {
       //particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
-      particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));
+      particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));   
     }
-  }
+  
+}
+  
 
 
 
@@ -113,11 +116,13 @@ class ObstacleWater {
 
           waterBullets.remove(i);
           points++;
+          
           //boolean which activates the right color for the particles: blue
           blueparticles=true;
           EnemyLife.greenparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
+          
           //calls void of particles
           particlefx();
 

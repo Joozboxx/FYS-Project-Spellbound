@@ -2,12 +2,16 @@ class Player {
 
   // Player variables
   float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
-  float xShadow, yShadow, floating, d, angle;
-  boolean [] keys = new boolean[1024];
   PImage player = loadImage("spellboundplayer.png");
+  //variables for the tweening effect of the player and shadow
+  float xShadow, yShadow, floating, d, angle;
+  //allows us to use all keys of they keyboard without the game crashing
+  boolean [] keys = new boolean[1024];
   float lastShot = 0;
   float bulletCooldown = 900;
+  float bulletSpeed =15;
   boolean ableToFire;
+  
 
 
 
@@ -101,19 +105,19 @@ class Player {
 
     //fire bullet activates after you press L
     if (keyCode == 76&& cooldown()) {
-      new BulletFire().fire(0, 15);
+      new BulletFire().fire(0, bulletSpeed);
     }
     //earth bullet activates after you press K
     if (keyCode == 75&& cooldown()) {
-      new BulletEarth().fire(0, 15);
+      new BulletEarth().fire(0, bulletSpeed);
     }
     //life bullet activates after you press J
     if (keyCode == 74&& cooldown()) {
-      new BulletLife().fire(0, 15);
+      new BulletLife().fire(0, bulletSpeed);
     }
     //water bullet activates after you press I
     if (keyCode == 73&& cooldown()) {
-      new BulletWater().fire(0, 15);
+      new BulletWater().fire(0, bulletSpeed);
     }
 
     //restarts the game after you press H

@@ -1,6 +1,6 @@
 class Particle {
-  float x;
-  float y;
+  float particleX;
+  float particleY;
   float xvel;
   float yvel;
   float size;
@@ -10,31 +10,24 @@ class Particle {
 
 
 
-  Particle(float x, float y, float xvel, float yvel, float size) {
-    this.x = x;
-    this.y = y;
+  Particle(float particleX, float particleY, float xvel, float yvel, float size) {
+    this.particleX = particleX;
+    this.particleY = particleY;
     this.xvel = xvel;
     this.yvel = yvel;
     this.size = size;
   }
 
-
-  void update() {
+  void draw() {
     particlecolor();
     //colors (UwU)
     strokeWeight(5);
-    stroke(r-colordecrease, g-colordecrease, b-colordecrease, 50);
+    //makes the outline of the particles a little darker(red, blue,green,opacity)
+    stroke(r-colordecrease, g-colordecrease, b-colordecrease, colordecrease);
     fill(r, g, b);
 
     //shape of particles
-    ellipse(this.x, this.y, size, size);
-
-    //how much particles goes to the right
-    this.x+= this.xvel ;
-    this.xvel +=2;
-
-    //how much particles goes down
-    this.y+=this.yvel;
+    ellipse(particleX, particleY, size, size);
   }
 
   void particlecolor() {
@@ -62,4 +55,20 @@ class Particle {
       b=20;
     }
   }
+
+  void update() {
+
+
+    //how much particles goes to the right
+    particleX+= xvel ;
+    xvel +=2;
+
+    //how much particles goes down
+    particleY+=yvel;
+
+    if (particleX >= width-300) {
+      particles.clear();
+    }
+  }
+  
 }
