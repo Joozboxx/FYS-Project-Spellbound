@@ -63,7 +63,7 @@ class Coin {
       multiplier++;
     }
 
-    // if the coin does not get hit, it will despawn and be set at the right side, out of the screen
+    // if the coin does not get hit, it will despawn and be set at the beginning of the right side of the screen
     if (CoinX < 0-CoinSize) {
       CoinX = width+width/10;
       CoinX = width+width/10;

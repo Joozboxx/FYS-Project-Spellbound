@@ -12,6 +12,8 @@ PauseMenu pauseScreen;
 GameOver gameOverScreen;
 MainMenu mainMenuScreen;
 WindEffect Wind;
+RestartGame Restart;
+
 
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
@@ -34,6 +36,7 @@ void setup() {
 
   backgroundLevel = new Background();
   mainMenuScreen = new MainMenu();
+  Restart = new RestartGame();
 
   myPlayer = new Player();
   EnemyFire = new ObstacleFire();

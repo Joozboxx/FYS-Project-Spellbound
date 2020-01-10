@@ -66,9 +66,10 @@ class Particle {
     //how much particles goes down
     particleY+=yvel;
 
-    if (particleX >= width-300) {
+   /* if (particleX >= width-300) {
       particles.clear();
     }
-  }
   
+  */
+  }
 }

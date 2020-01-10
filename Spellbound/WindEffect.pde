@@ -1,8 +1,8 @@
 class WindEffect {
 
   //wind fx
-  float [] windX = new float [15];
-  float []windY = new float [15];
+  float [] windX = new float [20];
+  float []windY = new float [20];
   float windSize = 200;
 
   WindEffect() {
@@ -24,8 +24,8 @@ class WindEffect {
       //wind fx
       for (int i =0; i < windY.length; i++) {
 
-        strokeWeight(5);
-        stroke(185, 255, 255, 60);
+        
+        stroke(185, 255, 255, 30);
 
         line(windX[i], windY[i], windX[i]+windSize, windY[i]);
       }
@@ -36,9 +36,10 @@ class WindEffect {
 
     //wind effect 
     for (int i = 0; i < windX.length; i++) {
+      //windspeed
       windX[i]-= 30;
 
-      if (windX[i]+windSize <= -400) {
+      if (windX[i]+windSize <= -200) {
 
         windX[i] = random(width, width + 500);
 
