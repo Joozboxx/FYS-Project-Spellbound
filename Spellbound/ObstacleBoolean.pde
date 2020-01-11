@@ -13,35 +13,25 @@ class booleanObs {
     if (fire == true) {
       EnemyFire.update();
       EnemyFire.draw();
-    } else
-    {
-    }
+    } 
     // Calls the earth class
     if (earth == true) {
       EnemyEarth.update();
       EnemyEarth.draw();
-    } else
-    {
-    }
+    } 
     // Calls the life class
     if (life == true) {
       EnemyLife.update();
       EnemyLife.draw();
-    } else
-    {
-    }
+    } 
     // Calls the water class
     if (water ==true) { 
       EnemyWater.update();
       EnemyWater.draw();
-    } else
-    {
-    }
+    } 
     if (wall ==true) { 
       EnemyWall.update();
       EnemyWall.draw();
-    } else
-    {
-    }
+    } 
   }
 }

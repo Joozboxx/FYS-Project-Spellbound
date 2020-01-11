@@ -1,6 +1,6 @@
 class ObstacleWall {
 
-  float xwall, ywall, xSize, ySize, speed, speedx;
+  float xwall, ywall, xSize, ySize, speed, speedx, speedcap;
   PImage wall = loadImage("elementWALL.png");
 
   ObstacleWall() {
@@ -10,6 +10,7 @@ class ObstacleWall {
     ySize = 400;
     speed = 8;
     speedx = 1.03;
+    speedcap = 30;
   }
 
   void draw() {
@@ -20,8 +21,8 @@ class ObstacleWall {
     xwall -= speed; 
 
     //speed cap for obstacle
-    if (speed >= 25) {
-      speed = 25;
+    if (speed >= speedcap) {
+      speed = speedcap;
     }
 
     //calls void for when obstacle hits border of screen

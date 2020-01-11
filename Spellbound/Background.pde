@@ -32,7 +32,7 @@ class Background {
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
   float grassSpeed = 10;
-  float grassSpeedmultiplier = 1.01;
+  float grassSpeedmultiplier = 1.03;
 
   void draw() {
     // Draw the background layer

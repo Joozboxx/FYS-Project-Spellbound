@@ -1,6 +1,6 @@
 class ObstacleWater {
 
-  float xwater, ywater, xSize, ySize, speed, speedx;
+  float xwater, ywater, xSize, ySize, speed, speedx,speedcap;
   //zorgt ervoor dat eerst de basis elementen komen. 
   int maxObstacle = 3;
   boolean blueparticles = false;
@@ -13,6 +13,7 @@ class ObstacleWater {
     ySize = 400;
     speed = 10;
     speedx = 1.03;
+    speedcap = 35;
   }
 
   //draws the obstacle
@@ -30,8 +31,8 @@ class ObstacleWater {
     }
 
     //speed cap for obstacle
-    if (speed >= 30) {
-      speed = 30;
+    if (speed >= speedcap) {
+      speed = speedcap;
     }
 
     //calls void for when obstacle hits border of screen

@@ -9,7 +9,6 @@ class Particle {
   float colordecrease = 50;
 
 
-
   Particle(float particleX, float particleY, float xvel, float yvel, float size) {
     this.particleX = particleX;
     this.particleY = particleY;
@@ -35,41 +34,35 @@ class Particle {
       r=38;
       g=148;
       b=241;
-    }
-
-    if (EnemyFire.redparticles) {
+    } else if (EnemyFire.redparticles) {
       r=255;
       g=0;
       b=0;
-    }
-
-    if (EnemyLife.greenparticles) {
+    } else if (EnemyLife.greenparticles) {
       r=0;
       g=255;
       b=0;
-    }
-
-    if (EnemyEarth.yellowparticles) {
+    } else if (EnemyEarth.yellowparticles) {
       r=250;
       g=200;
       b=20;
     }
   }
 
-  void update() {
+    void update() {
 
 
-    //how much particles goes to the right
-    particleX+= xvel ;
-    xvel +=2;
+      //how much particles goes to the right
+      particleX+= xvel ;
+      xvel +=2;
 
-    //how much particles goes down
-    particleY+=yvel;
+      //how much particles goes down
+      particleY+=yvel;
 
-   /* if (particleX >= width-300) {
-      particles.clear();
+      /* if (particleX >= width-300) {
+       particles.clear();
+       }
+       
+       */
     }
-  
-  */
   }
-}
