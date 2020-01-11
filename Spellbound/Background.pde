@@ -7,13 +7,14 @@ class Background {
   PImage cloudOne = loadImage("Cloud.png");
   PImage cloudTwo = loadImage("Cloud.png");
   PImage sun = loadImage("Sun.png");
-  PImage dragon = loadImage("Dragon/Dragon.png");
+  PImage dragon = loadImage("Dragon Compleet.png");
+  PImage dragon2 = loadImage("Dragon/Dragon.png");
   PImage wingFront = loadImage("Dragon/Wing Front.png");
   PImage wingBack = loadImage("Dragon/Wing Back.png");
 
   // Dragon variables
   float dragonX = 650;
-  float dragonY = 200;
+  float dragonY = 45;
 
   // Sun variables
   float sunX = 1280;
@@ -57,9 +58,10 @@ class Background {
     drawSun();
 
     // Draw the dragon
-    image(wingBack, dragonX + 48, dragonY - 117);
-    image(dragon, dragonX, dragonY);
-    image(wingFront, dragonX + 83, dragonY - 123);
+    image(dragon,dragonX,dragonY);
+    dragon.resize(220,220);
+
+    // 
     if ( EnemyEarth.screenShakeTimer > 0){
       float shakeAmount = 15;
       
@@ -131,7 +133,7 @@ class Background {
       grassSpeed *= 1.01;
     }
 
-    //cap speed of grass
+    // Cap speed of grass
     if (grassSpeed >= 30) {
       grassSpeed = 30;
     }
