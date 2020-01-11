@@ -81,22 +81,22 @@ class ObstacleEarth {
       case 0:
         BoolObs.life = true;
         BoolObs.earth = false;
-        println("earth");
+      
         break;
       case 1:
         BoolObs.fire = true;
         BoolObs.earth = false;
-        println("water");
+       
         break;
       case 2:
         BoolObs.water = true;
         BoolObs.earth = false;
-        println("life");
+       
         break;
       case 3:
         BoolObs.wall = true;
         BoolObs.earth = false;
-        println("wall");
+        
         break;
       }
     }
@@ -118,10 +118,11 @@ class ObstacleEarth {
           earthBullets.remove(i);
           points++;
           //boolean which activates the right color for the particles: red
-          yellowparticles = true;
+          
           EnemyWater.blueparticles = false;
           EnemyFire.redparticles = false;
           EnemyLife.greenparticles = false;
+          yellowparticles = true;
           //calls void of particles
           particlefx();
 

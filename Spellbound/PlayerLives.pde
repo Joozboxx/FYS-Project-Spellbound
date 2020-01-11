@@ -2,8 +2,6 @@ class PlayerLives {
 
 
   float [] liveX = {30, 115, 200};
-  float one, two, three;
-  boolean heart1 = true, heart2 = true, heart3 = true;
   float liveSizeW = 65, liveSizeH = 50;
   int lifeCount = 3;
 

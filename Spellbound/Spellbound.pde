@@ -104,8 +104,6 @@ void draw() {
 
 
 
-
-
       for (int i = 0; i < fireBullets.size(); i++) {
         BulletFire f = fireBullets.get(i);
 
@@ -140,6 +138,7 @@ void draw() {
       pauseScreen.pauseMenu();
       pauseScreen.draw();
     }
+    break;
   }
 }
 

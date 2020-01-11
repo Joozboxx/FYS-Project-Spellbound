@@ -119,11 +119,11 @@ class ObstacleWater {
           points++;
 
           //boolean which activates the right color for the particles: blue
-          blueparticles=true;
+
           EnemyLife.greenparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
-
+          blueparticles=true;
           //calls void of particles
           particlefx();
 

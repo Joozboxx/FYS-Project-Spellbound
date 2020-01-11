@@ -114,10 +114,11 @@ class ObstacleFire {
           fireBullets.remove(i);
           points++;
           //boolean which activates the right color for the particles: red
-          redparticles = true;
+          
           EnemyWater.blueparticles = false;
           EnemyLife.greenparticles = false;
           EnemyEarth.yellowparticles = false;
+          redparticles = true;
           //calls void of particles
           particlefx();
 

@@ -31,7 +31,8 @@ class Background {
   // Grass variables
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
-  float grassSpeed = 15;
+  float grassSpeed = 10;
+  float grassSpeedmultiplier = 1.01;
 
   void draw() {
     // Draw the background layer
@@ -121,13 +122,13 @@ class Background {
     // If grass one moves past 0, add grass two and speed grass up
     if (grassOneX + grassOne.width < 0) {
       grassOneX = grassTwoX + grassTwo.width;  
-      grassSpeed *= 1.01;
+      grassSpeed *= grassSpeedmultiplier;
     }
 
     // If grass two moves past 0, add grass one and speed grass up
     if (grassTwoX + grassTwo.width < 0) {
       grassTwoX = grassOneX + grassOne.width;
-      grassSpeed *= 1.01;
+      grassSpeed *= grassSpeedmultiplier;
     }
 
     // Cap speed of grass
