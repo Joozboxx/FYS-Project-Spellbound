@@ -11,7 +11,6 @@ class Player {
   float bulletCooldown = 900;
   float bulletSpeed =15;
   boolean ableToFire;
-  int maxObstacle = 3;
 
 
 
@@ -67,19 +66,6 @@ class Player {
     move();
     cap();
     edge();
-  
-
-    if (points >= 10) {
-      maxObstacle = 4;
-    }
-
-
-
-    // Adds 1 point when you hit an obstacle
-    fill(186, 55, 100);
-    textSize(32);
-    textAlign(CENTER);
-    text("OBSTACLES HIT: " + points, width/2, 50);
   }
 
   void move() {
@@ -103,6 +89,16 @@ class Player {
       playerSpeed = 30;
     }
   }
+
+  void edge() {
+    // Border of player movement
+    if (yPlayer > border-250) {
+      yPlayer = border-250;
+    } else if (yPlayer < 50) {
+      yPlayer = 50;
+    }
+  }
+
 
   // Calls the bullets to fire with the appropriate key
   void shotsfired() {
@@ -130,16 +126,6 @@ class Player {
       gameMode = 2;
     }
   }
-
-  void edge() {
-    // Border of player movement
-    if (yPlayer > border-250) {
-      yPlayer = border-250;
-    } else if (yPlayer < 50) {
-      yPlayer = 50;
-    }
-  }
-
 
 
   // Checks if 2 seconds have gone by since the last bullet was shot

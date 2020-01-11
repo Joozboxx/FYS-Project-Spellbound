@@ -1,34 +1,28 @@
 class PlayerLives {
- //maak 3 objecten . als obstakel wordt geraakt. (i)--. als (i) = 0 ((KIJK BIJ OBSTAKEL VOOR BULLETCOLLISION) gamestate = 1;
-  
- float [] liveX = {30,115,200};
- float one,two,three;
- boolean heart1 = true, heart2 = true, heart3 = true;
-  float liveSizeW = 70, liveSizeH = 50;
-int lifeCount = 3;
- 
- PImage heartlives = loadImage("heart.png");
+
+
+  float [] liveX = {30, 115, 200};
+  float one, two, three;
+  boolean heart1 = true, heart2 = true, heart3 = true;
+  float liveSizeW = 65, liveSizeH = 50;
+  int lifeCount = 3;
+
+  PImage heartlives = loadImage("heart.png");
 
 
   void draw() {
     for (int i =0; i < lifeCount; i++) {
       fill(255, 0, 0);
-      image(heartlives,liveX[i], 20, liveSizeW, liveSizeH);
-      
-      
+      image(heartlives, liveX[i], 20, liveSizeW, liveSizeH);
     }
-
   }  
 
-void update() {
-for (int i =0; i < liveX.length; i++){
-  
+  void update() {
+    for (int i =0; i < liveX.length; i++) {
 
-if (lifeCount <1) {
-    gameMode = 1;
+      if (lifeCount <1) {
+        gameMode = 1;
+      }
     }
-   
-    
   }
-}
 }
