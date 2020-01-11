@@ -66,6 +66,12 @@ class Player {
     move();
     cap();
     edge();
+    
+    // Adds 1 point when you hit an obstacle
+    fill(186, 55, 100);
+    textSize(32);
+    textAlign(CENTER);
+    text("OBSTACLES HIT: " + points, width/2, 50);
   }
 
   void move() {
