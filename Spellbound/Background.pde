@@ -8,9 +8,6 @@ class Background {
   PImage cloudTwo = loadImage("Cloud.png");
   PImage sun = loadImage("Sun.png");
   PImage dragon = loadImage("Dragon Compleet.png");
-  PImage dragon2 = loadImage("Dragon/Dragon.png");
-  PImage wingFront = loadImage("Dragon/Wing Front.png");
-  PImage wingBack = loadImage("Dragon/Wing Back.png");
 
   // Dragon variables
   float dragonX = 650;
