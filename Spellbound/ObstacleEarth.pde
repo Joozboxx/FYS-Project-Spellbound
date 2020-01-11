@@ -37,6 +37,8 @@ class ObstacleEarth {
     borderHit();
     //calls void when correct bullet hits obstacle
     bulletHit();
+    //calls void for when player gets hit
+    collisionplayer();
 
     //what happens when the obstacle gets destroyed
     if (BoolObs.earth == false) {
@@ -49,7 +51,7 @@ class ObstacleEarth {
 
   //particle effect when obstacle gets destroyed
   void particlefx() {
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 20; i++) {
       particles.add(new Particle(xearth, yearth+200, random(10) - 5, random(30)-10, 20));
     }
   }
@@ -165,6 +167,44 @@ class ObstacleEarth {
           }
         }
       }
+    }
+  }
+
+  void collisionplayer() {
+    // Checks if the player hits the obstacle earth
+    if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= EnemyEarth.xearth)
+      &&(myPlayer.xPlayer <= EnemyEarth.xearth + EnemyEarth.xSize)
+      &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= EnemyEarth.yearth)
+      &&(myPlayer.yPlayer<=EnemyEarth.yearth + EnemyEarth.ySize))
+    {
+      int elementType = (int)random(0, maxObstacle);
+
+      // Every case switches the element randomly when hit by bullet
+      switch(elementType)
+      {
+      case 0:
+        BoolObs.life = true;
+        BoolObs.earth = false;
+        println("earth");
+        break;
+      case 1:
+        BoolObs.fire = true;
+        BoolObs.earth = false;
+        println("water");
+        break;
+      case 2:
+        BoolObs.water = true;
+        BoolObs.earth = false;
+        println("life");
+        break;
+      case 3:
+        BoolObs.wall = true;
+        BoolObs.earth = false;
+        println("wall");
+        break;
+      }
+
+      Lives.lifeCount--;
     }
   }
 }

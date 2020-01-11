@@ -2,12 +2,19 @@ class RestartGame{
   
   void restart(){
   myPlayer = new Player();
+  Lives = new PlayerLives();
+  
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   EnemyWall = new ObstacleWall();
-  BoolObs = new booleanObs();
+  
+  BoolObs.water = true;
+  BoolObs.fire = false;
+  BoolObs.life = false;
+  BoolObs.earth = false;
+  BoolObs.wall = false;
   
   fireBullets = new ArrayList<BulletFire>();
   earthBullets = new ArrayList<BulletEarth>();

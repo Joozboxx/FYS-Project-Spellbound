@@ -39,7 +39,7 @@ class WindEffect {
       //windspeed
       windX[i]-= 30;
 
-      if (windX[i]+windSize <= -200) {
+      if (windX[i]+windSize <= 0) {
 
         windX[i] = random(width, width + 500);
 

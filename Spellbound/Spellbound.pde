@@ -2,12 +2,15 @@ import processing.sound.*;
 
 Background backgroundLevel;
 Player myPlayer;
+PlayerLives Lives;
+
 ObstacleFire EnemyFire;
 ObstacleWater EnemyWater;
 ObstacleLife EnemyLife;
 ObstacleEarth EnemyEarth;
 ObstacleWall EnemyWall;
 booleanObs BoolObs;
+
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
 MainMenu mainMenuScreen;
@@ -39,12 +42,14 @@ void setup() {
   Restart = new RestartGame();
 
   myPlayer = new Player();
+  Lives = new PlayerLives();
   EnemyFire = new ObstacleFire();
   EnemyWater = new ObstacleWater();
   EnemyLife = new ObstacleLife(); 
   EnemyEarth = new ObstacleEarth();
   EnemyWall = new ObstacleWall();
   BoolObs = new booleanObs();
+
   Wind = new WindEffect();
 
   fireBullets = new ArrayList<BulletFire>();
@@ -52,19 +57,6 @@ void setup() {
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
   particles = new ArrayList<Particle>();
-
-  for (int i = 0; i <10; i++) {
-    fireBullets.add(new BulletFire());
-  }
-  for (int i = 0; i <10; i++) {
-    earthBullets.add(new BulletEarth());
-  }
-  for (int i = 0; i <10; i++) {
-    lifeBullets.add(new BulletLife());
-  }
-  for (int i = 0; i <10; i++) {
-    waterBullets.add(new BulletWater());
-  }
 
   pauseScreen = new PauseMenu();
   gameOverScreen = new GameOver();
@@ -87,7 +79,7 @@ void draw() {
     gameOverScreen.draw();
     break;
   case 2:
-  
+
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
       // Draw classes
@@ -99,6 +91,9 @@ void draw() {
       BonusCoin.update();
       BonusCoin.draw();
 
+      Lives.update();
+      Lives.draw();
+
       BoolObs.Check();
 
       Wind.update();
@@ -106,6 +101,10 @@ void draw() {
 
       myPlayer.update();
       myPlayer.draw();
+
+
+
+
 
       for (int i = 0; i < fireBullets.size(); i++) {
         BulletFire f = fireBullets.get(i);
@@ -136,8 +135,6 @@ void draw() {
 
         p.update();
         p.draw();
-        
- 
       }
     } else {
       pauseScreen.pauseMenu();

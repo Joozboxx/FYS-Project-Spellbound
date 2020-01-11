@@ -38,6 +38,8 @@ class ObstacleWater {
     borderHit();
     //calls void when correct bullet hits obstacle
     bulletHit();
+    //calls void for when player gets hit
+    collisionplayer();
 
     //what happens when the obstacle gets destroyed
     if (BoolObs.water == false) {
@@ -50,14 +52,13 @@ class ObstacleWater {
 
   //particle effect when obstacle gets destroyed
   void particlefx() {
-    
-    for (int i = 0; i < 30; i++) {
+
+    for (int i = 0; i < 20; i++) {
       //particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
-      particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));   
+      particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));
     }
-  
-}
-  
+  }
+
 
 
 
@@ -116,13 +117,13 @@ class ObstacleWater {
 
           waterBullets.remove(i);
           points++;
-          
+
           //boolean which activates the right color for the particles: blue
           blueparticles=true;
           EnemyLife.greenparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
-          
+
           //calls void of particles
           particlefx();
 
@@ -159,6 +160,40 @@ class ObstacleWater {
           }
         }
       }
+    }
+  }
+
+  void collisionplayer() {
+    // Checks if the player hits the obstacle
+    if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= EnemyWater.xwater)
+      &&(myPlayer.xPlayer <= EnemyWater.xwater + EnemyWater.xSize)
+      &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= EnemyWater.ywater)
+      &&(myPlayer.yPlayer<=EnemyWater.ywater + EnemyWater.ySize))
+    {
+      int elementType = (int)random(0, maxObstacle);
+
+      // Every case switches the element randomly when hit by bullet
+      switch(elementType)
+      {
+      case 0:
+        BoolObs.water = false;
+        BoolObs.fire = true;
+        break;
+      case 1:
+        BoolObs.water = false;
+        BoolObs.earth = true;
+        break;
+      case 2:
+        BoolObs.water = false;
+        BoolObs.life = true;
+        break;
+      case 3:
+        BoolObs.water = false;
+        BoolObs.wall = true;
+        break;
+      }
+
+      Lives.lifeCount--;
     }
   }
 }

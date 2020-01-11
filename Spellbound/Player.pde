@@ -11,7 +11,8 @@ class Player {
   float bulletCooldown = 900;
   float bulletSpeed =15;
   boolean ableToFire;
-  
+  int maxObstacle = 3;
+
 
 
 
@@ -25,8 +26,6 @@ class Player {
     playerSpeed = 9;
     border = height-(PlayerSizeH-100);
     xShadow = width/10;
-
-    
   }
 
   // Draws the player shape
@@ -40,13 +39,13 @@ class Player {
     noStroke();
     fill(20, 120);
     ellipse(xShadow, 980, 0.9*(d), 0.04*d);
-    
-    
-//calls void tween
+
+
+    //calls void tween
     tween(width/10, 0);
   }
 
-//tweening for the player (up and down "animation")
+  //tweening for the player (up and down "animation")
   void tween(float tempX, float tempY) {
     //float for player(meaning,meaning,meaning)
     floating = sin(angle)*(250)*0.07;
@@ -68,8 +67,13 @@ class Player {
     move();
     cap();
     edge();
-    collide();
-    
+  
+
+    if (points >= 10) {
+      maxObstacle = 4;
+    }
+
+
 
     // Adds 1 point when you hit an obstacle
     fill(186, 55, 100);
@@ -136,62 +140,12 @@ class Player {
     }
   }
 
-  void collide() {
-    if (checkCollision()) {
-      gameMode = 1;
-    }
-  }
+
 
   // Checks if 2 seconds have gone by since the last bullet was shot
   boolean cooldown() {
     if ( lastShot < millis() - bulletCooldown) {
       lastShot = millis();
-      return true;
-    }
-    return false;
-  }
-
-
-  boolean checkCollision() {
-
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyFire.xfire)
-      &&(xPlayer <= EnemyFire.xfire + EnemyFire.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyFire.yfire )
-      &&(yPlayer<=EnemyFire.yfire + EnemyFire.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyWater.xwater)
-      &&(xPlayer <= EnemyWater.xwater + EnemyWater.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyWater.ywater)
-      &&(yPlayer<=EnemyWater.ywater + EnemyWater.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyLife.xlife)
-      &&(xPlayer <= EnemyLife.xlife + EnemyLife.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyLife.ylife)
-      &&(yPlayer<=EnemyLife.ylife + EnemyLife.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle
-    if ((xPlayer + PlayerSizeW >= EnemyEarth.xearth)
-      &&(xPlayer <= EnemyEarth.xearth + EnemyEarth.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyEarth.yearth)
-      &&(yPlayer<=EnemyEarth.yearth + EnemyEarth.ySize))
-    {
-      return true;
-    }
-    // Checks if the player hits the obstacle wall
-    if ((xPlayer + PlayerSizeW >= EnemyWall.xwall)
-      &&(xPlayer <= EnemyWall.xwall + EnemyWall.xSize)
-      &&(yPlayer+PlayerSizeH >= EnemyWall.ywall)
-      &&(yPlayer<=EnemyWall.ywall + EnemyWall.ySize))
-    {
       return true;
     }
     return false;

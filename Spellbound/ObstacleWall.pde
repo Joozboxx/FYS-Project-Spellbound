@@ -26,7 +26,8 @@ class ObstacleWall {
 
     //calls void for when obstacle hits border of screen
     borderHit();
-    
+    //calls void for when player gets hit
+    collisionplayer();
 
     //what happens when the obstacle gets destroyed
     if (BoolObs.wall == false) {
@@ -74,5 +75,36 @@ class ObstacleWall {
     }
   }
 
+  void collisionplayer() {
+    // Checks if the player hits the obstacle wall
+    if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= EnemyWall.xwall)
+      &&(myPlayer.xPlayer <= EnemyWall.xwall + EnemyWall.xSize)
+      &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= EnemyWall.ywall)
+      &&(myPlayer.yPlayer<=EnemyWall.ywall + EnemyWall.ySize))
+    {
+      int elementType = (int)random(0, 4);
+      // Every case switches the element randomly when hit by bullet
+      switch(elementType)
+      {
+      case 0:
+        BoolObs.fire = true;
+        BoolObs.wall = false;
+        break;
+      case 1:
+        BoolObs.earth = true;
+        BoolObs.wall = false;
+        break;
+      case 2:
+        BoolObs.water = true;
+        BoolObs.wall = false;
+        break;
+      case 3:
+        BoolObs.life = true;
+        BoolObs.wall = false;
+        break;
+      }
 
+      Lives.lifeCount--;
+    }
+  }
 }

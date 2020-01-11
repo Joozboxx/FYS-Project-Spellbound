@@ -37,7 +37,8 @@ class ObstacleLife {
     borderHit();
     //calls void when correct bullet hits obstacle
     bulletHit();
-
+    //calls void for when player gets hit
+    collisionplayer();
     //what happens when the obstacle gets destroyed
     if (BoolObs.life == false) {
       xlife=width+xSize;
@@ -49,7 +50,7 @@ class ObstacleLife {
 
   //particle effect when obstacle gets destroyed
   void particlefx() {
-    for (int i = 0; i < 30; i++) {
+    for (int i = 0; i < 20; i++) {
       particles.add(new Particle(xlife, ylife+200, random(10) - 5, random(30)-10, 20));
     }
   }
@@ -112,13 +113,13 @@ class ObstacleLife {
 
           lifeBullets.remove(i);
           points++;
-          
+
           //boolean which activates the right color for the particles: green
           greenparticles = true;
           EnemyWater.blueparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
-          
+
           //calls void of particles
           particlefx();
 
@@ -162,6 +163,44 @@ class ObstacleLife {
           }
         }
       }
+    }
+  }
+
+  void collisionplayer() {
+    // Checks if the player hits the obstacle life
+    if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= EnemyLife.xlife)
+      &&(myPlayer.xPlayer <= EnemyLife.xlife + EnemyLife.xSize)
+      &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= EnemyLife.ylife)
+      &&(myPlayer.yPlayer<=EnemyLife.ylife + EnemyLife.ySize))
+    {
+      int elementType = (int)random(0, maxObstacle);
+
+      // Every case switches the element randomly when hit by bullet
+      switch(elementType)
+      {
+      case 0:
+        BoolObs.fire = true;
+        BoolObs.life = false;
+        println("fire");
+        break;
+      case 1:
+        BoolObs.earth = true;
+        BoolObs.life = false;
+        println("water");
+        break;
+      case 2:
+        BoolObs.water = true;
+        BoolObs.life = false;
+        println("life");
+        break;
+      case 3:
+        BoolObs.wall = true;
+        BoolObs.life = false;
+        println("wall");
+        break;
+      }
+
+      Lives.lifeCount--;
     }
   }
 }
