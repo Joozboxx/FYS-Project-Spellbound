@@ -92,6 +92,7 @@ void draw() {
   case 2:
     controlsScreen.controlsScreen();
     controlsScreen.draw();
+    break;
   case 3:
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
@@ -155,6 +156,7 @@ void draw() {
 
 void keyPressed() {
   myPlayer.keyPressed();
+  mainMenuScreen.keyPressed();
   
   // If spacebar is pressed, pause the game. And if spacebar released, start the game
   if (key == ' ') {
@@ -164,4 +166,5 @@ void keyPressed() {
 
 void keyReleased() {
   myPlayer.keyReleased();
+  mainMenuScreen.keyReleased();
 }

@@ -32,7 +32,7 @@ class Background {
   float cloudTwoX = 1250;
   float cloudTwoY = 30;
   float cloudOneSpeed = 2; 
-  float cloudTwoSpeed = 2;
+  float cloudTwoSpeed = 1.7;
   float backgroundPosition = 0;
   
   // Grass variables
