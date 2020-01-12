@@ -40,18 +40,15 @@ class BulletEarth {
     // Use the velocity to calculate the new position
     bulletX += vx;
     bulletY += vy;
+    die();
   }
   void die() {
-    for (int i = 0; i <= earthBullets.size(); i++) {
-
-      BulletEarth e = earthBullets.get(i);
+    for (int i = 0; i < earthBullets.size(); i++) {
+ BulletEarth e = earthBullets.get(i);
       if (bulletX > width - 500) {
         earthBullets.remove(i);
       }
     }
-  }
-
-  void collisionWithObject() {
   }
 
   // This method draws the bullet

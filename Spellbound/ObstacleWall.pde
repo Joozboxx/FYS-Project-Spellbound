@@ -9,7 +9,7 @@ class ObstacleWall {
     xSize = 65;
     ySize = 400;
     speed = 8;
-    speedx = 1.03;
+    speedx = 1.02;
     speedcap = 30;
   }
 

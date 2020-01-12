@@ -7,6 +7,7 @@ class Particle {
   //colors: red,green,nlue
   float r, g, b;
   float colordecrease = 50;
+  float particleborder = 300;
 
 
   Particle(float particleX, float particleY, float xvel, float yvel, float size) {
@@ -59,10 +60,10 @@ class Particle {
       //how much particles goes down
       particleY+=yvel;
 
-      /* if (particleX >= width-300) {
+      if (particleX >= width-particleborder) {
        particles.clear();
        }
        
-       */
+       
     }
   }

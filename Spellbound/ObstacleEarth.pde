@@ -12,7 +12,7 @@ class ObstacleEarth {
     xSize = 65;
     ySize = 400;
     speed = 10;
-    speedx = 1.03;
+    speedx = 1.02;
     speedcap = 35;
   }
 
