@@ -4,9 +4,12 @@ class Particle {
   float xvel;
   float yvel;
   float size;
-  // Colors: red,green,nlue
+  // Colors: red, green, blue
   float r, g, b;
+  // float which decrease the color, making it darker.
   float colordecrease = 50;
+  // Border which particles will not be able to reach
+  float particleborder = 300;
 
   Particle(float particleX, float particleY, float xvel, float yvel, float size) {
     this.particleX = particleX;
@@ -61,10 +64,11 @@ class Particle {
     // How much particles goes down
     particleY+=yvel;
 
-   /* if (particleX >= width-300) {
+// Clears the particles after its reached this horizontal position
+   if (particleX >= width-particleborder) {
       particles.clear();
     }
   
-  */
+ 
   }
 }

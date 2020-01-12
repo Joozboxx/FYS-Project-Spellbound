@@ -159,9 +159,15 @@ void keyPressed() {
   mainMenuScreen.keyPressed();
   
   // If spacebar is pressed, pause the game. And if spacebar released, start the game
-  if (key == ' ') {
+  if (keyCode == 32) {
     isPauseGame = !isPauseGame;
   }
+  
+  // Restarts the game after you press H
+    if (keyCode == 72) {
+      Restart.restart();
+      gameMode = 3;
+    }
 }
 
 void keyReleased() {

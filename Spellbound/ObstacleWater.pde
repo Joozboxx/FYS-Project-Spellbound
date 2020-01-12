@@ -3,6 +3,7 @@ class ObstacleWater {
   float xwater, ywater, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
+  // Decides the color of the particles
   boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");
 
@@ -12,7 +13,9 @@ class ObstacleWater {
     xSize = 65;
     ySize = 400;
     speed = 10;
+       // Speed multiplier after you hit an obstacle
     speedx = 1.03;
+     // Speed cap for what the maximum speed is
     speedcap=32;
   }
 
@@ -22,8 +25,9 @@ class ObstacleWater {
   }
 
   void update() {
+     // Makes the obstacle move
     xwater -= speed;
-
+// After you receive 10 points, another obstacle will be available to spawn; the wall obstacle
     if (points >= 10) {
       maxObstacle = 4;
     }
@@ -57,6 +61,7 @@ class ObstacleWater {
   }
 
   void borderHit() {
+       // If the obstacle hits the border: do this
     if (xwater + xSize < 0 ) {
       xwater = width+xSize;
       ywater = random(20, (height-450));
@@ -68,6 +73,7 @@ class ObstacleWater {
       EnemyFire.speed *= speedx;
       EnemyWall.speed *= speedx;
 
+ // Integer which will be able to switch the cases
       int elementType = (int)random(0, maxObstacle);
 
       // Every case switches the element randomly when hit by bullet
@@ -105,10 +111,11 @@ class ObstacleWater {
       if (waterBullets.size()>0) {
         BulletWater b = waterBullets.get(i);
 
-        // Collision check for bullet vs correct obstacle
+          // This is the collision check for when a bullet hits an obstacle. if collision is true: do this
         if ((b.bulletX+b.sizeX)> xwater && (b.bulletY+b.sizeY)>ywater && (b.bulletY-b.sizeY)<(ywater+ySize)) {
-
+        // Removes the bullet
           waterBullets.remove(i);
+           // Adds a point to your score
           points++;
 
           // Boolean which activates the right color for the particles: blue
@@ -119,7 +126,7 @@ class ObstacleWater {
           blueparticles=true;
           // Calls void of particles
           particlefx();
-          
+          // Decides the duration of the screen shake
           screenShakeTimer = 1.3;
           
           // Speed of all obstacles get increased when destroyed
@@ -130,6 +137,8 @@ class ObstacleWater {
           EnemyWall.speed *= speedx;
           myPlayer.playerSpeed *= speedx;
 
+
+// Integer which will be able to switch the cases
           int elementType = (int)random(0, maxObstacle);
 
           // Every case switches the element randomly when hit by bullet
@@ -158,12 +167,14 @@ class ObstacleWater {
   }
 
   void collisionplayer() {
-    // Checks if the player hits the obstacle
+    // Checks if the player hits the obstacle water
     if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= EnemyWater.xwater)
       &&(myPlayer.xPlayer <= EnemyWater.xwater + EnemyWater.xSize)
       &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= EnemyWater.ywater)
       &&(myPlayer.yPlayer<=EnemyWater.ywater + EnemyWater.ySize))
     {
+      
+      // Integer which will be able to switch the cases
       int elementType = (int)random(0, maxObstacle);
 
       // Every case switches the element randomly when hit by bullet
@@ -186,7 +197,7 @@ class ObstacleWater {
         BoolObs.wall = true;
         break;
       }
-
+// Removes one heart which represents your life
       Lives.lifeCount--;
     }
   }

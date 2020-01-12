@@ -39,9 +39,11 @@ class BulletEarth {
     bulletY += vy;
     die();
   }
+  
+  //removes bullet from the arraylist 
   void die() {
     for (int i = 0; i < earthBullets.size(); i++) {
- BulletEarth e = earthBullets.get(i);
+      BulletEarth e = earthBullets.get(i);
       if (bulletX > width - 500) {
         earthBullets.remove(i);
       }
