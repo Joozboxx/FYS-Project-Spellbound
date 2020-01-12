@@ -11,6 +11,9 @@ class Player {
   float bulletCooldown = 900;
   float bulletSpeed =15;
   boolean ableToFire;
+  // Score variables
+  float scorePositionX = 1860;
+  float scorePositionY = 77;
 
   // Setup player variables
   Player() {
@@ -36,7 +39,6 @@ class Player {
     fill(20, 120);
     ellipse(xShadow, 980, 0.9*(d), 0.04*d);
 
-
     // Calls void tween
     tween(width/10, 0);
   }
@@ -47,7 +49,6 @@ class Player {
     floating = sin(angle)*(250)*0.07;
     //speed of float(up and down)
     angle += 0.03;
-
 
     yShadow = tempY;
     // Tweening for shadow
@@ -65,10 +66,15 @@ class Player {
     edge();
     
     // Adds 1 point when you hit an obstacle
-    fill(186, 55, 100);
-    textSize(32);
     textAlign(CENTER);
-    text("OBSTACLES HIT: " + points, width/2, 50);
+    // Score text shade
+    fill(255);
+    textSize(50);
+    text(points, scorePositionX - 4, scorePositionY);
+    // Score text
+    fill(247, 147, 30);
+    textSize(50);
+    text(points, scorePositionX, scorePositionY);
   }
 
   void move() {
@@ -102,7 +108,6 @@ class Player {
     }
   }
 
-
   // Calls the bullets to fire with the appropriate key
   void shotsfired() {
 
@@ -126,10 +131,9 @@ class Player {
     // Restarts the game after you press H
     if (keyCode == 72) {
       Restart.restart();
-      gameMode = 2;
+      gameMode = 3;
     }
   }
-
 
   // Checks if 2 seconds have gone by since the last bullet was shot
   boolean cooldown() {
@@ -140,13 +144,11 @@ class Player {
     return false;
   }
 
-
   // Get keyboard input
   void keyPressed() {
     keys[keyCode] = true;
     shotsfired();
   }
-
 
   void keyReleased() {
     keys[keyCode] = false;

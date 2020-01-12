@@ -8,16 +8,24 @@ class Background {
   PImage cloudTwo = loadImage("Cloud.png");
   PImage sun = loadImage("Sun.png");
   PImage dragon = loadImage("Dragon Compleet.png");
-
+  PImage pause = loadImage("Pause.png");
+  PImage score = loadImage("Score.png");
+  
+  // Score variable
+  float scorePosition = 0;
+  
+  // Pause variables
+  float pausePosition = 0;
+  
   // Dragon variables
   float dragonPosition = 0;
-
+  
   // Sun variables
   float sunX = 1280;
   float sunY = 120;
   float rotation;
   float rotationSpeed = 0.2;
-
+  
   // Cloud variables
   float cloudOneX = 75;
   float cloudOneY = 30;
@@ -26,13 +34,14 @@ class Background {
   float cloudOneSpeed = 2; 
   float cloudTwoSpeed = 2;
   float backgroundPosition = 0;
+  
   // Grass variables
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
   float grassSpeed = 10;
   float grassSpeedmultiplier = 1.03;
 
-  void draw() {
+  void draw() {   
     // Draw the background layer
     image(backgroundLayer, backgroundPosition, backgroundPosition);
 
@@ -42,6 +51,12 @@ class Background {
     // Move the grass
     grassOneX -= grassSpeed;
     grassTwoX -= grassSpeed;
+    
+    // Draw the pause menu layer
+    image(pause, pausePosition, pausePosition);
+    
+    // Drae the score layer
+    image(score, scorePosition, scorePosition);
 
     // Draw the clouds
     drawClouds();

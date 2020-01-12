@@ -14,6 +14,7 @@ booleanObs BoolObs;
 PauseMenu pauseScreen;
 GameOver gameOverScreen;
 MainMenu mainMenuScreen;
+Controls controlsScreen;
 WindEffect Wind;
 RestartGame Restart;
 
@@ -37,6 +38,9 @@ void setup() {
 
   backgroundLevel = new Background();
   mainMenuScreen = new MainMenu();
+  controlsScreen = new Controls();
+  pauseScreen = new PauseMenu();
+  gameOverScreen = new GameOver();
   Restart = new RestartGame();
 
   myPlayer = new Player();
@@ -69,9 +73,6 @@ void setup() {
     waterBullets.add(new BulletWater());
   }
 
-  pauseScreen = new PauseMenu();
-  gameOverScreen = new GameOver();
-
   BonusCoin = new Coin();
   // Points you have at the start of the game
   points = 0;
@@ -89,7 +90,9 @@ void draw() {
     gameOverScreen.draw();
     break;
   case 2:
-
+    controlsScreen.controlsScreen();
+    controlsScreen.draw();
+  case 3:
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
       // Draw classes
@@ -152,7 +155,7 @@ void draw() {
 
 void keyPressed() {
   myPlayer.keyPressed();
-
+  
   // If spacebar is pressed, pause the game. And if spacebar released, start the game
   if (key == ' ') {
     isPauseGame = !isPauseGame;

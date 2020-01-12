@@ -3,7 +3,7 @@ class GameOver {
   // Load image
   PImage gameOver = loadImage("Game Over Screen.png");
   
-  // Game Over variable
+  // Game Over variables
   float gameOverPosition = 0;
   float textPositionX = width/2;
   float testPositionY = height/2 + 85;

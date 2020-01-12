@@ -2,10 +2,15 @@ class MainMenu {
 
   // Load images
   PImage mainMenuScreen = loadImage("Main Menu Screen.png");
+  PImage play = loadImage("Play.png");
+  PImage controls = loadImage("Controls.png");
+  PImage options = loadImage("Options.png");
   
+  int currentButton = 0;
+ 
   // Main menu variables
-  float mainMenuX = 0;
-  float mainMenuY = 0;
+  float positionX = 0;
+  float positionY = 0;
   
   void draw() {
     mainMenuScreen();
@@ -13,6 +18,7 @@ class MainMenu {
 
   void mainMenuScreen() {
     // Draw the menu layer
-    image(mainMenuScreen, mainMenuX, mainMenuY);
+    image(mainMenuScreen, positionX, positionY);
+    image(play, positionX, positionY);
   }
 }
