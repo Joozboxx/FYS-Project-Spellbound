@@ -13,7 +13,7 @@ class ObstacleWater {
     ySize = 400;
     speed = 10;
     speedx = 1.03;
-    speedcap=35;
+    speedcap=32;
   }
 
   // Draws the obstacle
