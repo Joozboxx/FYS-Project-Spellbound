@@ -1,7 +1,7 @@
 class ObstacleLife {
 
   float xlife, ylife, xSize, ySize, speed, speedx;
-  //zorgt ervoor dat eerst de basis elementen komen. 
+  // Zorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean greenparticles = false;
   PImage life = loadImage("elementlife.png");
@@ -19,8 +19,6 @@ class ObstacleLife {
     image(life, xlife, ylife, xSize, ySize);
   }
 
-
-
   void update() {
     xlife -= speed; 
 
@@ -28,27 +26,25 @@ class ObstacleLife {
       maxObstacle = 4;
     }
 
-    //speed cap for obstacle
+    // Speed cap for obstacle
     if (speed >= 30) {
       speed = 30;
     }
 
-    //calls void for when obstacle hits border of screen
+    // Calls void for when obstacle hits border of screen
     borderHit();
-    //calls void when correct bullet hits obstacle
+    // Calls void when correct bullet hits obstacle
     bulletHit();
-    //calls void for when player gets hit
+    // Calls void for when player gets hit
     collisionplayer();
-    //what happens when the obstacle gets destroyed
+    // What happens when the obstacle gets destroyed
     if (BoolObs.life == false) {
       xlife=width+xSize;
       ylife=random(20, (height-450));
     }
   }
 
-
-
-  //particle effect when obstacle gets destroyed
+  // Particle effect when obstacle gets destroyed
   void particlefx() {
     for (int i = 0; i < 20; i++) {
       particles.add(new Particle(xlife, ylife+200, random(10) - 5, random(30)-10, 20));
@@ -62,7 +58,7 @@ class ObstacleLife {
       xlife = width+xSize;
       ylife = random(20, (height-450));
 
-      //accelerates obstacle speed everytime the edge of screen gets hit
+      // accelerates obstacle speed everytime the edge of screen gets hit
       speed *=1.15;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
@@ -98,43 +94,38 @@ class ObstacleLife {
     }
   }
 
-
-  //COLLISION with LIFEBULLET
+  // COLLISION WITH LIFEBULLET
   void bulletHit() {
 
     for (int i = 0; i < lifeBullets.size(); i++) {
-      //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
+      // Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (lifeBullets.size()>0) {
         BulletLife b = lifeBullets.get(i);
 
-        //pakt de waarden
+        // {akt de waarden
         if ((b.bulletX+b.sizeX)> xlife && (b.bulletY+b.sizeY)>ylife && (b.bulletY-b.sizeY)<(ylife+ySize)) {
 
 
           lifeBullets.remove(i);
           points++;
 
-          //boolean which activates the right color for the particles: green
+          // Boolean which activates the right color for the particles: green
 
           EnemyWater.blueparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
           greenparticles = true;
 
-          //calls void of particles
+          // Calls void of particles
           particlefx();
 
-          //speed of all obstacles get increased when destroyed
+          // Speed of all obstacles get increased when destroyed
           speed *= speedx;
           EnemyEarth.speed *=speedx;
           EnemyWater.speed *= speedx;
           EnemyFire.speed *= speedx;
           EnemyWall.speed *= speedx;
           myPlayer.playerSpeed *= speedx;
-
-
-
-
 
           int elementType = (int)random(0, maxObstacle);
 

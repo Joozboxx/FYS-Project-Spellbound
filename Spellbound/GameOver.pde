@@ -1,24 +1,28 @@
 class GameOver {
-
+ 
+  // Load image
+  PImage gameOver = loadImage("Game Over Screen.png");
+  
+  // Game Over variable
+  float gameOverPosition = 0;
+  float textPositionX = width/2;
+  float testPositionY = height/2 + 85;
+  
   void draw() {
     gameOverScreen();
   }
 
   void gameOverScreen() {
-    fill(0);
-    rect(0, 0, 1920, 1080);
+    image(gameOver, gameOverPosition, gameOverPosition);
     
     textAlign(CENTER);
+    // Points text shade
     fill(255);
-    textSize(150);
-    text("GAME OVER", width/2, height/2);
-
-    fill(255);
-    textSize(32);
-    text("You had " + points + " points", width/2, height/2 + 100);
-    
-    fill(255);
-    textSize(32);
-    text("Press H or START to restart the game", width/2, height/2 + 200);
+    textSize(70);
+    text(points, textPositionX - 5, testPositionY);
+    // Points text
+    fill(247,147,30);
+    textSize(70);
+    text(points, textPositionX, testPositionY);
   }
 }

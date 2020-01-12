@@ -4,11 +4,9 @@ class Particle {
   float xvel;
   float yvel;
   float size;
-  //colors: red,green,nlue
+  //Colors: red,green,nlue
   float r, g, b;
   float colordecrease = 50;
-
-
 
   Particle(float particleX, float particleY, float xvel, float yvel, float size) {
     this.particleX = particleX;
@@ -20,13 +18,13 @@ class Particle {
 
   void draw() {
     particlecolor();
-    //colors (UwU)
+    // Colors
     strokeWeight(5);
-    //makes the outline of the particles a little darker(red, blue,green,opacity)
+    // Makes the outline of the particles a little darker(red, blue,green,opacity)
     stroke(r-colordecrease, g-colordecrease, b-colordecrease, colordecrease);
     fill(r, g, b);
 
-    //shape of particles
+    // Shape of particles
     ellipse(particleX, particleY, size, size);
   }
 
@@ -57,13 +55,11 @@ class Particle {
   }
 
   void update() {
-
-
-    //how much particles goes to the right
+    // How much particles goes to the right
     particleX+= xvel ;
     xvel +=2;
 
-    //how much particles goes down
+    // How much particles goes down
     particleY+=yvel;
 
    /* if (particleX >= width-300) {

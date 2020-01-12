@@ -7,8 +7,6 @@ class BulletLife {
   int cooldownTimer;
   PImage lifeBulletIm = loadImage("lifebullet.png");
 
-
-
   // Giving the bullet initial values
   BulletLife() {
     lifeBullets.add(this);
@@ -16,7 +14,6 @@ class BulletLife {
     sizeY = 30;
     bulletY -= sizeY;
   }
-
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   

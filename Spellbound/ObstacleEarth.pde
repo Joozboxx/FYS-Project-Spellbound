@@ -1,7 +1,7 @@
 class ObstacleEarth {
 
   float xearth, yearth, xSize, ySize, speed, speedx, screenShakeTimer;
-  //zorgt ervoor dat eerst de basis elementen komen. 
+  // Xorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
@@ -19,8 +19,6 @@ class ObstacleEarth {
     image(earth, xearth, yearth, xSize, ySize);
   }
 
-
-
   void update() {
     xearth -= speed; 
 
@@ -28,52 +26,45 @@ class ObstacleEarth {
       maxObstacle = 4;
     }
 
-    //speed cap for obstacle
+    // Speed cap for obstacle
     if (speed >= 30) {
       speed = 30;
     }
 
-    //calls void for when obstacle hits border of screen
+    // Calls void for when obstacle hits border of screen
     borderHit();
-    //calls void when correct bullet hits obstacle
+    // Calls void when correct bullet hits obstacle
     bulletHit();
-    //calls void for when player gets hit
+    // Calls void for when player gets hit
     collisionplayer();
 
-    //what happens when the obstacle gets destroyed
+    // What happens when the obstacle gets destroyed
     if (BoolObs.earth == false) {
       xearth=width+xSize;
       yearth=random(20, (height-450));
     }
   }
 
-
-
-  //particle effect when obstacle gets destroyed
+  // Particle effect when obstacle gets destroyed
   void particlefx() {
     for (int i = 0; i < 20; i++) {
       particles.add(new Particle(xearth, yearth+200, random(10) - 5, random(30)-10, 20));
     }
   }
 
-
-
   void borderHit() {
     if (xearth + xSize < 0 ) {
       xearth = width+xSize;
       yearth = random(20, (height-450));
 
-      //accelerates obstacle speed everytime the edge of screen gets hit
+      // Accelerates obstacle speed everytime the edge of screen gets hit
       speed *=1.15;
       EnemyFire.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyLife.speed *= speedx;
       EnemyWall.speed *= speedx;
 
-
-
       int elementType = (int)random(0, maxObstacle);
-
 
       // Every case switches the element randomly when hit by bullet
       switch(elementType)
@@ -102,43 +93,37 @@ class ObstacleEarth {
     }
   }
 
-
-  //COLLISION with earthbullet
+  //COLLISION WITH EARTHBULLET
   void bulletHit() {
 
     for (int i = 0; i < earthBullets.size(); i++) {
-      //Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
+      // Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
       if (earthBullets.size()>0) {
         BulletEarth b = earthBullets.get(i);
 
-        //pakt de waarden
+        // Pakt de waarden
         if ((b.bulletX+b.sizeX)> xearth && (b.bulletY+b.sizeY)>yearth && (b.bulletY-b.sizeY)<(yearth+ySize)) {
-
 
           earthBullets.remove(i);
           points++;
-          //boolean which activates the right color for the particles: red
+          // Boolean which activates the right color for the particles: red
           
           EnemyWater.blueparticles = false;
           EnemyFire.redparticles = false;
           EnemyLife.greenparticles = false;
           yellowparticles = true;
-          //calls void of particles
+          // Calls void of particles
           particlefx();
 
           screenShakeTimer = 1.3;
 
-          //speed of all obstacles get increased when destroyed
+          // Speed of all obstacles get increased when destroyed
           speed *= speedx;
           EnemyFire.speed *=speedx;
           EnemyWater.speed *= speedx;
           EnemyLife.speed *= speedx;
           EnemyWall.speed *= speedx;
           myPlayer.playerSpeed *= speedx;
-
-
-
-
 
           int elementType = (int)random(0, maxObstacle);
 

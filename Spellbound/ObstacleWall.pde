@@ -24,27 +24,24 @@ class ObstacleWall {
       speed = 25;
     }
 
-    //calls void for when obstacle hits border of screen
+    // Calls void for when obstacle hits border of screen
     borderHit();
-    //calls void for when player gets hit
+    // Calls void for when player gets hit
     collisionplayer();
 
-    //what happens when the obstacle gets destroyed
+    // What happens when the obstacle gets destroyed
     if (BoolObs.wall == false) {
       xwall=width+xSize;
       ywall=random(20, (height-450));
     }
   }
 
-
-
-
   void borderHit() {
     if (xwall + xSize < 0 ) {
       xwall = width+xSize;
       ywall = random(20, (height-450));
 
-      //accelerates obstacle speed everytime the edge of screen gets hit
+      // Accelerates obstacle speed everytime the edge of screen gets hit
       speed *=speedx;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;

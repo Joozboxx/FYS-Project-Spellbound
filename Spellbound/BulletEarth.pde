@@ -7,8 +7,6 @@ class BulletEarth {
   int cooldownTimer;
   PImage earthBulletIm = loadImage("earthbullet.png");
 
-
-
   // Giving the bullet initial values
   BulletEarth() {
     earthBullets.add(this);
@@ -16,7 +14,6 @@ class BulletEarth {
     sizeY = 30;
     bulletY -= sizeY;
   }
-
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   

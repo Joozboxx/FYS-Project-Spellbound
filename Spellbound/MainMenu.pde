@@ -1,11 +1,18 @@
 class MainMenu {
 
+  // Load images
+  PImage mainMenuScreen = loadImage("Main Menu Screen.png");
+  
+  // Main menu variables
+  float mainMenuX = 0;
+  float mainMenuY = 0;
+  
   void draw() {
     mainMenuScreen();
   }
 
   void mainMenuScreen() {
-    fill(0);
-    rect(0, 0, 1920, 1080);
+    // Draw the menu layer
+    image(mainMenuScreen, mainMenuX, mainMenuY);
   }
 }

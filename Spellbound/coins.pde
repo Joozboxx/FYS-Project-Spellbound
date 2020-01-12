@@ -1,6 +1,5 @@
 class Coin {
 
-
   boolean Bonus= false;
   PImage CoinIm = loadImage("coin.png");
   float CoinX, CoinY, CoinSize;
@@ -25,7 +24,6 @@ class Coin {
 
     translate(CoinX-100, CoinY);
 
-
     rotate(radians(rotation));
     rotation -= rotationSpeed;
     image(CoinIm, CoinIm.width/2-380, CoinIm.height/2-380, CoinSize, CoinSize);
@@ -38,19 +36,15 @@ class Coin {
     collision();
 
     if (Bonus) {
-      // speed from Coin
+      // Speed from Coin
       CoinX-=40;
-      // calls void that creates the coin
+      // Calls void that creates the coin
       rotationimage();
     }
   }
 
-
-
-
-
   void collision() {
-    //if the player hits the coin, the coin spawns at the beginning of the right side, despawns and gives you 5 points
+    //If the player hits the coin, the coin spawns at the beginning of the right side, despawns and gives you 5 points
     if ((myPlayer.xPlayer + myPlayer.PlayerSizeW >= CoinX)
       &&(myPlayer.xPlayer <= CoinX + CoinSize)
       &&(myPlayer.yPlayer+myPlayer.PlayerSizeH >= CoinY)
@@ -63,7 +57,7 @@ class Coin {
       multiplier++;
     }
 
-    // if the coin does not get hit, it will despawn and be set at the beginning of the right side of the screen
+    // If the coin does not get hit, it will despawn and be set at the beginning of the right side of the screen
     if (CoinX < 0-CoinSize) {
       CoinX = width+width/10;
       CoinX = width+width/10;

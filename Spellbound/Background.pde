@@ -10,8 +10,7 @@ class Background {
   PImage dragon = loadImage("Dragon Compleet.png");
 
   // Dragon variables
-  float dragonX = 650;
-  float dragonY = 45;
+  float dragonPosition = 0;
 
   // Sun variables
   float sunX = 1280;
@@ -26,8 +25,7 @@ class Background {
   float cloudTwoY = 30;
   float cloudOneSpeed = 2; 
   float cloudTwoSpeed = 2;
-  float backgroundX = 0;
-  float backgroundY = 0;
+  float backgroundPosition = 0;
   // Grass variables
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
@@ -36,7 +34,7 @@ class Background {
 
   void draw() {
     // Draw the background layer
-    image(backgroundLayer, backgroundX, backgroundY);
+    image(backgroundLayer, backgroundPosition, backgroundPosition);
 
     // Draw the grass
     drawGrass();
@@ -56,15 +54,14 @@ class Background {
     drawSun();
 
     // Draw the dragon
-    image(dragon,dragonX,dragonY);
-    dragon.resize(220,220);
+    image(dragon,dragonPosition,dragonPosition);
 
     // 
     if ( EnemyEarth.screenShakeTimer > 0){
       float shakeAmount = 15;
       
       pushMatrix();
-      translate(this.backgroundX,this.backgroundY);
+      translate(this.backgroundPosition,this.backgroundPosition);
       
       PImage background = get();
       imageMode(CORNER);

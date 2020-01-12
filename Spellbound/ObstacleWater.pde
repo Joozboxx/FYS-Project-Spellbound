@@ -1,7 +1,7 @@
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed, speedx;
-  //zorgt ervoor dat eerst de basis elementen komen. 
+  // Zorgt ervoor dat eerst de basis elementen komen 
   int maxObstacle = 3;
   boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");
@@ -15,12 +15,10 @@ class ObstacleWater {
     speedx = 1.03;
   }
 
-  //draws the obstacle
+  // Draws the obstacle
   void draw() {
     image(water, xwater, ywater, xSize, ySize);
   }
-
-
 
   void update() {
     xwater -= speed;
@@ -29,45 +27,40 @@ class ObstacleWater {
       maxObstacle = 4;
     }
 
-    //speed cap for obstacle
+    // Speed cap for obstacle
     if (speed >= 30) {
       speed = 30;
     }
 
-    //calls void for when obstacle hits border of screen
+    // Calls void for when obstacle hits border of screen
     borderHit();
-    //calls void when correct bullet hits obstacle
+    // Calls void when correct bullet hits obstacle
     bulletHit();
-    //calls void for when player gets hit
+    // Calls void for when player gets hit
     collisionplayer();
 
-    //what happens when the obstacle gets destroyed
+    // What happens when the obstacle gets destroyed
     if (BoolObs.water == false) {
       xwater=width+xSize;
       ywater=random(20, (height-450));
     }
   }
 
-
-
-  //particle effect when obstacle gets destroyed
+  // Particle effect when obstacle gets destroyed
   void particlefx() {
 
     for (int i = 0; i < 20; i++) {
-      //particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
+      // Particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
       particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));
     }
   }
-
-
-
 
   void borderHit() {
     if (xwater + xSize < 0 ) {
       xwater = width+xSize;
       ywater = random(20, (height-450));
 
-      //accelerates obstacle speed everytime the edge of screen gets hit
+      // Accelerates obstacle speed everytime the edge of screen gets hit
       speed *=1.15;
       EnemyEarth.speed *=speedx;
       EnemyLife.speed *= speedx;
@@ -103,32 +96,30 @@ class ObstacleWater {
     }
   }
 
-
-  //Collision with Waterbullet
+  // Collision with Waterbullet
   void bulletHit() {
 
     for (int i = 0; i < waterBullets.size(); i++) {
-      //Ensures a collision check as long as there is more than 0 bullets in the game
+      // Ensures a collision check as long as there is more than 0 bullets in the game
       if (waterBullets.size()>0) {
         BulletWater b = waterBullets.get(i);
 
-        //collision check for bullet vs correct obstacle
+        // Collision check for bullet vs correct obstacle
         if ((b.bulletX+b.sizeX)> xwater && (b.bulletY+b.sizeY)>ywater && (b.bulletY-b.sizeY)<(ywater+ySize)) {
 
           waterBullets.remove(i);
           points++;
 
-          //boolean which activates the right color for the particles: blue
+          // Boolean which activates the right color for the particles: blue
 
           EnemyLife.greenparticles = false;
           EnemyFire.redparticles = false;
           EnemyEarth.yellowparticles = false;
           blueparticles=true;
-          //calls void of particles
+          // Calls void of particles
           particlefx();
 
-
-          //speed of all obstacles get increased when destroyed
+          // Speed of all obstacles get increased when destroyed
           speed *= speedx;
           EnemyEarth.speed *=speedx;
           EnemyLife.speed *= speedx;

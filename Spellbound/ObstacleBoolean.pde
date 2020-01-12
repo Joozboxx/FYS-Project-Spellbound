@@ -1,6 +1,5 @@
 class booleanObs {
 
-
   // Boolean for all element obstacles
   boolean water = true;
   boolean fire = false;
@@ -37,6 +36,7 @@ class booleanObs {
     } else
     {
     }
+    // Call the wall class
     if (wall ==true) { 
       EnemyWall.update();
       EnemyWall.draw();

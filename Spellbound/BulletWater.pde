@@ -7,8 +7,6 @@ class BulletWater {
   int cooldownTimer;
   PImage waterBulletIm = loadImage("waterbullet.png");
  
-  
-  
   // Giving the bullet initial values
   BulletWater() {
     waterBullets.add(this);
@@ -16,7 +14,6 @@ class BulletWater {
     sizeY = 30;
     bulletY -= sizeY;
   }
-
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   

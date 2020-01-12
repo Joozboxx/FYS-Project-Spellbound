@@ -1,6 +1,5 @@
 class PlayerLives {
 
-
   float [] liveX = {30, 115, 200};
   float liveSizeW = 65, liveSizeH = 50;
   int lifeCount = 3;

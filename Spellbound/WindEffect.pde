@@ -1,13 +1,13 @@
 class WindEffect {
 
-  //wind fx
+  // Wind FX
   float [] windX = new float [20];
   float []windY = new float [20];
   float windSize = 200;
 
   WindEffect() {
 
-    //wind fx
+    // Wind FX
     for (int i =0; i < windX.length; i++) {
       windX[i] = random(width, width+500);
     }
@@ -21,7 +21,7 @@ class WindEffect {
 
     if (myPlayer.playerSpeed >= 30) {
 
-      //wind fx
+      // Wind Fx
       for (int i =0; i < windY.length; i++) {
 
         
@@ -34,7 +34,7 @@ class WindEffect {
 
   void update() {
 
-    //wind effect 
+    // Wind effect 
     for (int i = 0; i < windX.length; i++) {
       //windspeed
       windX[i]-= 30;

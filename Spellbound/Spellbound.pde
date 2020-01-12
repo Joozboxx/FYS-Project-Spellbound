@@ -17,7 +17,6 @@ MainMenu mainMenuScreen;
 WindEffect Wind;
 RestartGame Restart;
 
-
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
@@ -27,7 +26,6 @@ ArrayList<Particle> particles;
 
 boolean isPauseGame = false;
 int gameMode = 0;
-
 
 Coin BonusCoin;
 int points;
@@ -60,7 +58,6 @@ void setup() {
 
   pauseScreen = new PauseMenu();
   gameOverScreen = new GameOver();
-
 
   BonusCoin = new Coin();
   //points you have at the start of the game
@@ -101,8 +98,6 @@ void draw() {
 
       myPlayer.update();
       myPlayer.draw();
-
-
 
       for (int i = 0; i < fireBullets.size(); i++) {
         BulletFire f = fireBullets.get(i);
