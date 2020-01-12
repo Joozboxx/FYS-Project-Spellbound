@@ -1,6 +1,6 @@
 class ObstacleEarth {
 
-  float xearth, yearth, xSize, ySize, speed, speedx, screenShakeTimer;
+  float xearth, yearth, xSize, ySize, speed, speedx, speedcap,screenShakeTimer;
   // Xorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean yellowparticles = false;
@@ -12,7 +12,8 @@ class ObstacleEarth {
     xSize = 65;
     ySize = 400;
     speed = 10;
-    speedx = 1.03;
+    speedx = 1.02;
+    speedcap=35;
   }
 
   void draw() {
@@ -27,8 +28,8 @@ class ObstacleEarth {
     }
 
     // Speed cap for obstacle
-    if (speed >= 30) {
-      speed = 30;
+    if (speed >= speedcap) {
+      speed = speedcap;
     }
 
     // Calls void for when obstacle hits border of screen

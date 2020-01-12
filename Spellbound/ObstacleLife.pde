@@ -1,6 +1,6 @@
 class ObstacleLife {
 
-  float xlife, ylife, xSize, ySize, speed, speedx;
+  float xlife, ylife, xSize, ySize, speed, speedx,speedcap;
   // Zorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean greenparticles = false;
@@ -12,7 +12,8 @@ class ObstacleLife {
     xSize = 65;
     ySize = 400;
     speed = 10;
-    speedx = 1.03;
+    speedx = 1.02;
+    speedcap = 35;
   }
 
   void draw() {
@@ -27,8 +28,8 @@ class ObstacleLife {
     }
 
     // Speed cap for obstacle
-    if (speed >= 30) {
-      speed = 30;
+    if (speed >= speedcap) {
+      speed = speedcap;
     }
 
     // Calls void for when obstacle hits border of screen

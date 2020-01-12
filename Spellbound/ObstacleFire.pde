@@ -1,6 +1,6 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed, speedx;
+  float xfire, yfire, xSize, ySize, speed, speedx, speedcap;
   // Zorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean redparticles = false;
@@ -12,7 +12,8 @@ class ObstacleFire {
     xSize = 65;
     ySize = 400;
     speed = 10;
-    speedx = 1.03;
+    speedx = 1.02;
+    speedcap=35;
   }
 
   void draw() {
@@ -27,8 +28,8 @@ class ObstacleFire {
     }
 
     // Speed cap for obstacle
-    if (speed >= 30) {
-      speed = 30;
+    if (speed >= speedcap) {
+      speed = speedcap;
     }
 
     // Calls void for when obstacle hits border of screen
@@ -106,7 +107,7 @@ class ObstacleFire {
           fireBullets.remove(i);
           points++;
           // Boolean which activates the right color for the particles: red
-          
+
           EnemyWater.blueparticles = false;
           EnemyLife.greenparticles = false;
           EnemyEarth.yellowparticles = false;
