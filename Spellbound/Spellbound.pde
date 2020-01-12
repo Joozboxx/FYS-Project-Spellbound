@@ -157,6 +157,7 @@ void draw() {
 void keyPressed() {
   myPlayer.keyPressed();
   mainMenuScreen.keyPressed();
+  controlsScreen.keyPressed();
   
   // If spacebar is pressed, pause the game. And if spacebar released, start the game
   if (keyCode == 32) {
@@ -173,4 +174,5 @@ void keyPressed() {
 void keyReleased() {
   myPlayer.keyReleased();
   mainMenuScreen.keyReleased();
+  controlsScreen.keyReleased();
 }

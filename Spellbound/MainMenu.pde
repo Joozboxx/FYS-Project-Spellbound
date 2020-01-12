@@ -24,7 +24,7 @@ class MainMenu {
   void mainMenuScreen() {
     // Draws the menu layer
     image(mainMenuScreen, positionX, positionY);
-
+    // If the current button is a certain index, draw selected button at that index
     if (currentButton == 0) {
       image(play, positionX, positionY);
     } else if (currentButton == 1) {
@@ -35,14 +35,17 @@ class MainMenu {
   }
 
   void handleKeyboardInput() {
+    // If UP key is pressed, select current button & release key to prevent the next button from being selected
     if (keys[UP] && currentButton > 0) {
       currentButton --;
       keyReleased();
     }
+    // // If DOWN key is pressed, select current button & release key to prevent the next button from being selected
     if (keys[DOWN] && currentButton < 2) {
       currentButton ++;
       keyReleased();
     }
+    // If ENTER key is pressed, go to selected menu & release key to prevent the next button from being selected
     if (keys[ENTER]) {
       keyReleased();
       if (currentButton == 0) {
@@ -50,7 +53,7 @@ class MainMenu {
       } else if (currentButton == 1) {
         gameMode = 2;
       } else if (currentButton == 2) {
-        image(options, positionX, positionY);
+        // TO DO: add settings screen
       }
     }
   }
