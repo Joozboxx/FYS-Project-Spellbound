@@ -1,7 +1,7 @@
 class ObstacleLife {
 
   float xlife, ylife, xSize, ySize, speed, speedx,speedcap, screenShakeTimer;
-  // Zorgt ervoor dat eerst de basis elementen komen
+  // Makes the basic elements come first
   int maxObstacle = 3;
   boolean greenparticles = false;
   PImage life = loadImage("elementlife.png");
@@ -99,11 +99,11 @@ class ObstacleLife {
   void bulletHit() {
 
     for (int i = 0; i < lifeBullets.size(); i++) {
-      // Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
+      // Checks if there is collision when there are more than 0 bullets ingame
       if (lifeBullets.size()>0) {
         BulletLife b = lifeBullets.get(i);
 
-        // {akt de waarden
+        // Uses the values 
         if ((b.bulletX+b.sizeX)> xlife && (b.bulletY+b.sizeY)>ylife && (b.bulletY-b.sizeY)<(ylife+ySize)) {
 
 

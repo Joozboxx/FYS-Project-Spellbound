@@ -1,7 +1,7 @@
 class ObstacleFire {
 
   float xfire, yfire, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
-  // Zorgt ervoor dat eerst de basis elementen komen
+  // Makes the basic elements come first
   int maxObstacle = 3;
   boolean redparticles = false;
   PImage fire = loadImage("elementfire.png");
@@ -97,11 +97,11 @@ class ObstacleFire {
   void bulletHit() {
     // COLLISION WITH FIREBULLET
     for (int i = 0; i < fireBullets.size(); i++) {
-      // Zorgt ervoor dat hij collision checkt als je meer dan 0 bullets ingame hebt
+      // Checks if there is collision when there are more than 0 bullets ingame
       if (fireBullets.size()>0) {
         BulletFire b = fireBullets.get(i);
 
-        // Pakt de waarden
+        // Uses the values 
         if ((b.bulletX+b.sizeX)> xfire && (b.bulletY+b.sizeY)>yfire && (b.bulletY-b.sizeY)<(yfire+ySize)) {
 
           fireBullets.remove(i);

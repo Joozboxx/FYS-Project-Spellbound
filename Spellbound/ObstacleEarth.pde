@@ -1,7 +1,7 @@
 class ObstacleEarth {
 
   float xearth, yearth, xSize, ySize, speed, speedx, speedcap,screenShakeTimer;
-  // Zorgt ervoor dat eerst de basis elementen komen
+  // Makes the basic elements come first
   int maxObstacle = 3;
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");

@@ -13,6 +13,7 @@ class GameOver {
   }
 
   void gameOverScreen() {
+    // Draws game over screen image
     image(gameOver, gameOverPosition, gameOverPosition);
     
     textAlign(CENTER);

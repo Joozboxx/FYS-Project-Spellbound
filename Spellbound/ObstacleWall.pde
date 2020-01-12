@@ -20,7 +20,7 @@ class ObstacleWall {
   void update() {
     xwall -= speed; 
 
-    //speed cap for obstacle
+    // Speed cap for obstacle
     if (speed >= speedcap) {
       speed = speedcap;
     }

@@ -72,8 +72,10 @@ class Background {
     image(dragon, dragonPosition, dragonPosition);
 
     // Makes the screen shake when the earth obstacle has been hit
+
     if ( EnemyEarth.screenShakeTimer > 0) {
-      //sets the amount to screen will shake
+      //sets the amount the screen will shake
+
       float shakeAmount = 15;
 
       // Makes it so shake is only applies to the background
@@ -90,9 +92,10 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
+    
     // Makes the screen shake when the fire obstacle has been hit
     if ( EnemyFire.screenShakeTimer > 0) {
-      //sets the amount to screen will shake
+      //sets the amount the screen will shake
       float shakeAmount = 15;
 
       // Makes it so shake is only applies to the background
@@ -109,9 +112,10 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
+    
     // Makes the screen shake when the life obstacle has been hit
     if ( EnemyLife.screenShakeTimer > 0) {
-      //sets the amount to screen will shake
+      //sets the amount the screen will shake
       float shakeAmount = 15;
 
       // Makes it so shake is only applies to the background
@@ -128,9 +132,10 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
+    
     // Makes the screen shake when the water obstacle has been hit
     if ( EnemyWater.screenShakeTimer > 0) {
-      //sets the amount to screen will shake
+      //sets the amount the screen will shake
       float shakeAmount = 15;
 
       // Makes it so shake is only applies to the background
