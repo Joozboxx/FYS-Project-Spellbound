@@ -1,6 +1,6 @@
 class ObstacleLife {
 
-  float xlife, ylife, xSize, ySize, speed, speedx,speedcap, screenShakeTimer;
+  float xlife, ylife, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   boolean greenparticles = false;
@@ -12,7 +12,9 @@ class ObstacleLife {
     xSize = 65;
     ySize = 400;
     speed = 10;
+    // Speed multiplier after you hit an obstacle
     speedx = 1.02;
+    // Speed cap for what the maximum speed is
     speedcap = 32;
   }
 
@@ -22,7 +24,7 @@ class ObstacleLife {
 
   void update() {
     xlife -= speed; 
-
+    // After you receive 10 points, another obstacle will be available to spawn; the wall obstacle
     if (points >= 10) {
       maxObstacle = 4;
     }
@@ -194,7 +196,7 @@ class ObstacleLife {
         println("wall");
         break;
       }
-
+      // Removes one heart which represents your life
       Lives.lifeCount--;
     }
   }

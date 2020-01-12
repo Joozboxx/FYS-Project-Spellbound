@@ -9,7 +9,9 @@ class ObstacleWall {
     xSize = 65;
     ySize = 400;
     speed = 8;
+           // Speed multiplier after you hit an obstacle
     speedx = 1.02;
+      // Speed cap for what the maximum speed is
     speedcap = 30;
   }
 
@@ -101,7 +103,7 @@ class ObstacleWall {
         BoolObs.wall = false;
         break;
       }
-
+// Removes one heart which represents your life
       Lives.lifeCount--;
     }
   }

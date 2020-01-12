@@ -1,9 +1,11 @@
 class Coin {
 
+  // The coin will only spawn if Bonus is true, so at the start of the game it will not spawn
   boolean Bonus= false;
   PImage CoinIm = loadImage("coin.png");
   float CoinX, CoinY, CoinSize;
   float rotation;
+  //decides the speed of the rotation
   float rotationSpeed = 1.3;
   int multiplier = 1;
 
@@ -13,6 +15,7 @@ class Coin {
     CoinSize = 100;
   }
   void draw() {
+    // The coin will only spawn on 12 or a multiplication of 12
     if (points == 12 * multiplier) {
       Bonus = true;
     }
@@ -28,13 +31,14 @@ class Coin {
     rotation -= rotationSpeed;
     image(CoinIm, CoinIm.width/2-380, CoinIm.height/2-380, CoinSize, CoinSize);
 
-    // Makes sure that rotation is only applied to sun
+
     popMatrix();
   }
 
   void update() {
     collision();
 
+    // If the Bonus is true: do this
     if (Bonus) {
       // Speed from Coin
       CoinX-=40;
@@ -59,7 +63,7 @@ class Coin {
 
     // If the coin does not get hit, it will despawn and be set at the beginning of the right side of the screen
     if (CoinX < 0-CoinSize) {
-      CoinX = width+width/10;
+
       CoinX = width+width/10;
       CoinY = random(100, 800);
       Bonus = false;

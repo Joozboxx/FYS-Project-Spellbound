@@ -12,7 +12,9 @@ class ObstacleFire {
     xSize = 65;
     ySize = 400;
     speed = 10;
+    // Speed multiplier after you hit an obstacle
     speedx = 1.02;
+    // Speed cap for what the maximum speed is
     speedcap=32;
   }
 
@@ -22,7 +24,7 @@ class ObstacleFire {
 
   void update() {
     xfire -= speed; 
-
+    // After you receive 10 points, another obstacle will be available to spawn; the wall obstacle
     if (points >= 10) {
       maxObstacle = 4;
     }
@@ -114,9 +116,9 @@ class ObstacleFire {
           redparticles = true;
           // Calls void of particles
           particlefx();
-          
+
           screenShakeTimer = 1.3;
-          
+
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;
           EnemyEarth.speed *=speedx;
@@ -189,7 +191,7 @@ class ObstacleFire {
         println("wall");
         break;
       }
-
+      // Removes one heart which represents your life
       Lives.lifeCount--;
     }
   }
