@@ -23,7 +23,6 @@ class Particle {
     // Makes the outline of the particles a little darker(red, blue,green,opacity)
     stroke(r-colordecrease, g-colordecrease, b-colordecrease, colordecrease);
     fill(r, g, b);
-
     // Shape of particles
     ellipse(particleX, particleY, size, size);
   }

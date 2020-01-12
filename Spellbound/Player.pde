@@ -53,7 +53,7 @@ class Player {
     // Tweening for shadow
     pushMatrix();
     translate(xShadow, yShadow);
-    //tweening size for shadow(widthSize(resizes according to the X position of the player),widthSize(doesnt make the tweening visible),widthSize(doesnt change the tweening),size of the shadow in general)
+    // Tweening size for shadow(widthSize(resizes according to the X position of the player),widthSize(doesnt make the tweening visible),widthSize(doesnt change the tweening),size of the shadow in general)
     d = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
     popMatrix();
   }

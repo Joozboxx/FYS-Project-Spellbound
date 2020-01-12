@@ -56,80 +56,80 @@ class Background {
     // Draw the dragon
     image(dragon,dragonPosition,dragonPosition);
 
-    //makes the screen shake when the earth obstacle has been hit
+    // Makes the screen shake when the earth obstacle has been hit
     if ( EnemyEarth.screenShakeTimer > 0){
       //sets the amount to screen will shake
       float shakeAmount = 15;
       
-      //makes it so shake is only applies to the background
+      // Makes it so shake is only applies to the background
       pushMatrix();
       translate(this.backgroundPosition,this.backgroundPosition);
       
-      //shakes thes dragon and background
+      // Shakes the dragon and background
       image(backgroundLayer,shakeAmount , shakeAmount);
       image(dragon,shakeAmount,shakeAmount);
       
-      //lowers the time that tome screen is shaking
+      // Lowers the time that tome screen is shaking
       EnemyEarth.screenShakeTimer--;
       
-      //reverts the background to its normal position
+      // Reverts the background to its normal position
       popMatrix();
     }
-      //makes the screen shake when the fire obstacle has been hit
+      // Makes the screen shake when the fire obstacle has been hit
     if ( EnemyFire.screenShakeTimer > 0){
       //sets the amount to screen will shake
       float shakeAmount = 15;
       
-      //makes it so shake is only applies to the background
+      // Makes it so shake is only applies to the background
       pushMatrix();
       translate(this.backgroundPosition,this.backgroundPosition);
       
-      //shakes thes dragon and background
+      // Shakes the dragon and background
       image(backgroundLayer,shakeAmount , shakeAmount);
       image(dragon,shakeAmount,shakeAmount);
       
-      //lowers the time that tome screen is shaking
+      // Lowers the time that tome screen is shaking
       EnemyFire.screenShakeTimer--;
       
-      //reverts the background to its normal position
+      // Reverts the background to its normal position
       popMatrix();
     }
-      //makes the screen shake when the life obstacle has been hit
+      // Makes the screen shake when the life obstacle has been hit
     if ( EnemyLife.screenShakeTimer > 0){
       //sets the amount to screen will shake
       float shakeAmount = 15;
       
-      //makes it so shake is only applies to the background
+      // Makes it so shake is only applies to the background
       pushMatrix();
       translate(this.backgroundPosition,this.backgroundPosition);
       
-      //shakes thes dragon and background
+      // Shakes the dragon and background
       image(backgroundLayer,shakeAmount , shakeAmount);
       image(dragon,shakeAmount,shakeAmount);
       
-      //lowers the time that tome screen is shaking
+      // Lowers the time that tome screen is shaking
       EnemyLife.screenShakeTimer--;
       
-      //reverts the background to its normal position
+      // Reverts the background to its normal position
       popMatrix();
     }
-      //makes the screen shake when the water obstacle has been hit
+      // Makes the screen shake when the water obstacle has been hit
     if ( EnemyWater.screenShakeTimer > 0){
       //sets the amount to screen will shake
       float shakeAmount = 15;
       
-      //makes it so shake is only applies to the background
+      // Makes it so shake is only applies to the background
       pushMatrix();
       translate(this.backgroundPosition,this.backgroundPosition);
       
-      //shakes thes dragon and background
+      // Shakes the dragon and background
       image(backgroundLayer,shakeAmount , shakeAmount);
       image(dragon,shakeAmount,shakeAmount);
       
-      //lowers the time that tome screen is shaking
+      // Lowers the time that tome screen is shaking
       EnemyWater.screenShakeTimer--;
       
-      //reverts the background to its normal position
+      // Reverts the background to its normal position
       popMatrix();
     }
   }

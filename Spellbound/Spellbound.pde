@@ -21,7 +21,7 @@ ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
 ArrayList<BulletWater> waterBullets ;
-//array list for all particle effects you get after hitting an obstacle
+// Array list for all particle effects you get after hitting an obstacle
 ArrayList<Particle> particles;
 
 boolean isPauseGame = false;
@@ -31,7 +31,7 @@ Coin BonusCoin;
 int points;
 
 void setup() {
-  //Set window size
+  // Set window size
   size(1920, 1080, P3D);
   frameRate(60);
 
@@ -73,7 +73,7 @@ void setup() {
   gameOverScreen = new GameOver();
 
   BonusCoin = new Coin();
-  //points you have at the start of the game
+  // Points you have at the start of the game
   points = 0;
 }
 

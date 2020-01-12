@@ -1,7 +1,7 @@
 class ObstacleEarth {
 
   float xearth, yearth, xSize, ySize, speed, speedx, speedcap,screenShakeTimer;
-  // Xorgt ervoor dat eerst de basis elementen komen
+  // Zorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
@@ -94,7 +94,7 @@ class ObstacleEarth {
     }
   }
 
-  //COLLISION WITH EARTHBULLET
+  // COLLISION WITH EARTHBULLET
   void bulletHit() {
 
     for (int i = 0; i < earthBullets.size(); i++) {
