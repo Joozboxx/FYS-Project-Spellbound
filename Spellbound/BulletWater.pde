@@ -48,9 +48,6 @@ class BulletWater {
     }
   }
 
-  void collisionWithObject() {
-  }
-
   // This method draws the bullet
   void draw() {
     noTint();
