@@ -56,17 +56,23 @@ class Background {
     // Draw the dragon
     image(dragon,dragonPosition,dragonPosition);
 
-    // 
+    //makes the screen shake 
     if ( EnemyEarth.screenShakeTimer > 0){
+      //
       float shakeAmount = 15;
       
+      //makes it so shake is only applies to the background
       pushMatrix();
       translate(this.backgroundPosition,this.backgroundPosition);
       
-      PImage background = get();
-      imageMode(CORNER);
-      image(background,shakeAmount , shakeAmount);
+      //shakes thes dragon and background
+      image(backgroundLayer,shakeAmount , shakeAmount);
+      image(dragon,shakeAmount,shakeAmount);
+      
+      //lowers the time that tome screen is shaking
       EnemyEarth.screenShakeTimer--;
+      
+      //reverts the background to its normal position
       popMatrix();
     }
   }
