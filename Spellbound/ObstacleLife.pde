@@ -1,6 +1,6 @@
 class ObstacleLife {
 
-  float xlife, ylife, xSize, ySize, speed, speedx,speedcap;
+  float xlife, ylife, xSize, ySize, speed, speedx,speedcap, screenShakeTimer;
   // Zorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean greenparticles = false;
@@ -119,6 +119,8 @@ class ObstacleLife {
 
           // Calls void of particles
           particlefx();
+
+          screenShakeTimer = 1.3;
 
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;

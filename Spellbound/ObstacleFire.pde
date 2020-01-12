@@ -1,6 +1,6 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed, speedx, speedcap;
+  float xfire, yfire, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
   // Zorgt ervoor dat eerst de basis elementen komen
   int maxObstacle = 3;
   boolean redparticles = false;
@@ -114,7 +114,9 @@ class ObstacleFire {
           redparticles = true;
           // Calls void of particles
           particlefx();
-
+          
+          screenShakeTimer = 1.3;
+          
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;
           EnemyEarth.speed *=speedx;

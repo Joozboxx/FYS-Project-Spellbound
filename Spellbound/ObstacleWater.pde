@@ -1,6 +1,6 @@
 class ObstacleWater {
 
-  float xwater, ywater, xSize, ySize, speed, speedx, speedcap;
+  float xwater, ywater, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
   // Zorgt ervoor dat eerst de basis elementen komen 
   int maxObstacle = 3;
   boolean blueparticles = false;
@@ -119,7 +119,9 @@ class ObstacleWater {
           blueparticles=true;
           // Calls void of particles
           particlefx();
-
+          
+          screenShakeTimer = 1.3;
+          
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;
           EnemyEarth.speed *=speedx;
