@@ -11,6 +11,7 @@ class Controls {
   }
   
   void controlsScreen () {
+    // Draws control screen image
     image(controls, controlsPosition, controlsPosition);
   }
 }

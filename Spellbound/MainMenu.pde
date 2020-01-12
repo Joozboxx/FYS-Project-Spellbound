@@ -17,7 +17,7 @@ class MainMenu {
   }
 
   void mainMenuScreen() {
-    // Draw the menu layer
+    // Draws the menu layer
     image(mainMenuScreen, positionX, positionY);
     image(play, positionX, positionY);
   }

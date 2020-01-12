@@ -4,7 +4,7 @@ class Particle {
   float xvel;
   float yvel;
   float size;
-  //Colors: red,green,nlue
+  // Colors: red,green,nlue
   float r, g, b;
   float colordecrease = 50;
 

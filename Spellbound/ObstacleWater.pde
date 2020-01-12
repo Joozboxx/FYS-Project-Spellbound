@@ -1,7 +1,7 @@
 class ObstacleWater {
 
   float xwater, ywater, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
-  // Zorgt ervoor dat eerst de basis elementen komen 
+  // Makes the basic elements come first
   int maxObstacle = 3;
   boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");

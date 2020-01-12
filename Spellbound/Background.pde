@@ -73,7 +73,7 @@ class Background {
 
     // Makes the screen shake when the earth obstacle has been hit
     if ( EnemyEarth.screenShakeTimer > 0){
-      //sets the amount to screen will shake
+      // Sets the amount to screen will shake
       float shakeAmount = 15;
       
       // Makes it so shake is only applies to the background
