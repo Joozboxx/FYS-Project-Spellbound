@@ -37,6 +37,7 @@ class BulletLife {
     // Use the velocity to calculate the new position
     bulletX += vx;
     bulletY += vy;
+    die();
   }
   void die() {
     for (int i = 0; i < lifeBullets.size(); i++) {
@@ -47,12 +48,9 @@ class BulletLife {
     }
   }
 
-  void collisionWithObject() {
-  }
 
   // This method draws the bullet
   void draw() {
-
     image(lifeBulletIm, bulletX, bulletY, sizeX, sizeY);
   }
 }

@@ -55,6 +55,19 @@ void setup() {
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
   particles = new ArrayList<Particle>();
+  
+  for (int i = 0; i <10; i++) {
+    fireBullets.add(new BulletFire());
+  }
+  for (int i = 0; i <10; i++) {
+    earthBullets.add(new BulletEarth());
+  }
+  for (int i = 0; i <10; i++) {
+    lifeBullets.add(new BulletLife());
+  }
+  for (int i = 0; i <10; i++) {
+    waterBullets.add(new BulletWater());
+  }
 
   pauseScreen = new PauseMenu();
   gameOverScreen = new GameOver();

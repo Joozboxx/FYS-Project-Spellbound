@@ -1,6 +1,7 @@
 class RestartGame {
 
   void restart() {
+    backgroundLevel.grassSpeed = 10;
     myPlayer = new Player();
     Lives = new PlayerLives();
 
