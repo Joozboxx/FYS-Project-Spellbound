@@ -1,7 +1,7 @@
 class Player {
 
   // Player variables
-  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
+  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed,playerSpeedCap, border;
   PImage player = loadImage("spellboundplayer.png");
   //variables for the tweening effect of the player and shadow
   float xShadow, yShadow, floating, d, angle;
@@ -25,6 +25,7 @@ class Player {
     playerSpeed = 9;
     border = height-(PlayerSizeH-100);
     xShadow = width/10;
+    playerSpeedCap = 30;
   }
 
   // Draws the player shape
@@ -91,8 +92,8 @@ class Player {
 
   void cap() {
     //playerspeed cap, for moving is 20
-    if (playerSpeed >= 30) {
-      playerSpeed = 30;
+    if (playerSpeed >= playerSpeedCap) {
+      playerSpeed = playerSpeedCap;
     }
   }
 
