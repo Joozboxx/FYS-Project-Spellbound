@@ -11,6 +11,7 @@ class PauseMenu {
  }
  
  void pauseMenu(){
+   // Draw pause menu screen image
    image(pauseMenuScreen, pauseMenuPosition, pauseMenuPosition);
  }
 }

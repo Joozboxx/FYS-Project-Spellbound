@@ -1,5 +1,6 @@
-import processing.sound.*;
+import ddf.minim.*;
 
+// Variables
 Background backgroundLevel;
 Player myPlayer;
 PlayerLives Lives;
@@ -18,6 +19,11 @@ Controls controlsScreen;
 WindEffect Wind;
 RestartGame Restart;
 
+// Sound
+Minim minim;
+AudioPlayer backgroundMusic;
+
+// Array lists bullets
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
@@ -35,6 +41,12 @@ void setup() {
   // Set window size
   size(1920, 1080, P3D);
   frameRate(60);
+  
+  // Load background music
+  minim = new Minim(this);
+  backgroundMusic = minim.loadFile("Background Music.mp3");
+  // Play background music
+  backgroundMusic.loop();
 
   backgroundLevel = new Background();
   mainMenuScreen = new MainMenu();

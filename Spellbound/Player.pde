@@ -15,6 +15,8 @@ class Player {
   // Score variables
   float scorePositionX = 1860;
   float scorePositionY = 77;
+  // Sound
+  AudioPlayer shootSound;
 
   // Setup player variables
   Player() {
@@ -27,7 +29,10 @@ class Player {
     border = height-(PlayerSizeH-100);
     xShadow = width/10;
     playerSpeedCap = 30;
+    // Load magic wand sound
+    shootSound = minim.loadFile("Magic Wand.mp3");
   }
+ 
 
   // Draws the player shape
   void draw() {
@@ -133,14 +138,14 @@ class Player {
     if (keyCode == 73&& cooldown()) {
       new BulletWater().fire(0, bulletSpeed);
     }
-
-    
   }
 
   // Checks if the amount of seconds (lastShot) have gone by since the last bullet was shot
   boolean cooldown() {
     if ( lastShot < millis() - bulletCooldown) {
       lastShot = millis();
+      // Play shoot bullet sound & restart the sound every time you want to shoot a bullet
+      shootSound.play(0);
       return true;
     }
     return false;
