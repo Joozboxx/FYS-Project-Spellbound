@@ -19,7 +19,7 @@ Controls controlsScreen;
 WindEffect Wind;
 RestartGame Restart;
 
-// Sound
+// Sound variable
 Minim minim;
 AudioPlayer backgroundMusic;
 
@@ -45,7 +45,7 @@ void setup() {
   // Load background music
   minim = new Minim(this);
   backgroundMusic = minim.loadFile("Background Music.mp3");
-  // Play background music
+  // Play background music & loop it
   backgroundMusic.loop();
 
   backgroundLevel = new Background();

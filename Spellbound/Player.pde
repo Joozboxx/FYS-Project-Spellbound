@@ -15,7 +15,7 @@ class Player {
   // Score variables
   float scorePositionX = 1860;
   float scorePositionY = 77;
-  // Sound
+  // Sound variable
   AudioPlayer shootSound;
 
   // Setup player variables
@@ -32,7 +32,6 @@ class Player {
     // Load magic wand sound
     shootSound = minim.loadFile("Magic Wand.mp3");
   }
- 
 
   // Draws the player shape
   void draw() {
