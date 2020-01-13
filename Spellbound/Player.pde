@@ -8,7 +8,7 @@ class Player {
   // Allows us to use all keys of they keyboard without the game crashing
   boolean [] keys = new boolean[1024];
   float lastShot = 0;
-  // amount of milisecond the bullet cooldown will be
+  // Amount of milisecond the bullet cooldown will be
   float bulletCooldown = 900;
   float bulletSpeed =15;
   boolean ableToFire;
@@ -55,9 +55,9 @@ class Player {
   void tween(float tempX, float tempY) {
     drop = 250;
     floatchange = 0.07;
-    //float for player(meaning,how low you can go,how high and low you can go)
+    // Float for player(meaning,how low you can go,how high and low you can go)
     floating = sin(angle)*(drop)*floatchange;
-    //speed of float(up and down)
+    // Speed of float(up and down)
     angle += 0.03;
 
     yShadow = tempY;

@@ -6,7 +6,7 @@ class Particle {
   float size;
   // Colors: red, green, blue
   float r, g, b;
-  // float which decrease the color, making it darker.
+  // Float which decrease the color, making it darker.
   float colordecrease = 50;
   // Border which particles will not be able to reach
   float particleborder = 300;
