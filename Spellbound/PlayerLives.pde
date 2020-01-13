@@ -1,6 +1,7 @@
 class PlayerLives {
   // X-position of the hearts
   float [] liveX = {30, 115, 200};
+  float yposition=20;
   // Width and Height of the hearts
   float liveSizeW = 65, liveSizeH = 50;
   // Amount of lifes
@@ -12,7 +13,7 @@ class PlayerLives {
     // Makes the lifes, and gives an amount to the lifes.
     for (int i =0; i < lifeCount; i++) {
       fill(255, 0, 0);
-      image(heartlives, liveX[i], 20, liveSizeW, liveSizeH);
+      image(heartlives, liveX[i], yposition, liveSizeW, liveSizeH);
     }
   }  
 

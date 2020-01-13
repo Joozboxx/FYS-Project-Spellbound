@@ -39,7 +39,7 @@ class BulletLife {
     bulletY += vy;
     die();
   }
-  // Remove bullet from the arraylist
+  //remove bullet from the arraylist
   void die() {
     for (int i = 0; i < lifeBullets.size(); i++) {
       BulletLife l = lifeBullets.get(i);

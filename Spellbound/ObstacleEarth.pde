@@ -6,7 +6,8 @@ class ObstacleEarth {
   // Decides the color of the particles
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
-  float cooldowndecrease = 7;
+  // Reduces the cooldown time by a certain ammount
+  float cooldowndecrease = 5;
 
   ObstacleEarth() {
     yspawn=450;

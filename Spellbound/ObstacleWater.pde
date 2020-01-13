@@ -6,7 +6,8 @@ class ObstacleWater {
   // Decides the color of the particles
   boolean blueparticles = false;
   PImage water = loadImage("elementwater.png");
-  float cooldowndecrease = 7;
+  // Reduces the cooldown time by a certain ammount
+  float cooldowndecrease = 5;
 
   ObstacleWater() {
     yspawn = 450;
@@ -69,7 +70,7 @@ class ObstacleWater {
       ywater = random(20, (height-yspawn));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=1.15;
+      speed *=speedx;
       EnemyEarth.speed *=speedx;
       EnemyLife.speed *= speedx;
       EnemyFire.speed *= speedx;

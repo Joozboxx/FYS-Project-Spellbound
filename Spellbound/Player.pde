@@ -1,16 +1,16 @@
 class Player {
 
   // Player variables
-  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, playerSpeedCap, border;
+  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, playerSpeedCap, border,topborder,borderedge,gravity;
   PImage player = loadImage("spellboundplayer.png");
   // Variables for the tweening effect of the player and shadow
-  float xShadow, yShadow, floating, distance, angle, drop, floatchange, shadowtweenx, shadowtweeny;
+  float xShadow, yShadow, floating, distance, angle, drop, floatchange, shadowtweenx, shadowtweeny, shadowresize, shadowwidth;
   // Allows us to use all keys of they keyboard without the game crashing
   boolean [] keys = new boolean[1024];
   float lastShot = 0;
   // Amount of milisecond the bullet cooldown will be
   float bulletCooldown = 900;
-  float bulletCooldownCap = 600;
+  float bulletCooldownCap = 750;
   float bulletSpeed =15;
   boolean ableToFire;
   // Score variables
@@ -28,8 +28,11 @@ class Player {
     PlayerSizeW = 250;
     playerSpeed = 9;
     border = height-(PlayerSizeH-100);
+    topborder = 50;
+    borderedge = 250;
     xShadow = width/10;
     playerSpeedCap = 30;
+    gravity = 0.8;
     // Load magic wand sound
     shootSound = minim.loadFile("Magic Wand.mp3");
   }
@@ -56,17 +59,20 @@ class Player {
   void tween(float tempX, float tempY) {
     drop = 250;
     floatchange = 0.07;
+
     // Float for player(meaning,how low you can go,how high and low you can go)
     floating = sin(angle)*(drop)*floatchange;
     // Speed of float(up and down)
     angle += 0.03;
 
     yShadow = tempY;
+     shadowresize = 200;
+     shadowwidth = 0.257;
     // Tweening for shadow
     pushMatrix();
     translate(xShadow, yShadow);
     // Tweening size for shadow(widthSize(resizes according to the X position of the player),widthSize(doesnt make the tweening visible),widthSize(doesnt change the tweening),size of the shadow in general)
-    distance = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
+    distance = dist(xShadow, shadowresize, xShadow+(yPlayer*shadowwidth), floating); 
     popMatrix();
   }
 
@@ -93,13 +99,13 @@ class Player {
     if (keys[87]) {
       yPlayer -= playerSpeed;
     } else {
-      yPlayer +=0.8;
+      yPlayer +=gravity;
     }
     // If you press DOWN/S you go down, otherwise you will slowly go down
     if (keys[83]) {
       yPlayer += playerSpeed;
     } else {
-      yPlayer +=0.8;
+      yPlayer +=gravity;
     }
   }
 
@@ -116,10 +122,10 @@ class Player {
 
   void edge() {
     // Border of player movement
-    if (yPlayer > border-250) {
-      yPlayer = border-250;
-    } else if (yPlayer < 50) {
-      yPlayer = 50;
+    if (yPlayer > border-borderedge) {
+      yPlayer = border-borderedge;
+    } else if (yPlayer < topborder) {
+      yPlayer = topborder;
     }
   }
 
