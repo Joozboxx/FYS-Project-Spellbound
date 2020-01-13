@@ -41,7 +41,7 @@ void setup() {
   // Set window size
   size(1920, 1080, P3D);
   frameRate(60);
-  
+
   // Load background music
   minim = new Minim(this);
   backgroundMusic = minim.loadFile("Background Music.mp3");
@@ -71,7 +71,7 @@ void setup() {
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
   particles = new ArrayList<Particle>();
-  
+
   for (int i = 0; i <10; i++) {
     fireBullets.add(new BulletFire());
   }
@@ -113,6 +113,7 @@ void draw() {
       backgroundLevel.drawSun();   
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
+
 
       BonusCoin.update();
       BonusCoin.draw();
@@ -170,17 +171,17 @@ void keyPressed() {
   myPlayer.keyPressed();
   mainMenuScreen.keyPressed();
   controlsScreen.keyPressed();
-  
+
   // If spacebar is pressed, pause the game. And if spacebar released, start the game
   if (keyCode == 32) {
     isPauseGame = !isPauseGame;
   }
-  
+
   // Restarts the game after you press H
-    if (keyCode == 72) {
-      Restart.restart();
-      gameMode = 3;
-    }
+  if (keyCode == 72) {
+    Restart.restart();
+    gameMode = 3;
+  }
 }
 
 void keyReleased() {

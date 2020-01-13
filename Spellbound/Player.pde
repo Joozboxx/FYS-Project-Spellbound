@@ -10,6 +10,7 @@ class Player {
   float lastShot = 0;
   // Amount of milisecond the bullet cooldown will be
   float bulletCooldown = 900;
+  float bulletCooldownCap = 600;
   float bulletSpeed =15;
   boolean ableToFire;
   // Score variables
@@ -107,6 +108,10 @@ class Player {
     if (playerSpeed >= playerSpeedCap) {
       playerSpeed = playerSpeedCap;
     }
+
+    if (bulletCooldown <= bulletCooldownCap) {
+      bulletCooldown = bulletCooldownCap;
+    }
   }
 
   void edge() {
@@ -141,6 +146,8 @@ class Player {
 
   // Checks if the amount of seconds (lastShot) have gone by since the last bullet was shot
   boolean cooldown() {
+    // Makes it so the cooldown will not decrease any further than Cooldown cap
+
     if ( lastShot < millis() - bulletCooldown) {
       lastShot = millis();
       // Play shoot bullet sound & restart the sound every time you want to shoot a bullet

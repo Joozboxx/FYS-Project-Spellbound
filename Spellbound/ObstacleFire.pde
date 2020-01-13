@@ -1,14 +1,16 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
+  float xfire, yfire, xSize, ySize, speed, speedx, speedcap, yspawn,screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   boolean redparticles = false;
   PImage fire = loadImage("elementfire.png");
+  float cooldowndecrease = 7;
 
   ObstacleFire() {
+    yspawn=450;
     xfire = width+xSize;
-    yfire = random(20, (height-450));
+    yfire = random(20, (height-yspawn));
     xSize = 65;
     ySize = 400;
     speed = 10;
@@ -44,7 +46,7 @@ class ObstacleFire {
     // What happens when the obstacle gets destroyed
     if (BoolObs.fire == false) {
       xfire=width+xSize;
-      yfire=random(20, (height-450));
+      yfire=random(20, (height-yspawn));
     }
   }
 
@@ -58,10 +60,10 @@ class ObstacleFire {
   void borderHit() {
     if (xfire + xSize < 0 ) {
       xfire = width+xSize;
-      yfire = random(20, (height-450));
+      yfire = random(20, (height-yspawn));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=1.15;
+      speed *=speedx;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyLife.speed *= speedx;
@@ -75,22 +77,18 @@ class ObstacleFire {
       case 0:
         BoolObs.life = true;
         BoolObs.fire = false;
-        println("fire");
         break;
       case 1:
         BoolObs.earth = true;
         BoolObs.fire = false;
-        println("water");
         break;
       case 2:
         BoolObs.water = true;
         BoolObs.fire = false;
-        println("life");
         break;
       case 3:
         BoolObs.wall = true;
         BoolObs.fire = false;
-        println("wall");
         break;
       }
     }
@@ -116,8 +114,10 @@ class ObstacleFire {
           redparticles = true;
           // Calls void of particles
           particlefx();
-
+          // Decides the duration of the screen shake
           screenShakeTimer = 1.3;
+          // Reduces the cooldown
+          myPlayer.bulletCooldown-=cooldowndecrease;
 
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -135,22 +135,18 @@ class ObstacleFire {
           case 0:
             BoolObs.life = true;
             BoolObs.fire = false;
-            println("fire");
             break;
           case 1:
             BoolObs.earth = true;
             BoolObs.fire = false;
-            println("water");
             break;
           case 2:
             BoolObs.water = true;
             BoolObs.fire = false;
-            println("life");
             break;
           case 3:
             BoolObs.wall = true;
             BoolObs.fire = false;
-            println("wall");
             break;
           }
         }
@@ -173,22 +169,22 @@ class ObstacleFire {
       case 0:
         BoolObs.life = true;
         BoolObs.fire = false;
-        println("fire");
+
         break;
       case 1:
         BoolObs.earth = true;
         BoolObs.fire = false;
-        println("water");
+ 
         break;
       case 2:
         BoolObs.water = true;
         BoolObs.fire = false;
-        println("life");
+
         break;
       case 3:
         BoolObs.wall = true;
         BoolObs.fire = false;
-        println("wall");
+
         break;
       }
       // Removes one heart which represents your life

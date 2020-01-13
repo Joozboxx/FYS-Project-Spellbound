@@ -1,15 +1,17 @@
 class ObstacleEarth {
 
-  float xearth, yearth, xSize, ySize, speed, speedx, speedcap, screenShakeTimer;
+  float xearth, yearth, xSize, ySize, speed, speedx, speedcap, yspawn, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   // Decides the color of the particles
   boolean yellowparticles = false;
   PImage earth = loadImage("elementearth.png");
+  float cooldowndecrease = 7;
 
   ObstacleEarth() {
+    yspawn=450;
     xearth = width+xSize;                
-    yearth = random(20, (height-450));
+    yearth = random(20, (height-yspawn));
     xSize = 65;
     ySize = 400;
     speed = 10;
@@ -47,7 +49,7 @@ class ObstacleEarth {
     // What happens when the obstacle gets destroyed
     if (BoolObs.earth == false) {
       xearth=width+xSize;
-      yearth=random(20, (height-450));
+      yearth=random(20, (height-yspawn));
     }
   }
 
@@ -55,7 +57,7 @@ class ObstacleEarth {
   void particlefx() {
     // For loop which decides how many particles will spawn on screen
     for (int i = 0; i < 20; i++) {
-            // Particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
+      // Particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
       particles.add(new Particle(xearth, yearth+200, random(10) - 5, random(30)-10, 20));
     }
   }
@@ -64,10 +66,10 @@ class ObstacleEarth {
     // If the obstacle hits the border: do this
     if (xearth + xSize < 0 ) {
       xearth = width+xSize;
-      yearth = random(20, (height-450));
+      yearth = random(20, (height-yspawn));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=1.15;
+      speed *=speedx;
       EnemyFire.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyLife.speed *= speedx;
@@ -126,9 +128,10 @@ class ObstacleEarth {
           yellowparticles = true;
           // Calls void of particles
           particlefx();
-
           // Decides the duration of the screen shake
           screenShakeTimer = 1.3;
+          // Reduces the cooldown
+          myPlayer.bulletCooldown-=cooldowndecrease;
 
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -147,22 +150,22 @@ class ObstacleEarth {
           case 0:
             BoolObs.life = true;
             BoolObs.earth = false;
-            println("earth");
+
             break;
           case 1:
             BoolObs.fire = true;
             BoolObs.earth = false;
-            println("water");
+
             break;
           case 2:
             BoolObs.water = true;
             BoolObs.earth = false;
-            println("life");
+
             break;
           case 3:
             BoolObs.wall = true;
             BoolObs.earth = false;
-            println("wall");
+
             break;
           }
         }
@@ -187,22 +190,22 @@ class ObstacleEarth {
       case 0:
         BoolObs.life = true;
         BoolObs.earth = false;
-        println("earth");
+
         break;
       case 1:
         BoolObs.fire = true;
         BoolObs.earth = false;
-        println("water");
+
         break;
       case 2:
         BoolObs.water = true;
         BoolObs.earth = false;
-        println("life");
+
         break;
       case 3:
         BoolObs.wall = true;
         BoolObs.earth = false;
-        println("wall");
+
         break;
       }
       // Removes one heart which represents your life
