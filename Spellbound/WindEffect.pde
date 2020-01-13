@@ -24,7 +24,6 @@ class WindEffect {
       // Wind fx
       for (int i =0; i < windY.length; i++) {
 
-
         stroke(185, 255, 255, 30);
 
         line(windX[i], windY[i], windX[i]+windSize, windY[i]);
