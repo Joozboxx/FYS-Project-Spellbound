@@ -55,9 +55,6 @@ class Background {
     // Draw the pause menu layer
     image(pause, pausePosition, pausePosition);
 
-    // Drae the score layer
-    image(score, scorePosition, scorePosition);
-
     // Draw the clouds
     drawClouds();
 
@@ -72,7 +69,6 @@ class Background {
     image(dragon, dragonPosition, dragonPosition);
 
     // Makes the screen shake when the earth obstacle has been hit
-
     if ( EnemyEarth.screenShakeTimer > 0) {
       //sets the amount the screen will shake
 
@@ -196,6 +192,8 @@ class Background {
       image(cloudTwo, cloudTwoX, cloudTwoY, cloudTwo.width*1.1, cloudTwo.height*1.1);
       cloudTwoX = width;
     }
+    // Draw the score layer
+    image(score, scorePosition, scorePosition);
   }
 
   void drawGrass() {
