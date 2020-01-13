@@ -41,7 +41,7 @@ class Coin {
     // If the Bonus is true: do this
     if (Bonus) {
       // Speed from Coin
-      CoinX-=40;
+      CoinX-=38;
       // Calls void that creates the coin
       rotationimage();
     }

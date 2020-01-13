@@ -45,7 +45,7 @@ void setup() {
   // Load background music
   minim = new Minim(this);
   backgroundMusic = minim.loadFile("Background Music.mp3");
-  // Play background music & loop it
+  //Play background music & loop it
   backgroundMusic.loop();
 
   backgroundLevel = new Background();
