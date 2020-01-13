@@ -92,7 +92,7 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
-    
+
     // Makes the screen shake when the fire obstacle has been hit
     if ( EnemyFire.screenShakeTimer > 0) {
       //sets the amount the screen will shake
@@ -112,7 +112,7 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
-    
+
     // Makes the screen shake when the life obstacle has been hit
     if ( EnemyLife.screenShakeTimer > 0) {
       //sets the amount the screen will shake
@@ -132,7 +132,7 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
-    
+
     // Makes the screen shake when the water obstacle has been hit
     if ( EnemyWater.screenShakeTimer > 0) {
       //sets the amount the screen will shake

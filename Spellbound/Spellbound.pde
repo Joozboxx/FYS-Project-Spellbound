@@ -94,14 +94,17 @@ void draw() {
 
   switch(gameMode) {
   case 0: 
+    // Set to main menu
     mainMenuScreen.mainMenuScreen();
     mainMenuScreen.draw();
     break;
   case 1:
+    // Set to game over screen
     gameOverScreen.gameOverScreen();
     gameOverScreen.draw();
     break;
   case 2:
+    // Set to control screen
     controlsScreen.controlsScreen();
     controlsScreen.draw();
     break;
@@ -113,7 +116,6 @@ void draw() {
       backgroundLevel.drawSun();   
       backgroundLevel.drawClouds();
       backgroundLevel.drawGrass();
-
 
       BonusCoin.update();
       BonusCoin.draw();

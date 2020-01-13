@@ -1,12 +1,12 @@
 class BulletWater {
   // Properties of the bullet
   float bulletX, bulletY;
-  float sizeX,sizeY;
+  float sizeX, sizeY;
   float vx, vy;
   boolean isFired, ableToFire;
   int cooldownTimer;
   PImage waterBulletIm = loadImage("waterbullet.png");
- 
+
   // Giving the bullet initial values
   BulletWater() {
     waterBullets.add(this);

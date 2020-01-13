@@ -64,11 +64,9 @@ class Particle {
     // How much particles goes down
     particleY+=yvel;
 
-// Clears the particles after its reached this horizontal position
-   if (particleX >= width-particleborder) {
+    // Clears the particles after its reached this horizontal position
+    if (particleX >= width-particleborder) {
       particles.clear();
     }
-  
- 
   }
 }

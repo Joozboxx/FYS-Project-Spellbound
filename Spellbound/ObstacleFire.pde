@@ -1,6 +1,6 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed, speedx, speedcap, yspawn,screenShakeTimer;
+  float xfire, yfire, xSize, ySize, speed, speedx, speedcap, yspawn, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   boolean redparticles = false;
@@ -174,7 +174,7 @@ class ObstacleFire {
       case 1:
         BoolObs.earth = true;
         BoolObs.fire = false;
- 
+
         break;
       case 2:
         BoolObs.water = true;

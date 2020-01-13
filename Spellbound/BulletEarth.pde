@@ -39,7 +39,7 @@ class BulletEarth {
     bulletY += vy;
     die();
   }
-  
+
   //removes bullet from the arraylist 
   void die() {
     for (int i = 0; i < earthBullets.size(); i++) {

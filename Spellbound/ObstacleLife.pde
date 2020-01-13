@@ -1,6 +1,6 @@
 class ObstacleLife {
 
-  float xlife, ylife, xSize, ySize, speed, speedx, speedcap,yspawn, screenShakeTimer;
+  float xlife, ylife, xSize, ySize, speed, speedx, speedcap, yspawn, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   boolean greenparticles = false;
@@ -178,7 +178,7 @@ class ObstacleLife {
       case 0:
         BoolObs.fire = true;
         BoolObs.life = false;
- 
+
         break;
       case 1:
         BoolObs.earth = true;
@@ -188,7 +188,7 @@ class ObstacleLife {
       case 2:
         BoolObs.water = true;
         BoolObs.life = false;
-   
+
         break;
       case 3:
         BoolObs.wall = true;

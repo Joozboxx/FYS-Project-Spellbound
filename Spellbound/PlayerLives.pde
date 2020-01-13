@@ -5,9 +5,8 @@ class PlayerLives {
   float liveSizeW = 65, liveSizeH = 50;
   // Amount of lifes
   int lifeCount = 3;
-
+  // Load hart image
   PImage heartlives = loadImage("heart.png");
-
 
   void draw() {
     // Makes the lifes, and gives an amount to the lifes.
