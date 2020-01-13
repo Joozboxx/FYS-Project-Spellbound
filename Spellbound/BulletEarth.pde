@@ -40,7 +40,7 @@ class BulletEarth {
     die();
   }
 
-  //removes bullet from the arraylist 
+  // Removes bullet from the arraylist 
   void die() {
     for (int i = 0; i < earthBullets.size(); i++) {
       BulletEarth e = earthBullets.get(i);

@@ -63,7 +63,7 @@ class ObstacleLife {
       xlife = width+xSize;
       ylife = random(20, (height-yspawn));
 
-      // accelerates obstacle speed everytime the edge of screen gets hit
+      // Accelerates obstacle speed everytime the edge of screen gets hit
       speed *=speedx;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;

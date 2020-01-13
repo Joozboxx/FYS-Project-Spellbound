@@ -39,7 +39,7 @@ class BulletFire {
     bulletY += vy;
     die();
   }
-  //remove bullet from the arraylist
+  // Remove bullet from the arraylist
   void die() {
     for (int i = 0; i < fireBullets.size(); i++) {
       BulletFire b = fireBullets.get(i);
