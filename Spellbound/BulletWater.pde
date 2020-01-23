@@ -3,8 +3,6 @@ class BulletWater {
   float bulletX, bulletY;
   float sizeX, sizeY;
   float vx, vy;
-  boolean isFired, ableToFire;
-  int cooldownTimer;
   PImage waterBulletIm = loadImage("waterbullet.png");
 
   // Giving the bullet initial values
@@ -17,8 +15,6 @@ class BulletWater {
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
-    isFired = true;
-    ableToFire = false;
 
     // Start the bullet at the player position
     bulletX = (myPlayer.xPlayer + 220);
@@ -26,11 +22,7 @@ class BulletWater {
 
     vx = speed * cos(angle);
   }
-  void cooldown() {
-    if (isFired == true) {
-      cooldownTimer = 10;
-    }
-  }
+
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
