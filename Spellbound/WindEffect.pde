@@ -2,29 +2,32 @@ class WindEffect {
 
   // Wind FX
   float [] windX = new float [20];
-  float []windY = new float [20];
+  float [] windY = new float [20];
   float windSize = 200;
+  
+  float windSpeed = 30;
+  float windYStart =50;
+  float windYEnd = 900;
 
   WindEffect() {
 
-    // Wind FX
+    // Decides the x position of the wind lines
     for (int i =0; i < windX.length; i++) {
       windX[i] = random(width, width+500);
     }
-
+    // Decides the y position of the wind lines
     for (int i =0; i < windY.length; i++) {
-      windY[i] = random(50, 1000);
+      windY[i] = random(windYStart, windYEnd);
     }
   }
 
   void draw() {
+    // If the player reaches a the maximum player Speed, make the wind effect 
+    if (myPlayer.playerSpeed >= myPlayer.playerSpeedCap) {
 
-    if (myPlayer.playerSpeed >= 30) {
-
-      // Wind Fx
+      // Wind fx
       for (int i =0; i < windY.length; i++) {
-
-        
+        // Red, green, blue and opacity
         stroke(185, 255, 255, 30);
 
         line(windX[i], windY[i], windX[i]+windSize, windY[i]);
@@ -36,14 +39,14 @@ class WindEffect {
 
     // Wind effect 
     for (int i = 0; i < windX.length; i++) {
-      //windspeed
-      windX[i]-= 30;
-
+      //windspeed moving 
+      windX[i]-= windSpeed;
+      // If the complete wind line reaches the border: respawn it at the right side of the border with a random y position
       if (windX[i]+windSize <= 0) {
 
-        windX[i] = random(width, width + 500);
+        windX[i] = random(width, width+width/2);
 
-        windY[i] = random(50, 800);
+        windY[i] = random(windYStart, windYEnd);
       }
     }
   }

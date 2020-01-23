@@ -1,12 +1,12 @@
 class BulletWater {
   // Properties of the bullet
   float bulletX, bulletY;
-  float sizeX,sizeY;
+  float sizeX, sizeY;
   float vx, vy;
   PImage waterBulletIm = loadImage("waterbullet.png");
   int staffpositionX = 220;
   int staffpositionY = 87;
- 
+
   // Giving the bullet initial values
   BulletWater() {
     waterBullets.add(this);
@@ -17,6 +17,7 @@ class BulletWater {
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
+
     // Start the bullet at the player position
     bulletX = (myPlayer.xPlayer + staffpositionX);
     bulletY = (myPlayer.yPlayer + staffpositionY);

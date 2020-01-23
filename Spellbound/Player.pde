@@ -1,19 +1,23 @@
 class Player {
 
   // Player variables
-  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, border;
+  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, playerSpeedCap, border, topborder, borderedge, gravity;
   PImage player = loadImage("spellboundplayer.png");
   // Variables for the tweening effect of the player and shadow
-  float xShadow, yShadow, floating, d, angle;
+  float xShadow, yShadow, floating, distance, angle, drop, floatchange, shadowtweenx, shadowtweeny, shadowresize, shadowwidth;
   // Allows us to use all keys of they keyboard without the game crashing
   boolean [] keys = new boolean[1024];
   float lastShot = 0;
+  // Amount of milisecond the bullet cooldown will be
   float bulletCooldown = 900;
+  float bulletCooldownCap = 750;
   float bulletSpeed =15;
   boolean ableToFire;
   // Score variables
   float scorePositionX = 1860;
   float scorePositionY = 77;
+  // Sound variable
+  AudioPlayer shootSound;
 
   // Setup player variables
   Player() {
@@ -24,7 +28,13 @@ class Player {
     PlayerSizeW = 250;
     playerSpeed = 9;
     border = height-(PlayerSizeH-100);
+    topborder = 50;
+    borderedge = 250;
     xShadow = width/10;
+    playerSpeedCap = 30;
+    gravity = 0.8;
+    // Load magic wand sound
+    shootSound = minim.loadFile("Magic Wand.mp3");
   }
 
   // Draws the player shape
@@ -33,11 +43,13 @@ class Player {
     // Player
     image(player, xPlayer, yPlayer-floating, PlayerSizeW, PlayerSizeH);
 
+    shadowtweenx = 0.9;
+    shadowtweeny = 0.04;
     // Shadow under player
     ellipseMode(CORNER);
     noStroke();
     fill(20, 120);
-    ellipse(xShadow, 980, 0.9*(d), 0.04*d);
+    ellipse(xShadow, 980, shadowtweenx*(distance), shadowtweeny*distance);
 
     // Calls void tween
     tween(width/10, 0);
@@ -45,17 +57,22 @@ class Player {
 
   // Tweening for the player (up and down "animation")
   void tween(float tempX, float tempY) {
-    //float for player(meaning,meaning,meaning)
-    floating = sin(angle)*(250)*0.07;
-    //speed of float(up and down)
+    drop = 250;
+    floatchange = 0.07;
+
+    // Float for player(angle,how low you can go,how high and low you can go)
+    floating = sin(angle)*(drop)*floatchange;
+    // Speed of float(up and down)
     angle += 0.03;
 
     yShadow = tempY;
+    shadowresize = 200;
+    shadowwidth = 0.257;
     // Tweening for shadow
     pushMatrix();
     translate(xShadow, yShadow);
     // Tweening size for shadow(widthSize(resizes according to the X position of the player),widthSize(doesnt make the tweening visible),widthSize(doesnt change the tweening),size of the shadow in general)
-    d = dist(xShadow, 200, xShadow+(yPlayer*0.257), floating); 
+    distance = dist(xShadow, shadowresize, xShadow+(yPlayer*shadowwidth), floating); 
     popMatrix();
   }
 
@@ -64,7 +81,7 @@ class Player {
     move();
     cap();
     edge();
-    
+
     // Adds 1 point when you hit an obstacle
     textAlign(CENTER);
     // Score text shade
@@ -82,29 +99,33 @@ class Player {
     if (keys[87]) {
       yPlayer -= playerSpeed;
     } else {
-      yPlayer +=0.8;
+      yPlayer +=gravity;
     }
     // If you press DOWN/S you go down, otherwise you will slowly go down
     if (keys[83]) {
       yPlayer += playerSpeed;
     } else {
-      yPlayer +=0.8;
+      yPlayer +=gravity;
     }
   }
 
   void cap() {
     // Playerspeed cap, for moving is 20
-    if (playerSpeed >= 30) {
-      playerSpeed = 30;
+    if (playerSpeed >= playerSpeedCap) {
+      playerSpeed = playerSpeedCap;
+    }
+
+    if (bulletCooldown <= bulletCooldownCap) {
+      bulletCooldown = bulletCooldownCap;
     }
   }
 
   void edge() {
     // Border of player movement
-    if (yPlayer > border-250) {
-      yPlayer = border-250;
-    } else if (yPlayer < 50) {
-      yPlayer = 50;
+    if (yPlayer > border-borderedge) {
+      yPlayer = border-borderedge;
+    } else if (yPlayer < topborder) {
+      yPlayer = topborder;
     }
   }
 
@@ -127,18 +148,16 @@ class Player {
     if (keyCode == 73&& cooldown()) {
       new BulletWater().fire(0, bulletSpeed);
     }
-
-    // Restarts the game after you press H
-    if (keyCode == 72) {
-      Restart.restart();
-      gameMode = 3;
-    }
   }
 
-  // Checks if 2 seconds have gone by since the last bullet was shot
+  // Checks if the amount of seconds (lastShot) have gone by since the last bullet was shot
   boolean cooldown() {
+    // Makes it so the cooldown will not decrease any further than Cooldown cap
+
     if ( lastShot < millis() - bulletCooldown) {
       lastShot = millis();
+      // Play shoot bullet sound & restart the sound every time you want to shoot a bullet
+      shootSound.play(0);
       return true;
     }
     return false;

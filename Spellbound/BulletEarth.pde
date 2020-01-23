@@ -3,7 +3,6 @@ class BulletEarth {
   float bulletX, bulletY;
   float sizeX, sizeY;
   float vx, vy;
-  int cooldownTimer;
   PImage earthBulletIm = loadImage("earthbullet.png");
   int staffpositionX = 220;
   int staffpositionY = 87;
@@ -24,7 +23,6 @@ class BulletEarth {
 
     vx = speed * cos(angle);
   }
-  
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
@@ -33,7 +31,7 @@ class BulletEarth {
     bulletY += vy;
     die();
   }
-  
+
   //removes bullet from the arraylist 
   void die() {
     for (int i = 0; i < earthBullets.size(); i++) {

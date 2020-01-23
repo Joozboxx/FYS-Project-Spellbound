@@ -32,14 +32,15 @@ class Background {
   float cloudTwoX = 1250;
   float cloudTwoY = 30;
   float cloudOneSpeed = 2; 
-  float cloudTwoSpeed = 2;
+  float cloudTwoSpeed = 1.7;
   float backgroundPosition = 0;
 
   // Grass variables
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
   float grassSpeed = 10;
-  float grassSpeedmultiplier = 1.03;
+    float grassSpeedCap = 30;
+  float grassSpeedMultiplier = 1.03;
 
   void draw() {   
     // Draw the background layer
@@ -55,9 +56,6 @@ class Background {
     // Draw the pause menu layer
     image(pause, pausePosition, pausePosition);
 
-    // Drae the score layer
-    image(score, scorePosition, scorePosition);
-
     // Draw the clouds
     drawClouds();
 
@@ -72,7 +70,6 @@ class Background {
     image(dragon, dragonPosition, dragonPosition);
 
     // Makes the screen shake when the earth obstacle has been hit
-
     if ( EnemyEarth.screenShakeTimer > 0) {
       //sets the amount the screen will shake
 
@@ -92,7 +89,7 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
-    
+
     // Makes the screen shake when the fire obstacle has been hit
     if ( EnemyFire.screenShakeTimer > 0) {
       //sets the amount the screen will shake
@@ -112,7 +109,7 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
-    
+
     // Makes the screen shake when the life obstacle has been hit
     if ( EnemyLife.screenShakeTimer > 0) {
       //sets the amount the screen will shake
@@ -132,7 +129,7 @@ class Background {
       // Reverts the background to its normal position
       popMatrix();
     }
-    
+
     // Makes the screen shake when the water obstacle has been hit
     if ( EnemyWater.screenShakeTimer > 0) {
       //sets the amount the screen will shake
@@ -196,28 +193,30 @@ class Background {
       image(cloudTwo, cloudTwoX, cloudTwoY, cloudTwo.width*1.1, cloudTwo.height*1.1);
       cloudTwoX = width;
     }
+    // Draw the score layer
+    image(score, scorePosition, scorePosition);
   }
 
   void drawGrass() {
     // If grass one moves past 0, add grass two and speed grass up
     if (grassOneX + grassOne.width < 0) {
       grassOneX = grassTwoX + grassTwo.width;  
-      grassSpeed *= grassSpeedmultiplier;
+      grassSpeed *= grassSpeedMultiplier;
     }
 
     // If grass two moves past 0, add grass one and speed grass up
     if (grassTwoX + grassTwo.width < 0) {
       grassTwoX = grassOneX + grassOne.width;
-      grassSpeed *= grassSpeedmultiplier;
+      grassSpeed *= grassSpeedMultiplier;
     }
 
     // Cap speed of grass
-    if (grassSpeed >= 30) {
-      grassSpeed = 30;
+    if (grassSpeed >= grassSpeedCap) {
+      grassSpeed =grassSpeedCap;
     }
 
     // Draw the grass
-    image(grassOne, grassOneX, height-grassOne.height+1);
+    image(grassOne, grassOneX, height - grassOne.height+1);
     image(grassTwo, grassTwoX, height - grassOne.height+1);
   }
 }

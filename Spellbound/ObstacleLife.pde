@@ -1,18 +1,23 @@
 class ObstacleLife {
 
-  float xlife, ylife, xSize, ySize, speed, speedx,speedcap, screenShakeTimer;
+  float xlife, ylife, xSize, ySize, speed, speedx, speedcap, yspawn, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   boolean greenparticles = false;
   PImage life = loadImage("elementlife.png");
+    // Reduces the cooldown time by a certain ammount
+  float cooldowndecrease = 5;
 
   ObstacleLife() {
+    yspawn=450;
     xlife =width+xSize;                
-    ylife = random(20, (height-450));
+    ylife = random(20, (height-yspawn));
     xSize = 65;
     ySize = 400;
     speed = 10;
+    // Speed multiplier after you hit an obstacle
     speedx = 1.02;
+    // Speed cap for what the maximum speed is
     speedcap = 32;
   }
 
@@ -22,7 +27,7 @@ class ObstacleLife {
 
   void update() {
     xlife -= speed; 
-
+    // After you receive 10 points, another obstacle will be available to spawn; the wall obstacle
     if (points >= 10) {
       maxObstacle = 4;
     }
@@ -41,7 +46,7 @@ class ObstacleLife {
     // What happens when the obstacle gets destroyed
     if (BoolObs.life == false) {
       xlife=width+xSize;
-      ylife=random(20, (height-450));
+      ylife=random(20, (height-yspawn));
     }
   }
 
@@ -57,10 +62,10 @@ class ObstacleLife {
   void borderHit() {
     if (xlife + xSize < 0 ) {
       xlife = width+xSize;
-      ylife = random(20, (height-450));
+      ylife = random(20, (height-yspawn));
 
       // accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=1.15;
+      speed *=speedx;
       EnemyEarth.speed *=speedx;
       EnemyWater.speed *= speedx;
       EnemyFire.speed *= speedx;
@@ -74,22 +79,22 @@ class ObstacleLife {
       case 0:
         BoolObs.fire = true;
         BoolObs.life = false;
-        println("fire");
+
         break;
       case 1:
         BoolObs.earth = true;
         BoolObs.life = false;
-        println("water");
+
         break;
       case 2:
         BoolObs.water = true;
         BoolObs.life = false;
-        println("life");
+
         break;
       case 3:
         BoolObs.wall = true;
         BoolObs.life = false;
-        println("wall");
+
         break;
       }
     }
@@ -103,7 +108,7 @@ class ObstacleLife {
       if (lifeBullets.size()>0) {
         BulletLife b = lifeBullets.get(i);
 
-        // Uses the values 
+          // This is the collision check for when a bullet hits an obstacle. if collision is true: do this
         if ((b.bulletX+b.sizeX)> xlife && (b.bulletY+b.sizeY)>ylife && (b.bulletY-b.sizeY)<(ylife+ySize)) {
 
 
@@ -119,8 +124,10 @@ class ObstacleLife {
 
           // Calls void of particles
           particlefx();
-
+          // Decides the duration of the screen shake
           screenShakeTimer = 1.3;
+          // Reduces the cooldown
+          myPlayer.bulletCooldown-=cooldowndecrease;
 
           // Speed of all obstacles get increased when destroyed
           speed *= speedx;
@@ -138,22 +145,18 @@ class ObstacleLife {
           case 0:
             BoolObs.fire = true;
             BoolObs.life = false;
-            println("fire");
             break;
           case 1:
             BoolObs.earth = true;
             BoolObs.life = false;
-            println("water");
             break;
           case 2:
             BoolObs.water = true;
             BoolObs.life = false;
-            println("life");
             break;
           case 3:
             BoolObs.wall = true;
             BoolObs.life = false;
-            println("wall");
             break;
           }
         }
@@ -176,25 +179,25 @@ class ObstacleLife {
       case 0:
         BoolObs.fire = true;
         BoolObs.life = false;
-        println("fire");
+
         break;
       case 1:
         BoolObs.earth = true;
         BoolObs.life = false;
-        println("water");
+
         break;
       case 2:
         BoolObs.water = true;
         BoolObs.life = false;
-        println("life");
+
         break;
       case 3:
         BoolObs.wall = true;
         BoolObs.life = false;
-        println("wall");
+
         break;
       }
-
+      // Removes one heart which represents your life
       Lives.lifeCount--;
     }
   }

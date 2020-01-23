@@ -23,7 +23,7 @@ class BulletLife {
 
     vx = speed * cos(angle);
   }
- 
+
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired

@@ -1,15 +1,18 @@
 class ObstacleWall {
 
-  float xwall, ywall, xSize, ySize, speed, speedx, speedcap;
+  float xwall, ywall, xSize, ySize, speed, speedx, speedcap, yspawn;
   PImage wall = loadImage("elementWALL.png");
 
   ObstacleWall() {
+    yspawn= 450;
     xwall =width+xSize;                
-    ywall = random(20, (height-450));
+    ywall = random(20, (height-yspawn));
     xSize = 65;
     ySize = 400;
     speed = 8;
+    // Speed multiplier after you hit an obstacle
     speedx = 1.02;
+    // Speed cap for what the maximum speed is
     speedcap = 30;
   }
 
@@ -33,14 +36,14 @@ class ObstacleWall {
     // What happens when the obstacle gets destroyed
     if (BoolObs.wall == false) {
       xwall=width+xSize;
-      ywall=random(20, (height-450));
+      ywall=random(20, (height-yspawn));
     }
   }
 
   void borderHit() {
     if (xwall + xSize < 0 ) {
       xwall = width+xSize;
-      ywall = random(20, (height-450));
+      ywall = random(20, (height-yspawn));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
       speed *=speedx;
@@ -101,7 +104,7 @@ class ObstacleWall {
         BoolObs.wall = false;
         break;
       }
-
+      // Removes one heart which represents your life
       Lives.lifeCount--;
     }
   }

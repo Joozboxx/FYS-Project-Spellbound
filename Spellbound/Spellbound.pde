@@ -1,5 +1,6 @@
-import processing.sound.*;
+import ddf.minim.*;
 
+// Variables
 Background backgroundLevel;
 Player myPlayer;
 PlayerLives Lives;
@@ -18,6 +19,11 @@ Controls controlsScreen;
 WindEffect Wind;
 RestartGame Restart;
 
+// Sound variable
+Minim minim;
+AudioPlayer backgroundMusic;
+
+// Array lists bullets
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
 ArrayList<BulletLife> lifeBullets ;
@@ -35,6 +41,12 @@ void setup() {
   // Set window size
   size(1920, 1080, P3D);
   frameRate(60);
+
+  // Load background music
+  minim = new Minim(this);
+  backgroundMusic = minim.loadFile("Background Music.mp3");
+  //Play background music & loop it
+  backgroundMusic.loop();
 
   backgroundLevel = new Background();
   mainMenuScreen = new MainMenu();
@@ -59,7 +71,7 @@ void setup() {
   waterBullets = new ArrayList<BulletWater>();
   lifeBullets = new ArrayList<BulletLife>();
   particles = new ArrayList<Particle>();
-  
+
   for (int i = 0; i <10; i++) {
     fireBullets.add(new BulletFire());
   }
@@ -82,16 +94,20 @@ void draw() {
 
   switch(gameMode) {
   case 0: 
+    // Switch to main menu
     mainMenuScreen.mainMenuScreen();
     mainMenuScreen.draw();
     break;
   case 1:
+    // Switch to game over screen
     gameOverScreen.gameOverScreen();
     gameOverScreen.draw();
     break;
   case 2:
+    // Switch to control screen
     controlsScreen.controlsScreen();
     controlsScreen.draw();
+    break;
   case 3:
     // If the game is paused, don't show the rest of the game
     if (!isPauseGame) {
@@ -155,13 +171,23 @@ void draw() {
 
 void keyPressed() {
   myPlayer.keyPressed();
-  
+  mainMenuScreen.keyPressed();
+  controlsScreen.keyPressed();
+
   // If spacebar is pressed, pause the game. And if spacebar released, start the game
-  if (key == ' ') {
+  if (keyCode == 32) {
     isPauseGame = !isPauseGame;
+  }
+
+  // Restarts the game after you press H
+  if (keyCode == 72) {
+    Restart.restart();
+    gameMode = 3;
   }
 }
 
 void keyReleased() {
   myPlayer.keyReleased();
+  mainMenuScreen.keyReleased();
+  controlsScreen.keyReleased();
 }
