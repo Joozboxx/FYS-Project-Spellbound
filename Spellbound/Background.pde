@@ -39,6 +39,7 @@ class Background {
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
   float grassSpeed = 10;
+    float grassSpeedCap = 30;
   float grassSpeedMultiplier = 1.03;
 
   void draw() {   
@@ -210,8 +211,8 @@ class Background {
     }
 
     // Cap speed of grass
-    if (grassSpeed >= 30) {
-      grassSpeed = 30;
+    if (grassSpeed >= grassSpeedCap) {
+      grassSpeed =grassSpeedCap;
     }
 
     // Draw the grass
