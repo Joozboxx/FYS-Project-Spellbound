@@ -2,6 +2,7 @@ class Particle {
   float particleX;
   float particleY;
   float xvel;
+  float xvelspeed = 2;
   float yvel;
   float size;
   // Colors: red, green, blue
@@ -59,7 +60,7 @@ class Particle {
   void update() {
     // How much particles goes to the right
     particleX+= xvel ;
-    xvel +=2;
+    xvel +=xvelspeed;
 
     // How much particles goes down
     particleY+=yvel;

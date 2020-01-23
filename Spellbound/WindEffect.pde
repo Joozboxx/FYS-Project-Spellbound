@@ -2,8 +2,12 @@ class WindEffect {
 
   // Wind FX
   float [] windX = new float [20];
-  float []windY = new float [20];
+  float [] windY = new float [20];
   float windSize = 200;
+  
+  float windSpeed = 30;
+  float windYStart =50;
+  float windYEnd = 900;
 
   WindEffect() {
 
@@ -13,7 +17,7 @@ class WindEffect {
     }
     // Decides the y position of the wind lines
     for (int i =0; i < windY.length; i++) {
-      windY[i] = random(50, 1000);
+      windY[i] = random(windYStart, windYEnd);
     }
   }
 
@@ -36,13 +40,13 @@ class WindEffect {
     // Wind effect 
     for (int i = 0; i < windX.length; i++) {
       //windspeed moving 
-      windX[i]-= 30;
+      windX[i]-= windSpeed;
       // If the complete wind line reaches the border: respawn it at the right side of the border with a random y position
       if (windX[i]+windSize <= 0) {
 
         windX[i] = random(width, width+width/2);
 
-        windY[i] = random(50, 800);
+        windY[i] = random(windYStart, windYEnd);
       }
     }
   }

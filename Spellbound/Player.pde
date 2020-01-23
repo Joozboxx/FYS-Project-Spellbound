@@ -1,7 +1,7 @@
 class Player {
 
   // Player variables
-  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, playerSpeedCap, border,topborder,borderedge,gravity;
+  float xPlayer, yPlayer, PlayerSizeH, PlayerSizeW, playerSpeed, playerSpeedCap, border, topborder, borderedge, gravity;
   PImage player = loadImage("spellboundplayer.png");
   // Variables for the tweening effect of the player and shadow
   float xShadow, yShadow, floating, distance, angle, drop, floatchange, shadowtweenx, shadowtweeny, shadowresize, shadowwidth;
@@ -60,14 +60,14 @@ class Player {
     drop = 250;
     floatchange = 0.07;
 
-    // Float for player(meaning,how low you can go,how high and low you can go)
+    // Float for player(angle,how low you can go,how high and low you can go)
     floating = sin(angle)*(drop)*floatchange;
     // Speed of float(up and down)
     angle += 0.03;
 
     yShadow = tempY;
-     shadowresize = 200;
-     shadowwidth = 0.257;
+    shadowresize = 200;
+    shadowwidth = 0.257;
     // Tweening for shadow
     pushMatrix();
     translate(xShadow, yShadow);
