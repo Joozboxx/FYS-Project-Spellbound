@@ -3,9 +3,10 @@ class BulletEarth {
   float bulletX, bulletY;
   float sizeX, sizeY;
   float vx, vy;
-  boolean isFired, ableToFire;
   int cooldownTimer;
   PImage earthBulletIm = loadImage("earthbullet.png");
+  int staffpositionX = 220;
+  int staffpositionY = 87;
 
   // Giving the bullet initial values
   BulletEarth() {
@@ -17,20 +18,13 @@ class BulletEarth {
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
-    isFired = true;
-    ableToFire = false;
-
     // Start the bullet at the player position
-    bulletX = (myPlayer.xPlayer + 220);
-    bulletY = (myPlayer.yPlayer + 87) ;
+    bulletX = (myPlayer.xPlayer + staffpositionX);
+    bulletY = (myPlayer.yPlayer + staffpositionY) ;
 
     vx = speed * cos(angle);
   }
-  void cooldown() {
-    if (isFired == true) {
-      cooldownTimer = 10;
-    }
-  }
+  
   // Whenever you want to update a bullet, call this method
   void update() {
     // If the bullet is being fired
