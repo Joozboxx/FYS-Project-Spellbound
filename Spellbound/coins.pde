@@ -5,6 +5,7 @@ class Coin {
   PImage CoinIm = loadImage("coin.png");
   float CoinX, CoinY, CoinSize,PointSpawn, neutralPosition,CoinSpeed;
   float coinStart, coinEnd;
+  int BonusPoints =5;
   // rotates the coin
   float rotation;
   // Decides the speed of the rotation
@@ -64,7 +65,7 @@ class Coin {
       CoinX = width+width/10;
       CoinY = random(coinStart, coinEnd);
       Bonus = false;
-      points +=5;
+      points +=BonusPoints;
       multiplier++;
     }
 
