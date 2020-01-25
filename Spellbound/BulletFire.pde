@@ -3,9 +3,9 @@ class BulletFire {
   float bulletX, bulletY;
   float sizeX, sizeY;
   float vx, vy;
+  boolean isFired, ableToFire;
+  int cooldownTimer;
   PImage fireBulletIm = loadImage("firebullet.png");
-  int staffpositionX = 220;
-  int staffpositionY = 87;
 
   // Giving the bullet initial values
   BulletFire() {
@@ -17,13 +17,20 @@ class BulletFire {
 
   // Call this method to signify that the bullet has been fired
   void fire(float angle, float speed) {   
+    isFired = true;
+    ableToFire = false;
+
     // Start the bullet at the player position
-    bulletX = (myPlayer.xPlayer + staffpositionX);
-    bulletY = (myPlayer.yPlayer + staffpositionY);
+    bulletX = (myPlayer.xPlayer + 220);
+    bulletY = (myPlayer.yPlayer + 87) ;
 
     vx = speed * cos(angle);
   }
-
+  void cooldown() {
+    if (isFired == true) {
+      cooldownTimer = 10;
+    }
+  }
 
   // Whenever you want to update a bullet, call this method
   void update() {
@@ -33,7 +40,8 @@ class BulletFire {
     bulletY += vy;
     die();
   }
-  //remove bullet from the arraylist
+
+  // Remove bullet from the arraylist
   void die() {
     for (int i = 0; i < fireBullets.size(); i++) {
       BulletFire b = fireBullets.get(i);

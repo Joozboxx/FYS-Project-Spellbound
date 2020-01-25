@@ -5,7 +5,7 @@ class ObstacleFire {
   int maxObstacle = 3;
   boolean redparticles = false;
   PImage fire = loadImage("elementfire.png");
-    // Reduces the cooldown time by a certain ammount
+  // Reduces the cooldown time by a certain ammount
   float cooldowndecrease = 5;
 
   ObstacleFire() {
@@ -102,7 +102,7 @@ class ObstacleFire {
       if (fireBullets.size()>0) {
         BulletFire b = fireBullets.get(i);
 
-         // This is the collision check for when a bullet hits an obstacle. if collision is true: do this
+        // This is the collision check for when a bullet hits an obstacle. if collision is true: do this
         if ((b.bulletX+b.sizeX)> xfire && (b.bulletY+b.sizeY)>yfire && (b.bulletY-b.sizeY)<(yfire+ySize)) {
 
           fireBullets.remove(i);

@@ -5,7 +5,7 @@ class ObstacleLife {
   int maxObstacle = 3;
   boolean greenparticles = false;
   PImage life = loadImage("elementlife.png");
-    // Reduces the cooldown time by a certain ammount
+  // Reduces the cooldown time by a certain ammount
   float cooldowndecrease = 5;
 
   ObstacleLife() {
@@ -57,8 +57,6 @@ class ObstacleLife {
     }
   }
 
-
-
   void borderHit() {
     if (xlife + xSize < 0 ) {
       xlife = width+xSize;
@@ -108,7 +106,7 @@ class ObstacleLife {
       if (lifeBullets.size()>0) {
         BulletLife b = lifeBullets.get(i);
 
-          // This is the collision check for when a bullet hits an obstacle. if collision is true: do this
+        // This is the collision check for when a bullet hits an obstacle. if collision is true: do this
         if ((b.bulletX+b.sizeX)> xlife && (b.bulletY+b.sizeY)>ylife && (b.bulletY-b.sizeY)<(ylife+ySize)) {
 
 

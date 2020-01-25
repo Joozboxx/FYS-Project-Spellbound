@@ -60,7 +60,7 @@ class Player {
     drop = 250;
     floatchange = 0.07;
 
-    // Float for player(angle,how low you can go,how high and low you can go)
+    // Float for player(meaning,how low you can go,how high and low you can go)
     floating = sin(angle)*(drop)*floatchange;
     // Speed of float(up and down)
     angle += 0.03;

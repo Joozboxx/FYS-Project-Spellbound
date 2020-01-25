@@ -39,7 +39,6 @@ class Background {
   float grassOneX = 0; 
   float grassTwoX = grassOneX + grassOne.width;
   float grassSpeed = 10;
-    float grassSpeedCap = 30;
   float grassSpeedMultiplier = 1.03;
 
   void draw() {   
@@ -106,7 +105,7 @@ class Background {
       // Lowers the time that the screen is shaking
       EnemyFire.screenShakeTimer--;
 
-      // Reverts the background to its normal position
+      // Reverts the background to it's normal position
       popMatrix();
     }
 
@@ -115,7 +114,7 @@ class Background {
       //sets the amount the screen will shake
       float shakeAmount = 15;
 
-      // Makes it so shake is only applies to the background
+      // Makes it so shake is only applied to the background
       pushMatrix();
       translate(this.backgroundPosition, this.backgroundPosition);
 
@@ -211,8 +210,8 @@ class Background {
     }
 
     // Cap speed of grass
-    if (grassSpeed >= grassSpeedCap) {
-      grassSpeed =grassSpeedCap;
+    if (grassSpeed >= 30) {
+      grassSpeed = 30;
     }
 
     // Draw the grass
