@@ -3,7 +3,10 @@ class Coin {
   // The coin will only spawn if Bonus is true, so at the start of the game it will not spawn
   boolean Bonus= false;
   PImage CoinIm = loadImage("coin.png");
-  float CoinX, CoinY, CoinSize;
+  float CoinX, CoinY, CoinSize,PointSpawn, neutralPosition,CoinSpeed;
+  float coinStart, coinEnd;
+  int BonusPoints =5;
+  // rotates the coin
   float rotation;
   // Decides the speed of the rotation
   float rotationSpeed = 1.3;
@@ -13,10 +16,15 @@ class Coin {
     CoinX = width+width/10;
     CoinY = random(100, 800);
     CoinSize = 100;
+    PointSpawn = 12;
+    neutralPosition = 380;
+    CoinSpeed = 40;
+    coinStart = 100;
+    coinEnd = 800;
   }
   void draw() {
     // The coin will only spawn on 12 or a multiplication of 12
-    if (points == 12 * multiplier) {
+    if (points == PointSpawn * multiplier) {
       Bonus = true;
     }
   }
@@ -29,7 +37,8 @@ class Coin {
 
     rotate(radians(rotation));
     rotation -= rotationSpeed;
-    image(CoinIm, CoinIm.width/2-380, CoinIm.height/2-380, CoinSize, CoinSize);
+    image(CoinIm, CoinIm.width/2-neutralPosition, CoinIm.height/2-neutralPosition, CoinSize, CoinSize);
+
 
     popMatrix();
   }
@@ -40,7 +49,7 @@ class Coin {
     // If the Bonus is true: do this
     if (Bonus) {
       // Speed from Coin
-      CoinX-=38;
+      CoinX-=CoinSpeed;
       // Calls void that creates the coin
       rotationimage();
     }
@@ -54,9 +63,9 @@ class Coin {
       &&(myPlayer.yPlayer<=CoinY + CoinSize))
     {
       CoinX = width+width/10;
-      CoinY = random(100, 800);
+      CoinY = random(coinStart, coinEnd);
       Bonus = false;
-      points +=5;
+      points +=BonusPoints;
       multiplier++;
     }
 
@@ -64,7 +73,7 @@ class Coin {
     if (CoinX < 0-CoinSize) {
 
       CoinX = width+width/10;
-      CoinY = random(100, 800);
+      CoinY = random(coinStart, coinEnd);
       Bonus = false;
       multiplier++;
     }
