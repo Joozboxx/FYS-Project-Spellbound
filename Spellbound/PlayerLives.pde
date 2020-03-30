@@ -12,7 +12,6 @@ class PlayerLives {
   void draw() {
     // Makes the lifes, and gives an amount to the lifes.
     for (int i =0; i < lifeCount; i++) {
-      fill(255, 0, 0);
       image(heartlives, liveX[i], yposition, liveSizeW, liveSizeH);
     }
   }  

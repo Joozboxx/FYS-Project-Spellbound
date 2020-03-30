@@ -1,17 +1,18 @@
 class ObstacleWall {
 
-  float xwall, ywall, xSize, ySize, speed, speedx, speedcap, yspawn;
+  float xwall, ywall, xSize, ySize, speed, speedMultiplier, speedcap, maxSpawnPosition,minSpawnPosition;
   PImage wall = loadImage("elementWALL.png");
 
   ObstacleWall() {
-    yspawn= 450;
+    maxSpawnPosition= 450;
+    minSpawnPosition=20;
     xwall =width+xSize;                
-    ywall = random(20, (height-yspawn));
+    ywall = random(minSpawnPosition, (height-maxSpawnPosition));
     xSize = 65;
     ySize = 400;
     speed = 8;
     // Speed multiplier after you hit an obstacle
-    speedx = 1.02;
+    speedMultiplier = 1.02;
     // Speed cap for what the maximum speed is
     speedcap = 30;
   }
@@ -36,21 +37,21 @@ class ObstacleWall {
     // What happens when the obstacle gets destroyed
     if (BoolObs.wall == false) {
       xwall=width+xSize;
-      ywall=random(20, (height-yspawn));
+      ywall=random(minSpawnPosition, (height-maxSpawnPosition));
     }
   }
 
   void borderHit() {
     if (xwall + xSize < 0 ) {
       xwall = width+xSize;
-      ywall = random(20, (height-yspawn));
+      ywall = random(minSpawnPosition, (height-maxSpawnPosition));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=speedx;
-      EnemyEarth.speed *=speedx;
-      EnemyWater.speed *= speedx;
-      EnemyFire.speed *= speedx;
-      EnemyLife.speed *= speedx;
+      speed *=speedMultiplier;
+      EnemyEarth.speed *=speedMultiplier;
+      EnemyWater.speed *= speedMultiplier;
+      EnemyFire.speed *= speedMultiplier;
+      EnemyLife.speed *= speedMultiplier;
 
       int elementType = (int)random(0, 4);
       // Every case switches the element randomly when hit by bullet

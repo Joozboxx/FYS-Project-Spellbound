@@ -34,7 +34,7 @@ class Player {
     playerSpeedCap = 30;
     gravity = 0.8;
     // Load magic wand sound
-    shootSound = minim.loadFile("Magic Wand.mp3");
+   shootSound = minim.loadFile("Magic Wand.mp3");
   }
 
   // Draws the player shape
@@ -157,7 +157,7 @@ class Player {
     if ( lastShot < millis() - bulletCooldown) {
       lastShot = millis();
       // Play shoot bullet sound & restart the sound every time you want to shoot a bullet
-      shootSound.play(0);
+     shootSound.play(0);
       return true;
     }
     return false;

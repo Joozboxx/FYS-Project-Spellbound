@@ -23,6 +23,8 @@ RestartGame Restart;
 Minim minim;
 AudioPlayer backgroundMusic;
 
+
+
 // Array lists bullets
 ArrayList<BulletFire> fireBullets ;
 ArrayList<BulletEarth> earthBullets ;
@@ -47,6 +49,7 @@ void setup() {
   backgroundMusic = minim.loadFile("Background Music.mp3");
   //Play background music & loop it
   backgroundMusic.loop();
+
 
   backgroundLevel = new Background();
   mainMenuScreen = new MainMenu();

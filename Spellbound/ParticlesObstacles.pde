@@ -1,8 +1,8 @@
 class Particle {
   float particleX;
   float particleY;
-  float xvel;
-  float yvel;
+  float HorizontalSpread;
+  float VerticalSpread;
   float size;
   // Colors: red, green, blue
   float r, g, b;
@@ -11,11 +11,11 @@ class Particle {
   // Border which particles will not be able to reach
   float particleborder = 300;
 
-  Particle(float particleX, float particleY, float xvel, float yvel, float size) {
+  Particle(float particleX, float particleY, float HorizontalSpread, float VerticalSpread, float size) {
     this.particleX = particleX;
     this.particleY = particleY;
-    this.xvel = xvel;
-    this.yvel = yvel;
+    this.HorizontalSpread = HorizontalSpread;
+    this.VerticalSpread = VerticalSpread;
     this.size = size;
   }
 
@@ -28,6 +28,20 @@ class Particle {
     fill(r, g, b);
     // Shape of particles
     ellipse(particleX, particleY, size, size);
+  }
+  
+    void update() {
+    // How much particles goes to the right
+    particleX+= HorizontalSpread ;
+    HorizontalSpread +=2;
+
+    // How much particles goes down
+    particleY+=VerticalSpread;
+
+    // Clears the particles after its reached this horizontal position
+    if (particleX >= width-particleborder) {
+      particles.clear();
+    }
   }
 
   void particlecolor() {
@@ -56,17 +70,5 @@ class Particle {
     }
   }
 
-  void update() {
-    // How much particles goes to the right
-    particleX+= xvel ;
-    xvel +=2;
 
-    // How much particles goes down
-    particleY+=yvel;
-
-    // Clears the particles after its reached this horizontal position
-    if (particleX >= width-particleborder) {
-      particles.clear();
-    }
-  }
 }

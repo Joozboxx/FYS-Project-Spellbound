@@ -1,6 +1,6 @@
 class ObstacleEarth {
 
-  float xearth, yearth, xSize, ySize, speed, speedx, speedcap, yspawn, screenShakeTimer;
+  float xearth, yearth, xSize, ySize, speed, speedMultiplier, speedcap, maxSpawnPosition, minSpawnPosition,screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   // Decides the color of the particles
@@ -10,14 +10,15 @@ class ObstacleEarth {
   float cooldowndecrease = 5;
 
   ObstacleEarth() {
-    yspawn=450;
+    maxSpawnPosition=450;
+    minSpawnPosition =20;
     xearth = width+xSize;                
-    yearth = random(20, (height-yspawn));
+    yearth = random(minSpawnPosition, (height-maxSpawnPosition));
     xSize = 65;
     ySize = 400;
     speed = 10;
     // Speed multiplier after you hit an obstacle
-    speedx = 1.02;
+    speedMultiplier = 1.02;
     // Speed cap for what the maximum speed is
     speedcap=32;
   }
@@ -50,16 +51,19 @@ class ObstacleEarth {
     // What happens when the obstacle gets destroyed
     if (BoolObs.earth == false) {
       xearth=width+xSize;
-      yearth=random(20, (height-yspawn));
+      yearth=random(minSpawnPosition, (height-maxSpawnPosition));
     }
   }
 
   // Particle effect when obstacle gets destroyed
   void particlefx() {
     // For loop which decides how many particles will spawn on screen
-    for (int i = 0; i < 20; i++) {
+     float particleAmount = 20;
+    float particleStartLocation = 200;
+    float particleSize =20;
+    for (int i = 0; i < particleAmount; i++) {
       // Particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
-      particles.add(new Particle(xearth, yearth+200, random(10) - 5, random(30)-10, 20));
+      particles.add(new Particle(xearth, yearth+particleStartLocation, random(10) - 5, random(30)-10, particleSize));
     }
   }
 
@@ -67,14 +71,14 @@ class ObstacleEarth {
     // If the obstacle hits the border: do this
     if (xearth + xSize < 0 ) {
       xearth = width+xSize;
-      yearth = random(20, (height-yspawn));
+      yearth = random(minSpawnPosition, (height-maxSpawnPosition));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=speedx;
-      EnemyFire.speed *=speedx;
-      EnemyWater.speed *= speedx;
-      EnemyLife.speed *= speedx;
-      EnemyWall.speed *= speedx;
+      speed *=speedMultiplier;
+      EnemyFire.speed *=speedMultiplier;
+      EnemyWater.speed *= speedMultiplier;
+      EnemyLife.speed *= speedMultiplier;
+      EnemyWall.speed *= speedMultiplier;
 
       // Integer which will be able to switch the cases
       int elementType = (int)random(0, maxObstacle);
@@ -135,12 +139,12 @@ class ObstacleEarth {
           myPlayer.bulletCooldown-=cooldowndecrease;
 
           // Speed of all obstacles get increased when destroyed
-          speed *= speedx;
-          EnemyFire.speed *=speedx;
-          EnemyWater.speed *= speedx;
-          EnemyLife.speed *= speedx;
-          EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= speedx;
+          speed *= speedMultiplier;
+          EnemyFire.speed *=speedMultiplier;
+          EnemyWater.speed *= speedMultiplier;
+          EnemyLife.speed *= speedMultiplier;
+          EnemyWall.speed *= speedMultiplier;
+          myPlayer.playerSpeed *= speedMultiplier;
 
           // Integer which will be able to switch the cases
           int elementType = (int)random(0, maxObstacle);

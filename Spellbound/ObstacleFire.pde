@@ -1,6 +1,6 @@
 class ObstacleFire {
 
-  float xfire, yfire, xSize, ySize, speed, speedx, speedcap, yspawn, screenShakeTimer;
+  float xfire, yfire, xSize, ySize, speed, speedMultiplier, speedcap, maxSpawnPosition,minSpawnPosition, screenShakeTimer;
   // Makes the basic elements come first
   int maxObstacle = 3;
   boolean redparticles = false;
@@ -9,14 +9,15 @@ class ObstacleFire {
   float cooldowndecrease = 5;
 
   ObstacleFire() {
-    yspawn=450;
+    maxSpawnPosition=450;
+    minSpawnPosition =20;
     xfire = width+xSize;
-    yfire = random(20, (height-yspawn));
+    yfire = random(minSpawnPosition, (height-maxSpawnPosition));
     xSize = 65;
     ySize = 400;
     speed = 10;
     // Speed multiplier after you hit an obstacle
-    speedx = 1.02;
+    speedMultiplier = 1.02;
     // Speed cap for what the maximum speed is
     speedcap=32;
   }
@@ -47,28 +48,33 @@ class ObstacleFire {
     // What happens when the obstacle gets destroyed
     if (BoolObs.fire == false) {
       xfire=width+xSize;
-      yfire=random(20, (height-yspawn));
+      yfire=random(minSpawnPosition, (height-maxSpawnPosition));
     }
   }
 
   // Particle effect when obstacle gets destroyed
   void particlefx() {
-    for (int i = 0; i < 20; i++) {
-      particles.add(new Particle(xfire, yfire+200, random(10) - 5, random(30)-10, 20));
+    
+    float particleAmount = 20;
+    float particleStartLocation = 200;
+    float particleSize =20;
+    for (int i = 0; i < particleAmount; i++) {
+      // Particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
+      particles.add(new Particle(xfire, yfire+particleStartLocation, random(10) - 5, random(30)-10, particleSize));
     }
   }
 
   void borderHit() {
     if (xfire + xSize < 0 ) {
       xfire = width+xSize;
-      yfire = random(20, (height-yspawn));
+      yfire = random(minSpawnPosition, (height-maxSpawnPosition));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=speedx;
-      EnemyEarth.speed *=speedx;
-      EnemyWater.speed *= speedx;
-      EnemyLife.speed *= speedx;
-      EnemyWall.speed *= speedx;
+      speed *=speedMultiplier;
+      EnemyEarth.speed *=speedMultiplier;
+      EnemyWater.speed *= speedMultiplier;
+      EnemyLife.speed *= speedMultiplier;
+      EnemyWall.speed *= speedMultiplier;
 
       int elementType = (int)random(0, maxObstacle);
 
@@ -121,12 +127,12 @@ class ObstacleFire {
           myPlayer.bulletCooldown-=cooldowndecrease;
 
           // Speed of all obstacles get increased when destroyed
-          speed *= speedx;
-          EnemyEarth.speed *=speedx;
-          EnemyWater.speed *= speedx;
-          EnemyLife.speed *= speedx;
-          EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= speedx;
+          speed *= speedMultiplier;
+          EnemyEarth.speed *=speedMultiplier;
+          EnemyWater.speed *= speedMultiplier;
+          EnemyLife.speed *= speedMultiplier;
+          EnemyWall.speed *= speedMultiplier;
+          myPlayer.playerSpeed *= speedMultiplier;
 
           int elementType = (int)random(0, maxObstacle);
 

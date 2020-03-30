@@ -1,6 +1,6 @@
 class ObstacleWater {
 
-  float xwater, ywater, xSize, ySize, speed, speedx, speedcap, screenShakeTimer, yspawn;
+  float xwater, ywater, xSize, ySize, speed, speedMultiplier, speedcap, screenShakeTimer, maxSpawnPosition,minSpawnPosition;
   // Makes the basic elements come first
   int maxObstacle = 3;
   // Decides the color of the particles
@@ -10,14 +10,15 @@ class ObstacleWater {
   float cooldowndecrease = 5;
 
   ObstacleWater() {
-    yspawn = 450;
+    maxSpawnPosition = 450;
+    minSpawnPosition=20;
     xwater = width+width/2;
-    ywater = random(20, (height-yspawn));
+    ywater = random(minSpawnPosition, (height-maxSpawnPosition));
     xSize = 65;
     ySize = 400;
     speed = 10;
     // Speed multiplier after you hit an obstacle
-    speedx = 1.03;
+    speedMultiplier = 1.03;
     // Speed cap for what the maximum speed is
     speedcap=32;
   }
@@ -50,16 +51,19 @@ class ObstacleWater {
     // What happens when the obstacle gets destroyed
     if (BoolObs.water == false) {
       xwater=width+xSize;
-      ywater=random(20, (height-yspawn));
+      ywater=random(minSpawnPosition, (height-maxSpawnPosition));
     }
   }
 
   // Particle effect when obstacle gets destroyed
   void particlefx() {
 
-    for (int i = 0; i < 20; i++) {
+      float particleAmount = 20;
+    float particleStartLocation = 200;
+    float particleSize =20;
+    for (int i = 0; i < particleAmount; i++) {
       // Particles( X position, Y position, particles going right, (particles going verticle/how much it spreads)-which direction it goes(higher or lower), size)
-      particles.add(new Particle(xwater, ywater+200, random(10) - 5, random(30)-10, 20));
+      particles.add(new Particle(xwater, ywater+particleStartLocation, random(10) - 5, random(30)-10, particleSize));
     }
   }
 
@@ -67,14 +71,14 @@ class ObstacleWater {
     // If the obstacle hits the border: do this
     if (xwater + xSize < 0 ) {
       xwater = width+xSize;
-      ywater = random(20, (height-yspawn));
+      ywater = random(minSpawnPosition, (height-maxSpawnPosition));
 
       // Accelerates obstacle speed everytime the edge of screen gets hit
-      speed *=speedx;
-      EnemyEarth.speed *=speedx;
-      EnemyLife.speed *= speedx;
-      EnemyFire.speed *= speedx;
-      EnemyWall.speed *= speedx;
+      speed *=speedMultiplier;
+      EnemyEarth.speed *=speedMultiplier;
+      EnemyLife.speed *= speedMultiplier;
+      EnemyFire.speed *= speedMultiplier;
+      EnemyWall.speed *= speedMultiplier;
 
       // Integer which will be able to switch the cases
       int elementType = (int)random(0, maxObstacle);
@@ -131,12 +135,12 @@ class ObstacleWater {
           myPlayer.bulletCooldown-=cooldowndecrease;
 
           // Speed of all obstacles get increased when destroyed
-          speed *= speedx;
-          EnemyEarth.speed *=speedx;
-          EnemyLife.speed *= speedx;
-          EnemyFire.speed *= speedx;
-          EnemyWall.speed *= speedx;
-          myPlayer.playerSpeed *= speedx;
+          speed *= speedMultiplier;
+          EnemyEarth.speed *=speedMultiplier;
+          EnemyLife.speed *= speedMultiplier;
+          EnemyFire.speed *= speedMultiplier;
+          EnemyWall.speed *= speedMultiplier;
+          myPlayer.playerSpeed *= speedMultiplier;
 
 
           // Integer which will be able to switch the cases
